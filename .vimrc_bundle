@@ -18,6 +18,13 @@ NeoBundle 'Shougo/unite.vim'
 " 非同期処理で高負荷処理時の遅延を防ぐ
 NeoBundle "Shougo/vimproc", { "build": { "mac": "make -f make_max.mak", "unix": "make -f make_unix.mak" } }
 
+" 即時実行
+NeoBundle 'thinca/vim-quickrun'
+
+" ディレクトリツリー
+NeoBundle 'scrooloose/nerdtree'
+nnoremap <silent><C-l> :NERDTreeToggle<CR>
+
 " コード補完
 "NeoBundle 'Shougo/neocomplete.vim'
 "NeoBundle 'marcus/rsense'
