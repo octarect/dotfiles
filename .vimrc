@@ -32,11 +32,19 @@ set smartcase "検索文字列に大文字が含まれている場合は区別�
 set wrapscan "検索時に最後まで行ったら最初に戻る
 
 "#####テーマ設定#####
-colorscheme elflord
+if &term == "xterm-256color"
+    colorscheme molokai
+    hi Comment ctermfg=102
+    hi Visual  ctermbg=236
+endif
+" colorscheme molokai
+" set t_Co=256
 syntax on
 
 hi Normal ctermfg=228 ctermbg=none
 hi LineNr ctermfg=white ctermbg=none
+" hi Comment ctermfg=102
+hi Visual  ctermbg=236
 
 "#####エンコーディング設定#####
 set encoding=UTF-8
