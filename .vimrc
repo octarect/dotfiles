@@ -43,8 +43,9 @@ syntax on
 
 hi Normal ctermfg=228 ctermbg=none
 hi LineNr ctermfg=white ctermbg=none
-" hi Comment ctermfg=102
+hi Comment ctermfg=102
 hi Visual  ctermbg=236
+hi NonText ctermbg=none
 
 "#####エンコーディング設定#####
 set encoding=UTF-8
