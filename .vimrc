@@ -11,6 +11,7 @@ set noswapfile
 set clipboard=unnamedplus "yankでクリップボードへコピー
 set timeoutlen=500
 set nobackup
+set autoread
 
 "#####表示設定#####
 set number "行番号を表示する
@@ -32,19 +33,18 @@ set smartcase "検索文字列に大文字が含まれている場合は区別�
 set wrapscan "検索時に最後まで行ったら最初に戻る
 
 "#####テーマ設定#####
-if &term == "xterm-256color"
-    colorscheme molokai
-    hi Comment ctermfg=102
-    hi Visual  ctermbg=236
-endif
-" colorscheme molokai
-" set t_Co=256
 syntax on
+colorscheme molokai
+set t_Co=256
+hi Comment ctermfg=102
+hi String ctermfg=228
+hi Character ctermfg=228
+hi Delimiter ctermfg=228
+hi Visual ctermbg=240
+hi Operator ctermfg=9
 
-hi Normal ctermfg=228 ctermbg=none
+hi Normal ctermfg=255 ctermbg=none
 hi LineNr ctermfg=white ctermbg=none
-" hi Comment ctermfg=102
-hi Visual  ctermbg=236
 
 "#####エンコーディング設定#####
 set encoding=UTF-8

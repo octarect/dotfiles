@@ -15,6 +15,12 @@ call neobundle#begin(expand("~/.vim/bundle/"))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
+
+" Additional syntax
+NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'plasticboy/vim-markdown'
+
 " 非同期処理で高負荷処理時の遅延を防ぐ
 NeoBundle "Shougo/vimproc", { "build": { "mac": "make -f make_max.mak", "unix": "make -f make_unix.mak" } }
 
@@ -24,6 +30,16 @@ NeoBundle 'thinca/vim-quickrun'
 " ディレクトリツリー
 NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent><C-l> :NERDTreeToggle<CR>
+
+" Rust自動フォーマット
+set hidden
+let g:racer_cmd="/home/rk0der/.cargo/bin/racer"
+let $RUST_SRC_PATH="/home/rk0der/.cargo/rustc-1.5.0/src/"
+
+" Rust コード補完
+NeoBundle 'racer-rust/vim-racer'
+let g:rustfmt_autosave=1
+let g:rustfmt_command="/home/rk0der/.cargo/bin/rustfmt"
 
 " コード補完
 "NeoBundle 'Shougo/neocomplete.vim'
