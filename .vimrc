@@ -45,6 +45,7 @@ hi Operator ctermfg=9
 
 hi Normal ctermfg=255 ctermbg=none
 hi LineNr ctermfg=white ctermbg=none
+hi NonText ctermbg=none
 
 "#####エンコーディング設定#####
 set encoding=UTF-8
