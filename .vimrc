@@ -1,5 +1,9 @@
-if filereadable(expand("~/dotfiles/.vimrc_bundle"))
-    source ~/dotfiles/.vimrc_bundle
+" if filereadable(expand("~/dotfiles/.vimrc_bundle"))
+"     source ~/dotfiles/.vimrc_bundle
+" endif
+
+if filereadable(expand("~/dotfiles/.vimrc_dein"))
+    source ~/dotfiles/.vimrc_dein
 endif
 
 if filereadable(expand("~/dotfiles/.vimrc_tab"))
