@@ -1,0 +1,64 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  autocmd VimEnter * nested call octarect#molokai#init()
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+depends = 'scrooloose/nerdtree'
+hook_add = '''
+  map <C-l> <plug>NERDTreeTabsToggle<CR>
+  if argc() == 0
+    let g:nerdtree_tabs_open_on_console_startup = 1
+  end
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+depends = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = ['airblade/vim-gitgutter', 'airblade/vim-gitgutter', 'junegunn/vim-emoji']
+hook_add = '''
+  call octarect#lightline#init()
+'''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = 'map <silent><C-_> <Plug>(caw:hatpos:toggle)'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+depends = ['junegunn/vim-emoji']
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
