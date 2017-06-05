@@ -1,6 +1,6 @@
 "set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
-let s:dein_dir = g:conf_dir . '/dein.vim'
+let s:dein_dir = g:cache_dir . '/dein.vim'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
