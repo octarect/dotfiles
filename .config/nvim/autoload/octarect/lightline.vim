@@ -1,10 +1,10 @@
 function! octarect#lightline#init() abort
-  let g:gitgutter_sign_added = emoji#for('bomb')
-  let g:gitgutter_sign_modified = emoji#for('gun')
-  let g:gitgutter_sign_removed = emoji#for('boom')
-  "let g:gitgutter_sign_added = '+'
-  "let g:gitgutter_sign_modified = '*'
-  "let g:gitgutter_sign_removed = '-'
+  "let g:gitgutter_sign_added = emoji#for('hocho')
+  "let g:gitgutter_sign_modified = emoji#for('gun')
+  "let g:gitgutter_sign_removed = emoji#for('boom')
+  let g:gitgutter_sign_added = '+'
+  let g:gitgutter_sign_modified = '*'
+  let g:gitgutter_sign_removed = '-'
   let g:lightline = {
     \ 'colorscheme': 'molokai',
     \ 'active': {

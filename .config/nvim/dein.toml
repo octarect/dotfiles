@@ -31,9 +31,18 @@ hook_add = '''
   call octarect#lightline#init()
 '''
 
+# [[plugins]]
+# repo = 'tyru/caw.vim'
+# hook_add = 'map <silent><C-_> <Plug>(caw:hatpos:toggle)'
+
 [[plugins]]
-repo = 'tyru/caw.vim'
-hook_add = 'map <silent><C-_> <Plug>(caw:hatpos:toggle)'
+repo = 'scrooloose/nerdcommenter'
+hook_add = '''
+  let g:NERDSpaceDelims=1
+  let g:NERDDefaultAlign='left'
+  let g:NERDCompactSexyComs = 1
+  map <silent><C-_> <Plug>NERDCommenterToggle
+'''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
@@ -62,3 +71,6 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'

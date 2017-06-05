@@ -4,7 +4,7 @@ let s:dein_dir = g:conf_dir . '/dein.vim'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
-  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+  execute '!git clone https://github.com/Shougo/dein.vim.git ' . s:dein_repo_dir
 endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
