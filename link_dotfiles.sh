@@ -12,9 +12,17 @@ fi
 # vim
 vimrc=${HOME}/.vimrc
 if [ ! -e ${vimrc} ]; then
-  ln -s ${DIR}/.vimrc ${HOME}/.vimrc
+  ln -s ${DIR}/.vimrc ${vimrc}
 else
   log 'WARN' "the file ${vimrc} already exists, and not linked."
+fi
+
+# tmux
+tmux_conf=${HOME}/.tmux.conf
+if [ ! -e ${tmux_conf} ]; then
+  ln -s ${DIR}/.tmux.conf ${tmux_conf}
+else
+  log 'WARN' "the file ${tmux_conf} already exists, and not linked."
 fi
 
 # neovim
