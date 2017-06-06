@@ -1,3 +1,4 @@
+set noshowmode
 function! octarect#lightline#init() abort
   "let g:gitgutter_sign_added = emoji#for('hocho')
   "let g:gitgutter_sign_modified = emoji#for('gun')
