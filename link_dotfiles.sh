@@ -4,7 +4,7 @@ function log() {
   echo "[$1] $2"
 }
 
-DIR=`dirname $0`
+DIR=$(cd $(dirname $0) && pwd)
 if [ -n $XDG_CONFIG_HOME ]; then
   conf_dir=${HOME}/.config
 fi
@@ -23,6 +23,14 @@ if [ ! -e ${tmux_conf} ]; then
   ln -s ${DIR}/.tmux.conf ${tmux_conf}
 else
   log 'WARN' "the file ${tmux_conf} already exists, and not linked."
+fi
+
+# alacritty
+alac_dir=${conf_dir}/alacritty
+if [ ! -e ${alac_dir} ]; then
+  ln -s ${DIR}/.config/alacritty ${alac_dir}
+else
+  log 'WARN' "the directory ${alac_dir} already exists, and not linked."
 fi
 
 # neovim
