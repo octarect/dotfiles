@@ -55,3 +55,7 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_i = 1
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
