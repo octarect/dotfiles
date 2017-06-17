@@ -29,14 +29,13 @@ fi
 
 source $zshenv
 
-prezto="${ZDOTDIR}/.zprezto"
+prezto="${DOTCACHE}/.zprezto"
 if [ ! -s $prezto ]; then
   if [ `has git` ]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git $prezto
-    ln -s ${ZDOTDIR}/.zprezto/runcoms/zlogin ${ZDOTDIR}/.zlogin
-    ln -s ${ZDOTDIR}/.zprezto/runcoms/zlogout ${ZDOTDIR}/.zlogout
-    ln -s ${ZDOTDIR}/.zprezto/runcoms/zprofile ${ZDOTDIR}/.zprofile
-    ln -s ${ZDOTDIR}/.zprezto/runcoms/zpreztorc ${ZDOTDIR}/.zpreztorc
+    ln -s ${prezto}/runcoms/zlogin ${ZDOTDIR}/.zlogin
+    ln -s ${prezto}/runcoms/zlogout ${ZDOTDIR}/.zlogout
+    ln -s ${prezto}/runcoms/zprofile ${ZDOTDIR}/.zprofile
   else
     echo "git is not installed. failed to install prezto."
   fi
