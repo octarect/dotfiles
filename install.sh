@@ -22,16 +22,23 @@ fi
 zshenv=${HOME}/.zshenv
 if [ ! -e ${zshenv} ]; then
   ln -s ${DIR}/.zshenv ${zshenv}
+else
+  echo "failed to create the symbolic link to .zshenv. exiting."
+  exit
 fi
 
 source $zshenv
 
-prezto="${DIR}/cache/.zprezto"
+prezto="${ZDOTDIR}/.zprezto"
 if [ ! -s $prezto ]; then
   if [ `has git` ]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git $prezto
+    ln -s ${ZDOTDIR}/.zprezto/runcoms/zlogin ${ZDOTDIR}/.zlogin
+    ln -s ${ZDOTDIR}/.zprezto/runcoms/zlogout ${ZDOTDIR}/.zlogout
+    ln -s ${ZDOTDIR}/.zprezto/runcoms/zprofile ${ZDOTDIR}/.zprofile
+    ln -s ${ZDOTDIR}/.zprezto/runcoms/zpreztorc ${ZDOTDIR}/.zpreztorc
   else
-    echo "git is not installed. cannot use prezto."
+    echo "git is not installed. failed to install prezto."
   fi
 else
   echo "${prezto} already exists"

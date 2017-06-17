@@ -67,8 +67,8 @@ eval "$(pyenv init -)"
 eval $(thefuck --alias)
 
 # Source Prezto.
-if [[ -s "${DOTCACHE:-$HOME}/.zprezto/init.zsh" ]]; then
- source "${DOTCACHE:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 screenfetch
