@@ -58,6 +58,11 @@ if [ ! -e ${tmux_conf} ]; then
 else
   echo "${tmux_conf} already exists"
 fi
+tpm_dir=${HOME}/.tmux/plugins/tpm
+mkdir -p ${HOME}/.tmux/plugins
+if [ ! -e ${tpm_dir} ]; then
+  git clone https://github.com/tmux-plugins/tpm ${tpm_dir}
+fi
 
 # alacritty
 alac_dir=${conf_dir}/alacritty
