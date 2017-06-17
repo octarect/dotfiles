@@ -1,3 +1,4 @@
 cache/*
 !.gitkeep
-.zsh/.zhistory
+/.zsh/*
+!/.zsh/.zshrc
