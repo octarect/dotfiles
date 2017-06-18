@@ -64,6 +64,15 @@ GEM_HOME=$(ruby -e 'print Gem.user_dir')
 pyenv_root=($HOME/.pyenv)
 eval "$(pyenv init -)"
 
+typeset -gU path
+path=(
+  $GOPATH/bin(N-/)
+  $HOME/.cargo/bin(N-/)
+  $HOME/.local/bin(N-/)
+  $HOME/.bin(N-/)
+  $path 
+)
+
 eval $(thefuck --alias)
 
 # Source Prezto.
