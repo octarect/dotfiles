@@ -14,6 +14,11 @@ function checkout() {
   cd $1
 }
 
+function has() {
+  builtin command -v $1 > /dev/null
+  echo $?
+}
+
 # misc
 function hexdig() { echo "obase=10; ibase=16; $1" | bc }
 function dighex() { echo "obase=16; ibase=10; $1" | bc }
