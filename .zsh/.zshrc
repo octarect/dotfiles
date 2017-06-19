@@ -1,9 +1,36 @@
+#################################
+# zplug
+#################################
+# Check if zplug is installed
+[[ -f $ZPLUG_HOME/init.zsh ]] || return
+
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+
+zplug "mafredri/zsh-async", from:github, defer:0
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  else
+    echo
+  fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
 # alias
 alias ls="ls --color=auto --show-control-chars"
 alias grep="grep -a"
 alias hisgre="history | grep"
-alias gdrive_m='google-drive-ocamlfuse ~/googledrive'
-alias gdrive_u='fusermount -u ~/googledrive'
 
 function transfer() {
   curl --upload-file ./$1 https://transfer.sh/$1
@@ -19,15 +46,8 @@ function has() {
   echo $?
 }
 
-# misc
-function hexdig() { echo "obase=10; ibase=16; $1" | bc }
-function dighex() { echo "obase=16; ibase=10; $1" | bc }
-function bindig() { echo "obase=10; ibase=2; $1" | bc }
-function digbin() { echo "obase=2; ibase=10; $1" | bc }
-function hexbin() { echo "obase=2; ibase=16; $1" | bc }
-function binhex() { echo "obase=16; ibase=2; $1" | bc }
-
 # history
+export HISTFILE="${ZDOTDIR}/.zhistory"
 export HISTSIZE=5000
 export SAVEHIST=10000
 # 履歴を共有
@@ -49,9 +69,6 @@ setopt hist_no_store
 setopt hist_expand
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
-# インクリメンタルからの検索
-# bindkey "^R" history-incremental-search-backward
-# bindkey "^S" history-incremental-search-forward
 # # コマンド履歴検索
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -90,11 +107,6 @@ if [ `has ghq` -a `has peco` ]; then
     fi
   }
   alias pcd='peco-src'
-fi
-
-# Source Prezto.
-if [[ -s "${DOTCACHE:-$HOME}/.zprezto/init.zsh" ]]; then
- source "${DOTCACHE:-$HOME}/.zprezto/init.zsh"
 fi
 
 screenfetch
