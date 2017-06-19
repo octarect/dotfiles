@@ -59,16 +59,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-#
-# Virtual Environment
-#
-rbenv_root=($HOME/.rbenv)
-eval "$(rbenv init -)"
-GEM_HOME=$(ruby -e 'print Gem.user_dir')
-
-pyenv_root=($HOME/.pyenv)
-eval "$(pyenv init -)"
-
 typeset -gU path
 path=(
   $GOPATH/bin(N-/)
@@ -77,6 +67,16 @@ path=(
   $HOME/.bin(N-/)
   $path 
 )
+if [ `has rbenv` ]; then
+  rbenv_root=($HOME/.rbenv)
+  eval "$(rbenv init -)"
+  GEM_HOME=$(ruby -e 'print Gem.user_dir')
+fi
+
+if [ `has pyenv` ]; then
+  pyenv_root=($HOME/.pyenv)
+  eval "$(pyenv init -)"
+fi
 
 if [ `has thefuck` ]; then
   eval $(thefuck --alias)
