@@ -14,6 +14,11 @@ function checkout() {
   cd $1
 }
 
+function has() {
+  builtin command -v $1 > /dev/null
+  echo $?
+}
+
 # misc
 function hexdig() { echo "obase=10; ibase=16; $1" | bc }
 function dighex() { echo "obase=16; ibase=10; $1" | bc }
@@ -73,7 +78,19 @@ path=(
   $path 
 )
 
-eval $(thefuck --alias)
+if [ `has thefuck` ]; then
+  eval $(thefuck --alias)
+fi
+
+if [ `has ghq` -a `has peco` ]; then
+  function peco-src() {
+    local src=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$src" ]; then
+      cd "$src"
+    fi
+  }
+  alias pcd='peco-src'
+fi
 
 # Source Prezto.
 if [[ -s "${DOTCACHE:-$HOME}/.zprezto/init.zsh" ]]; then
