@@ -78,7 +78,19 @@ path=(
   $path 
 )
 
-eval $(thefuck --alias)
+if [ `has thefuck` ]; then
+  eval $(thefuck --alias)
+fi
+
+if [ `has ghq` -a `has peco` ]; then
+  function peco-src() {
+    local src=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$src" ]; then
+      cd "$src"
+    fi
+  }
+  alias pcd='peco-src'
+fi
 
 # Source Prezto.
 if [[ -s "${DOTCACHE:-$HOME}/.zprezto/init.zsh" ]]; then
