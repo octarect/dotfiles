@@ -9,10 +9,12 @@ source $ZPLUG_HOME/init.zsh
 zplug "zplug/zplug"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
 
 zplug "mafredri/zsh-async", from:github, defer:0
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+zplug "zsh-users/zsh-completions"
+zstyle ':completion:*:default' menu select=2
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
