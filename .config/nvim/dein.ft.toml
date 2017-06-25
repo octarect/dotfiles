@@ -1,0 +1,15 @@
+hook_add = '''
+
+" Go
+if $GOROOT != ''
+   set runtimepath+=$GOROOT/misc/vim
+endif
+
+'''
+
+[ftplugin]
+
+go = '''
+highlight default link goErr WarningMsg
+match goErr /\<err\>/
+'''
