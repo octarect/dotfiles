@@ -26,6 +26,10 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
 repo ='rust-lang/rust.vim'
 on_ft = 'rust'
 
@@ -59,3 +63,9 @@ on_i = 1
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_i = 1
+on_ft = 'go'

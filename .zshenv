@@ -13,6 +13,7 @@ export TERM=xterm-256color
 # ----- development -----
 export DEVPATH="${HOME}/code"
 export GOPATH="${DEVPATH}"
+export GOROOT=`go env GOROOT`
 mkdir -p $DEVPATH/{bin,src,pkg}
 
 # ----- cache -----
