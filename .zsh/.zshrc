@@ -11,7 +11,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
 zplug "mafredri/zsh-async", from:github, defer:0
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme, if:"[[ $OSTYPE == linux* ]]"
+zplug 'fribmendes/geometry', from:github, as:theme, if:"[[ $OSTYPE == darwin* ]]"
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
@@ -36,9 +37,17 @@ fi
 zplug load --verbose
 
 # alias
-alias ls="ls --color=auto --show-control-chars"
-alias grep="grep -a"
-alias hisgre="history | grep"
+case ${OSTYPE} in
+  darwin*)
+    alias ls="gls --color=auto --show-control-chars"
+    alias readlink="greadlink"
+    ;;
+  linux*)
+    alias ls="ls --color=auto --show-control-chars"
+    alias grep="grep -a"
+    alias hisgre="history | grep"
+    ;;
+esac
 
 function transfer() {
   curl --upload-file ./$1 https://transfer.sh/$1
@@ -117,4 +126,4 @@ if [ `has ghq` -a `has peco` ]; then
   alias pcd='peco-src'
 fi
 
-screenfetch
+screenfetch -E
