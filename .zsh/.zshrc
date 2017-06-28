@@ -7,13 +7,15 @@
 source $ZPLUG_HOME/init.zsh
 
 zplug "zplug/zplug"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search"
 
-zplug "mafredri/zsh-async", from:github, defer:0
+zplug "mafredri/zsh-async", from:github
 zplug 'plugins/git', from:oh-my-zsh
-zplug 'themes/sorin', from:oh-my-zsh, if:"[[ $OSTYPE == *linux* ]]"
-zplug 'fribmendes/geometry', from:github, as:theme, if:"[[ $OSTYPE == *darwin* ]]"
+# zplug 'themes/sorin', from:oh-my-zsh, defer:2, if:"[[ $OSTYPE == *linux* ]]"
+zplug 'octarect/thug.zsh', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *linux* ]]"
+zplug 'fribmendes/geometry', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
+zplug 'mrowa44/emojify', from:github, as:command
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
