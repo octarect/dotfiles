@@ -11,8 +11,9 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
 zplug "mafredri/zsh-async", from:github, defer:0
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme, if:"[[ $OSTYPE == linux* ]]"
-zplug 'fribmendes/geometry', from:github, as:theme, if:"[[ $OSTYPE == darwin* ]]"
+zplug 'plugins/git', from:oh-my-zsh
+zplug 'themes/sorin', from:oh-my-zsh, if:"[[ $OSTYPE == *linux* ]]"
+zplug 'fribmendes/geometry', from:github, as:theme, if:"[[ $OSTYPE == *darwin* ]]"
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
