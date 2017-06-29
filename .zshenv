@@ -23,7 +23,7 @@ export DOTCACHE="$DOTDIR/cache"
 export XDG_CONFIG_HOME=$HOME/.config
 export ZDOTDIR="$DOTDIR/.zsh"
 export ZPLUG_HOME="${DOTCACHE}/.zplug"
-export ZPLUG_REPOS="${DEVPATH}/src"
+export ZPLUG_REPOS="${DEVPATH}/src/github.com"
 export ZPLUG_BIN="${DEVPATH}/bin"
 
 # ----- default option -----
