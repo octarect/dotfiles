@@ -32,14 +32,6 @@ if [ ! -s $ZPLUG_HOME ]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-# vim
-vimrc=${HOME}/.vimrc
-if [ ! -e ${vimrc} ]; then
-  ln -s ${DIR}/.vimrc ${vimrc}
-else
-  echo "${vimrc} already exists"
-fi
-
 # tmux
 tmux_conf=${HOME}/.tmux.conf
 if [ ! -e ${tmux_conf} ]; then
