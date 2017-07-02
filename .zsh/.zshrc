@@ -53,6 +53,7 @@ case ${OSTYPE} in
     alias hisgre="history | grep"
     ;;
 esac
+alias nvimconfig="nvim -p ${XDG_CONFIG_HOME}/nvim/init.vim ${XDG_CONFIG_HOME}/nvim/dein.toml ${XDG_CONFIG_HOME}/nvim/dein.lazy.toml"
 
 function transfer() {
   curl --upload-file ./$1 https://transfer.sh/$1

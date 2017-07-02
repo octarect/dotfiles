@@ -36,6 +36,12 @@ repo = 'Shougo/unite.vim'
 # depends = 'unite.vim'
 # on_if = "isdirectory(bufname('%'))"
 
+[[plugins]]
+repo = 'ujihisa/neco-look'
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
 # [[plugins]]
 # repo = 'ryanoasis/vim-devicons'
 # depends = 'Shougo/vimfiler.vim'
@@ -46,6 +52,13 @@ depends = ['airblade/vim-gitgutter', 'junegunn/vim-emoji', 'ryanoasis/vim-devico
 hook_add = '''
   call octarect#lightline#init()
 '''
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_add = 'let g:loaded_matchparen = 1'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
 
 # [[plugins]]
 # repo = 'tyru/caw.vim'
