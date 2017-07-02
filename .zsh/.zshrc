@@ -17,6 +17,8 @@ zplug 'octarect/thug.zsh', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *li
 zplug 'fribmendes/geometry', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
 zplug 'mrowa44/emojify', from:github, as:command
 
+zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' group-name ''
