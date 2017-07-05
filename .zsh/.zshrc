@@ -18,6 +18,7 @@ zplug 'fribmendes/geometry', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *
 zplug 'mrowa44/emojify', from:github, as:command
 
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+zplug "dzhou121/gonvim", from:gh-r, as:command, use:"*macos*"
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
