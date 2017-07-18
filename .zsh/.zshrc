@@ -42,18 +42,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-# alias
-case ${OSTYPE} in
-  darwin*)
-    alias ls="gls --color=auto --show-control-chars"
-    alias readlink="greadlink"
-    ;;
-  linux*)
-    alias ls="ls --color=auto --show-control-chars"
-    alias grep="grep -a"
-    alias hisgre="history | grep"
-    ;;
-esac
 alias nvimconfig="nvim -p ${XDG_CONFIG_HOME}/nvim/init.vim ${XDG_CONFIG_HOME}/nvim/dein.toml ${XDG_CONFIG_HOME}/nvim/dein.lazy.toml"
 
 function transfer() {
@@ -133,4 +121,8 @@ if [ `has ghq` -a `has peco` ]; then
   alias pcd='peco-src'
 fi
 
-screenfetch -E
+if [[ $OSTYPE == linux* ]]; then
+  source ${ZDOTDIR}/.zshrc_linux
+elif [[ $OSTYPE == darwin* ]]; then
+  source ${ZDOTDIR}/.zshrc_mac
+fi

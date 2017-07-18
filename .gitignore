@@ -1,5 +1,5 @@
 cache/*
 !.gitkeep
 /.zsh/*
-!/.zsh/.zshrc
+!/.zsh/.zshrc*
 !/.zsh/.zpreztorc
