@@ -10,6 +10,9 @@ export PAGER=less
 export SHELL=zsh
 export TERM=xterm-256color
 
+# ----- additional path -----
+export PATH="/usr/local/bin:${PATH}"
+
 # ----- development -----
 export DEVPATH="${HOME}/code"
 export GOPATH="${DEVPATH}"
