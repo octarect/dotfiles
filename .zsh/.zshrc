@@ -15,10 +15,11 @@ zplug 'plugins/git', from:oh-my-zsh
 # zplug 'themes/sorin', from:oh-my-zsh, defer:2, if:"[[ $OSTYPE == *linux* ]]"
 zplug 'octarect/thug.zsh', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *linux* ]]"
 zplug 'fribmendes/geometry', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
-zplug 'mrowa44/emojify', from:github, as:command
 
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-zplug "dzhou121/gonvim", from:gh-r, as:command, use:"*macos*"
+zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq, \
+  hook-load:"git config --global ghq.root ${DEVPATH}/src"
+zplug "peco/peco", from:gh-r, as:command
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2

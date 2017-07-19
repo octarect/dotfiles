@@ -24,27 +24,14 @@ end
 repo = 'ryanoasis/vim-devicons'
 depends = 'scrooloose/nerdtree'
 
-# [[plugins]]
-# repo = 'ryanoasis/vim-devicons'
-# depends = 'scrooloose/nerdtree'
-
 [[plugins]]
 repo = 'Shougo/unite.vim'
-
-# [[plugins]]
-# repo = 'Shougo/vimfiler.vim'
-# depends = 'unite.vim'
-# on_if = "isdirectory(bufname('%'))"
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
-
-# [[plugins]]
-# repo = 'ryanoasis/vim-devicons'
-# depends = 'Shougo/vimfiler.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -60,10 +47,6 @@ hook_add = 'let g:loaded_matchparen = 1'
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
 
-# [[plugins]]
-# repo = 'tyru/caw.vim'
-# hook_add = 'map <silent><C-_> <Plug>(caw:hatpos:toggle)'
-
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = '''
@@ -71,15 +54,7 @@ hook_add = '''
   let g:NERDDefaultAlign='left'
   let g:NERDCompactSexyComs = 1
   map <silent>co <Plug>NERDCommenterToggle
-'''
-
-[[plugins]]
-repo = 'LeafCage/yankround.vim'
-hook_add = '''
-  nmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap <C-p> <Plug>(yankround-prev)
-  nmap <C-n> <Plug>(yankround-next)
+  filetype plugin on
 '''
 
 [[plugins]]
