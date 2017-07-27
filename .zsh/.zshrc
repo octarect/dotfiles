@@ -12,9 +12,7 @@ zplug "zsh-users/zsh-history-substring-search"
 
 zplug "mafredri/zsh-async", from:github
 zplug 'plugins/git', from:oh-my-zsh
-# zplug 'themes/sorin', from:oh-my-zsh, defer:2, if:"[[ $OSTYPE == *linux* ]]"
-zplug 'octarect/thug.zsh', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *linux* ]]"
-zplug 'fribmendes/geometry', from:github, as:theme, defer:2, if:"[[ $OSTYPE == *darwin* ]]"
+zplug 'octarect/thumbsup.zsh', from:github, as:theme, defer:2
 
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq, \
@@ -97,16 +95,12 @@ path=(
   $HOME/.bin(N-/)
   $path 
 )
-if [ `has rbenv` ]; then
-  rbenv_root=($HOME/.rbenv)
-  eval "$(rbenv init -)"
-  GEM_HOME=$(ruby -e 'print Gem.user_dir')
-fi
 
-if [ `has pyenv` ]; then
-  pyenv_root=($HOME/.pyenv)
-  eval "$(pyenv init -)"
+if [ ! -e ${HOME}/.anyenv ]; then
+  git clone https://github.com/riywo/anyenv ~/.anyenv
 fi
+path=(${HOME}/.anyenv/bin $path)
+eval "$(anyenv init -)"
 
 if [ `has thefuck` ]; then
   eval $(thefuck --alias)
