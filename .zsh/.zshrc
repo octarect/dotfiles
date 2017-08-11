@@ -12,7 +12,7 @@ zplug "zsh-users/zsh-history-substring-search"
 
 zplug "mafredri/zsh-async", from:github
 zplug 'plugins/git', from:oh-my-zsh
-zplug 'octarect/thumbsup.zsh', from:github, as:theme, defer:2
+zplug 'octarect/clarity.zsh', from:github, as:theme, defer:2
 
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq, \
