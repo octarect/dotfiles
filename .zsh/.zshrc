@@ -124,7 +124,7 @@ if [ `has peco` ]; then
     else
       R=$1
     fi
-    local d=$(find $R -type d | peco)
+    local d=$(find $R -type d | peco --query "$LBUFFER" --layout=bottom-up | xargs realpath)
     if [ -n "$d" ]; then
       cd $d
       print -s "cd $d"
@@ -134,7 +134,7 @@ if [ `has peco` ]; then
 
   if [ `has ghq` ]; then
     function peco-src() {
-      local src=$(ghq list --full-path | peco --query "$LBUFFER")
+      local src=$(ghq list --full-path | peco --query "$LBUFFER" --layout=bottom-up)
       if [ -n "$src" ]; then
         cd "$src"
         print -s "cd $src"
