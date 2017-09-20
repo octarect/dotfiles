@@ -116,6 +116,34 @@ if [ `has ghq` -a `has peco` ]; then
   alias pcd='peco-src'
 fi
 
+if [ `has peco` ]; then
+  function peco-fast-cd() {
+    local R
+    if [ "$1" = "" -o ! -e $1 ]; then
+      R=$PWD
+    else
+      R=$1
+    fi
+    local d=$(find $R -type d | peco)
+    if [ -n "$d" ]; then
+      cd $d
+      print -s "cd $d"
+    fi
+  }
+  alias fcd='peco-fast-cd'
+
+  if [ `has ghq` ]; then
+    function peco-src() {
+      local src=$(ghq list --full-path | peco --query "$LBUFFER")
+      if [ -n "$src" ]; then
+        cd "$src"
+        print -s "cd $src"
+      fi
+    }
+    alias pcd='peco-src'
+  fi
+fi
+
 if [[ $OSTYPE == linux* ]]; then
   source ${ZDOTDIR}/.zshrc_linux
 elif [[ $OSTYPE == darwin* ]]; then
