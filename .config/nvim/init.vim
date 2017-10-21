@@ -17,10 +17,10 @@ if filereadable(s:init_tab_path)
 endif
 
 "### Feature
-" set noswapfile
 set clipboard=unnamedplus
 set timeoutlen=500
-" set nobackup
+set nobackup
+set noswapfile
 
 "### Edit
 set number
@@ -29,7 +29,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set noswapfile
 
 "### Search
 set ignorecase
