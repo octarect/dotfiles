@@ -3,3 +3,4 @@ cache/*
 /.zsh/*
 !/.zsh/.zshrc*
 !/.zsh/.zpreztorc
+/.config/fish/fishd*
