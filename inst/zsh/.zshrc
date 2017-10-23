@@ -2,7 +2,11 @@
 # zplug
 #################################
 # Check if zplug is installed
-[[ -f $ZPLUG_HOME/init.zsh ]] || return
+if [ ! -s $ZPLUG_HOME ]; then
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+
+# [[ -f $ZPLUG_HOME/init.zsh ]] || return
 
 source $ZPLUG_HOME/init.zsh
 

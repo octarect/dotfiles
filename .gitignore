@@ -1,6 +1,5 @@
 cache/*
 !.gitkeep
-/.zsh/*
-!/.zsh/.zshrc*
-!/.zsh/.zpreztorc
+/inst/zsh/.zcompdump
+/inst/zsh/.zhistory
 /.config/fish/fishd*

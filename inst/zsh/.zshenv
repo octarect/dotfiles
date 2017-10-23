@@ -17,14 +17,14 @@ export PATH="/usr/local/bin:${PATH}"
 export DEVPATH="${HOME}/code"
 export GOPATH="${DEVPATH}"
 export GOROOT=`go env GOROOT`
-mkdir -p $DEVPATH/{bin,src,pkg}
+mkdir -p ${DEVPATH}/{bin,src,pkg}
 
 # ----- cache -----
-export DOTCACHE="$DOTDIR/cache"
+export DOTCACHE="${DOTDIR}/cache"
 
 # ----- configuration store -----
-export XDG_CONFIG_HOME=$HOME/.config
-export ZDOTDIR="$DOTDIR/.zsh"
+export XDG_CONFIG_HOME=${HOME}/.config
+export ZDOTDIR="${DOTDIR}/inst/zsh/"
 export ZPLUG_HOME="${DOTCACHE}/.zplug"
 export ZPLUG_REPOS="${DEVPATH}/src/github.com"
 export ZPLUG_BIN="${DEVPATH}/bin"
