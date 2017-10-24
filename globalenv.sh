@@ -7,3 +7,7 @@ FCEDIT=nvim
 PAGER=less
 TERM=xterm-256color
 
+DEVPATH=$HOME/code
+GOPATH=$DEVPATH
+GOROOT=`go env GOROOT`
+
