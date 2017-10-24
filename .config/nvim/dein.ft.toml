@@ -13,3 +13,9 @@ go = '''
 highlight default link goErr WarningMsg
 match goErr /\<err\>/
 '''
+
+fish="""
+compiler fish
+setlocal textwidth=79
+setlocal foldmethod=expr
+"""

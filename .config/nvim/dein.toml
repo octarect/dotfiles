@@ -77,4 +77,7 @@ repo = 'cespare/vim-toml'
 repo = 'rcmdnk/vim-markdown'
 
 [[plugins]]
+repo = 'dag/vim-fish'
+
+[[plugins]]
 repo = 'kana/vim-operator-user'
