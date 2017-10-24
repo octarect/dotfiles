@@ -1,6 +1,7 @@
 #!/usr/bin/fish
 
-set ENVFILE $HOME/dotfiles/globalenv.sh
+set REPO_DIR $HOME/dotfiles
+set ENVFILE $REPO_DIR/env.sh
 set -x SHELL fish
 
 for line in (cat $ENVFILE)
@@ -8,3 +9,5 @@ for line in (cat $ENVFILE)
     eval (echo $line | awk 'BEGIN { FS="=" } $2 ~ /`.+`/ { sub(/`/, "(", $2); sub(/`/, ")", $2) } { print "set -x " $1 " " $2 }')
   end
 end
+
+source $REPO_DIR/init.sh
