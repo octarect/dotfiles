@@ -4,7 +4,7 @@ EXEC=/bin/sh
 # get absolute path to dir of the dotfiles' repo
 REPO_DIR=$(cd $(dirname $0) && pwd)
 # my config dirs
-CONFIG_DIR=${REPO_DIR}/.config
+CONFIG_DIR=${REPO_DIR}/config
 # XDG_CONFIG_HOME
 XDG_CONFIG_HOME=${HOME}/.config
 
