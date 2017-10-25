@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dir=$(cd $(dirname $0) && pwd)
+repo_dir=${dir}/../..
+
+if [ "$1" = "install" ]; then
+
+elif [ "$1" = "clean" ]; then
+
+fi
