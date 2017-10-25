@@ -5,7 +5,7 @@ to_upper() {
 }
 
 has() {
-  type $1 &> /dev/null
+  type $1 2>&1 1>/dev/null
   test $? = 0
 }
 
