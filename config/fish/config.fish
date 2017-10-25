@@ -10,4 +10,6 @@ for line in (cat $ENVFILE)
   end
 end
 
+set -x PATH $PATH $GOPATH/bin
+
 source $REPO_DIR/init.sh
