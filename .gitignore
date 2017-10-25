@@ -2,4 +2,4 @@ cache/*
 !.gitkeep
 /inst/zsh/.zcompdump
 /inst/zsh/.zhistory
-/.config/fish/fishd*
+/config/fish/fishd*
