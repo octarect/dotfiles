@@ -11,10 +11,28 @@ XDG_CONFIG_HOME=${HOME}/.config
 # load convenient functions
 . ${REPO_DIR}/sh/util.sh
 
+specific() {
+  cmd=$1
+  op=$2
+  script=${REPO_DIR}/inst/${cmd}/make.sh
+  if [ -e $script ]; then
+    log info "Executing ${script}."
+    $EXEC $script $op
+  else
+    log fail "$script not found."
+  fi
+}
+
+# available: install, clean
 if [ -z $1 ]; then
-  command=install
+  op=install
 else
-  command=$1
+  op=$1
+fi
+
+if [ ! -z $2 ]; then
+  specific $2 $op
+  exit 0
 fi
 
 mkdir -p $XDG_CONFIG_HOME
@@ -24,14 +42,14 @@ for src in $configs
 do
   dst=${XDG_CONFIG_HOME}/$(basename $src)
   if [ ! -L $dst ]; then
-    if [ "$command" = "install" ]; then
+    if [ "$op" = "install" ]; then
       log info "Creating link: $src -> $dst"
       ln -s $src $dst
     fi
   else
-    if [ "$command" = "install" ]; then
+    if [ "$op" = "install" ]; then
       log warn "$dst already exists. Skipping..."
-    elif [ "$command" = "clean" ]; then
+    elif [ "$op" = "clean" ]; then
       log info "Removing ${dst}..."
       rm -f $dst
     fi
@@ -44,12 +62,6 @@ for target in $targets
 do
   cmd=$(basename $target)
   if has $cmd; then
-    script=${REPO_DIR}/inst/${cmd}/make.sh
-    if [ -e $script ]; then
-      log info "Executing ${script}."
-      $EXEC $script $command
-    else
-      log fail "$script not found."
-    fi
+    specific $cmd $op
   fi
 done
