@@ -18,6 +18,7 @@ endif
 
 "### Feature
 set clipboard=unnamedplus
+set ttimeout
 set timeoutlen=500
 set nobackup
 set noswapfile

@@ -80,8 +80,10 @@ on_ft = 'python'
 
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
+depends = ['vim-textobj-user', 'vim-textobj-function']
 on_ft = 'python'
 
 [[plugins]]
 repo = 'bps/vim-textobj-python'
+depends = ['vim-textobj-user', 'vim-textobj-function']
 on_ft = 'python'
