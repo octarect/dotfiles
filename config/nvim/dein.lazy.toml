@@ -30,6 +30,11 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete-rct'
+on_ft = 'ruby'
+depends = 'deoplete.nvim'
+
+[[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
 
