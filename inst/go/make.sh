@@ -6,15 +6,18 @@ EXE="/bin/sh -cx"
 dir=$(cd $(dirname $0) && pwd)
 repo_dir=${dir}/../..
 . ${repo_dir}/sh/util.sh
+. ${repo_dir}/env.sh
 
+export GOPATH=$GOPATH
 gopath=$(go env GOPATH)
 
 if [ "$1" = "install" ]; then
-  ${EXE} "go get github.com/motemen/ghq"
-  ${EXE} "go get github.com/Songmu/ghg/cmd/ghg"
-  ghgpath=$(ghg bin)
+  go get github.com/motemen/ghq
+  go get github.com/Songmu/ghg/cmd/ghg
+  GHG=${gopath}/bin/ghg
+  ghgpath=$(${GHG} bin)
 
-  ${EXE} "ghg get peco/peco"
+  ${EXE} "${GHG} get peco/peco"
   ${EXE} "mv ${ghgpath}/peco ${gopath}/bin/peco"
 
 elif [ "$1" = "clean" ]; then

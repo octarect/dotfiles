@@ -2,6 +2,7 @@
 
 dir=$(cd $(dirname $0) && pwd)
 repo_dir=${dir}/../..
+. ${repo_dir}/sh/util.sh
 
 if [ "$1" = "install" ]; then
 
