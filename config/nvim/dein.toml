@@ -80,6 +80,9 @@ repo = 'rcmdnk/vim-markdown'
 repo = 'dag/vim-fish'
 
 [[plugins]]
+repo = 'dmix/elvish.vim'
+
+[[plugins]]
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
