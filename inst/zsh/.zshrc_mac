@@ -1,3 +1,2 @@
 alias ls="gls --color=auto --show-control-chars"
 alias readlink="greadlink"
-screenfetch -E -A "Unix"

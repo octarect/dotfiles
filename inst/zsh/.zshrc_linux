@@ -11,4 +11,3 @@ if [ ! -e $usertempd/first ]; then
   fi
 fi
 
-screenfetch -E

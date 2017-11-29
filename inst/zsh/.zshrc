@@ -153,3 +153,11 @@ if [[ $OSTYPE == linux* ]]; then
 elif [[ $OSTYPE == darwin* ]]; then
   source ${ZDOTDIR}/.zshrc_mac
 fi
+
+if [ `has screenfetch` ]; then
+  if [ ! -e ${HOME}/.screenfetch ]; then
+    screenfetch -E
+  else
+    source ${HOME}/.screenfetch
+  fi
+fi
