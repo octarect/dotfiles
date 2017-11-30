@@ -16,5 +16,5 @@ if [ "$1" = "install" ]; then
   fi
 elif [ "$1" = "clean" ]; then
   log info "Removing link: ${conf_src} -> ${conf_dst}"
-  rm -f ${conf_dst}
+  rm -rf ${conf_dst}
 fi

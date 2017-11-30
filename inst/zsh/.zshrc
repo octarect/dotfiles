@@ -104,7 +104,7 @@ if [ ! -e ${HOME}/.anyenv ]; then
   git clone https://github.com/riywo/anyenv ~/.anyenv
 fi
 path=(${HOME}/.anyenv/bin $path)
-eval "$(anyenv init -)"
+eval "$(anyenv init - --no-rehash)"
 
 if [ `has thefuck` ]; then
   eval $(thefuck --alias)
