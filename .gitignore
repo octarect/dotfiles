@@ -1,6 +1,6 @@
 cache/*
 !.gitkeep
-/inst/zsh/.zcompdump
-/inst/zsh/.zhistory
 /config/fish/fishd*
 /config/elvish/db
+/config/zsh/.zcompdump
+/config/zsh/.zhistory

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-dir=$(cd $(dirname $0) && pwd)
-repo_dir=${dir}/../..
+repo_dir=$(cd $(dirname $0) && pwd)/../..
+echo $repo_dir
 . ${repo_dir}/sh/util.sh
 
-zshenv=${dir}/.zshenv
+zshenv=${repo_dir}/config/zsh/.zshenv
 target=${HOME}/.zshenv
 
 if [ "$1" = "install" ]; then
