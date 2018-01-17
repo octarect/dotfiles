@@ -10,6 +10,7 @@ repo_dir=${dir}/../..
 
 export GOPATH=$GOPATH
 gopath=$(go env GOPATH)
+git config --global ghq.root $GOPATH
 
 if [ "$1" = "install" ]; then
   go get github.com/motemen/ghq
