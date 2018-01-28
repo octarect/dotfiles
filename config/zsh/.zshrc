@@ -154,10 +154,18 @@ elif [[ $OSTYPE == darwin* ]]; then
   source ${ZDOTDIR}/.zshrc_mac
 fi
 
-if [ `has screenfetch` ]; then
-  if [ ! -e ${HOME}/.screenfetch ]; then
-    screenfetch -E
+if [ `has neofetch` ]; then
+  if [ ! -e ${HOME}/.neofetch ]; then
+    neofetch -E
   else
-    source ${HOME}/.screenfetch
+    source ${HOME}/.neofetch
+  fi
+else
+  if [ `has screenfetch` ]; then
+    if [ ! -e ${HOME}/.screenfetch ]; then
+      screenfetch -E
+    else
+      source ${HOME}/.screenfetch
+    fi
   fi
 fi
