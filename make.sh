@@ -3,10 +3,6 @@ EXEC=/bin/sh
 
 # get absolute path to dir of the dotfiles' repo
 REPO_DIR=$(cd $(dirname $0) && pwd)
-# my config dirs
-CONFIG_DIR=${REPO_DIR}/config
-# XDG_CONFIG_HOME
-XDG_CONFIG_HOME=${HOME}/.config
 
 # load convenient functions
 . ${REPO_DIR}/sh/util.sh
@@ -35,26 +31,8 @@ if [ ! -z $2 ]; then
   exit 0
 fi
 
-mkdir -p $XDG_CONFIG_HOME
-configs=$(find ${CONFIG_DIR}/* -maxdepth 0)
-# create symbolic links
-for src in $configs
-do
-  dst=${XDG_CONFIG_HOME}/$(basename $src)
-  if [ ! -L $dst ]; then
-    if [ "$op" = "install" ]; then
-      log info "Creating link: $src -> $dst"
-      ln -s $src $dst
-    fi
-  else
-    if [ "$op" = "install" ]; then
-      log warn "$dst already exists. Skipping..."
-    elif [ "$op" = "clean" ]; then
-      log info "Removing ${dst}..."
-      rm -f $dst
-    fi
-  fi
-done
+# install or clean configulations in $XDG_CONFIG_HOME
+specific config $op
 
 # execute command-specific installations
 targets=$(find ${REPO_DIR}/inst/* -maxdepth 0 -type d)
