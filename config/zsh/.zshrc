@@ -58,7 +58,6 @@ function checkout() {
 
 function has() {
   builtin command -v $1 > /dev/null
-  echo $?
 }
 
 # history
@@ -106,7 +105,7 @@ fi
 path=(${HOME}/.anyenv/bin $path)
 eval "$(anyenv init - --no-rehash)"
 
-if [ `has thefuck` ]; then
+if has thefuck; then
   eval $(thefuck --alias)
 fi
 
@@ -120,7 +119,7 @@ if [ `has ghq` -a `has peco` ]; then
   alias pcd='peco-src'
 fi
 
-if [ `has peco` ]; then
+if has peco; then
   function peco-fast-cd() {
     local R
     if [ "$1" = "" -o ! -e $1 ]; then
@@ -136,7 +135,7 @@ if [ `has peco` ]; then
   }
   alias fcd='peco-fast-cd'
 
-  if [ `has ghq` ]; then
+  if has ghq; then
     function peco-src() {
       local src=$(ghq list --full-path | peco --query "$LBUFFER" --layout=bottom-up)
       if [ -n "$src" ]; then
@@ -154,14 +153,14 @@ elif [[ $OSTYPE == darwin* ]]; then
   source ${ZDOTDIR}/.zshrc_mac
 fi
 
-if [ `has neofetch` ]; then
+if has neofetch; then
   if [ ! -e ${HOME}/.neofetch ]; then
     neofetch -E
   else
     source ${HOME}/.neofetch
   fi
 else
-  if [ `has screenfetch` ]; then
+  if has screenfetch; then
     if [ ! -e ${HOME}/.screenfetch ]; then
       screenfetch -E
     else
