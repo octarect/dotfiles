@@ -47,6 +47,14 @@ zplug load --verbose
 
 alias nvimconfig="nvim -p ${XDG_CONFIG_HOME}/nvim/init.vim ${XDG_CONFIG_HOME}/nvim/dein.toml ${XDG_CONFIG_HOME}/nvim/dein.lazy.toml"
 
+function en2ja() {
+  eval "trans {en=ja} \"$@\""
+}
+
+function ja2en() {
+  eval "trans {ja=en} \"$@\""
+}
+
 function transfer() {
   curl --upload-file ./$1 https://transfer.sh/$1
 }
