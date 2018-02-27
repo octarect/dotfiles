@@ -22,6 +22,9 @@ zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq, \
   hook-load:"git config --global ghq.root ${DEVPATH}/src"
 zplug "peco/peco", from:gh-r, as:command
+zplug "soimort/translate-shell", from:github, at:stable, \
+  as:command, use:"build/*", \
+  hook-build: "make build &> /dev/null"
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
