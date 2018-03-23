@@ -50,6 +50,8 @@ zplug load --verbose
 
 alias nvimconfig="nvim -p ${XDG_CONFIG_HOME}/nvim/init.vim ${XDG_CONFIG_HOME}/nvim/dein.toml ${XDG_CONFIG_HOME}/nvim/dein.lazy.toml"
 
+alias opensessame='nvim -p $(cat .init_open)'
+
 function en2ja() {
   eval "trans {en=ja} \"$@\""
 }
@@ -69,6 +71,10 @@ function checkout() {
 
 function has() {
   builtin command -v $1 > /dev/null
+}
+
+function sedesc() {
+  echo $(echo $1 | sed -e 's/[]\/\=\&\?$*.^[]/\\&/g')
 }
 
 # history
