@@ -15,6 +15,7 @@ git config --global ghq.root $GOPATH
 if [ "$1" = "install" ]; then
   go get github.com/motemen/ghq
   go get github.com/Songmu/ghg/cmd/ghg
+  go get -u github.com/nsf/gocode
   GHG=${gopath}/bin/ghg
   ghgpath=$(${GHG} bin)
 
@@ -24,6 +25,7 @@ if [ "$1" = "install" ]; then
 elif [ "$1" = "clean" ]; then
   ${EXE} "${RM} ${gopath}/bin/peco"
 
+  ${EXE} "${RM} $(ghq list -p -e gocode)"
   ${EXE} "${RM} $(ghq list -p -e ghg)"
   ${EXE} "${RM} ${gopath}/bin/ghg"
   ${EXE} "${RM} $(ghq list -p -e ghq)"
