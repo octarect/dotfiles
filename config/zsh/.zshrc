@@ -22,6 +22,9 @@ zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "motemen/ghq", from:gh-r, as:command, rename-to:ghq, \
   hook-load:"git config --global ghq.root ${DEVPATH}/src"
 zplug "peco/peco", from:gh-r, as:command
+zplug "soimort/translate-shell", from:github, at:stable, \
+  as:command, use:"build/*", \
+  hook-build: "make build &> /dev/null"
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
@@ -47,6 +50,16 @@ zplug load --verbose
 
 alias nvimconfig="nvim -p ${XDG_CONFIG_HOME}/nvim/init.vim ${XDG_CONFIG_HOME}/nvim/dein.toml ${XDG_CONFIG_HOME}/nvim/dein.lazy.toml"
 
+alias opensessame='nvim -p $(cat .init_open)'
+
+function en2ja() {
+  eval "trans {en=ja} \"$@\""
+}
+
+function ja2en() {
+  eval "trans {ja=en} \"$@\""
+}
+
 function transfer() {
   curl --upload-file ./$1 https://transfer.sh/$1
 }
@@ -58,6 +71,10 @@ function checkout() {
 
 function has() {
   builtin command -v $1 > /dev/null
+}
+
+function sedesc() {
+  echo $(echo $1 | sed -e 's/[]\/\=\&\?$*.^[]/\\&/g')
 }
 
 # history
