@@ -92,3 +92,10 @@ on_ft = 'python'
 repo = 'bps/vim-textobj-python'
 depends = ['vim-textobj-user', 'vim-textobj-function']
 on_ft = 'python'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'mopp/AOJ.vim'
+depends = ['webapi-vim']
