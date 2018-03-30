@@ -69,6 +69,14 @@ function checkout() {
   cd $1
 }
 
+function gh() {
+  if [ $# -eq 1 ]; then
+    echo "https://github.com/$1.git"
+  else
+    echo "https://github.com/$1/$2.git"
+  fi
+}
+
 function has() {
   builtin command -v $1 > /dev/null
 }

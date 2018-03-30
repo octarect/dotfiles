@@ -17,6 +17,7 @@ export PATH="/usr/local/bin:${PATH}"
 export DEVPATH="${HOME}/code"
 export GOPATH="${DEVPATH}"
 export GOROOT=`go env GOROOT`
+export GO15VENDOREXPERIMENT=1
 mkdir -p ${DEVPATH}/{bin,src,pkg}
 
 # ----- cache -----
