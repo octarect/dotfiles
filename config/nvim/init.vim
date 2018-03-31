@@ -11,6 +11,10 @@ if filereadable(s:init_dein_path)
   execute 'source ' . s:init_dein_path
 endif
 
+let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
+let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
+
+
 let s:init_tab_path = g:conf_dir . '/init_tab.vim'
 if filereadable(s:init_tab_path)
   execute 'source ' . s:init_tab_path
