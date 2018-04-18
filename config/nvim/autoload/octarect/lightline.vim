@@ -1,8 +1,5 @@
 set noshowmode
 function! octarect#lightline#init() abort
-  "let g:gitgutter_sign_added = emoji#for('hocho')
-  "let g:gitgutter_sign_modified = emoji#for('gun')
-  "let g:gitgutter_sign_removed = emoji#for('boom')
   let g:gitgutter_sign_added = '+'
   let g:gitgutter_sign_modified = '*'
   let g:gitgutter_sign_removed = '-'
@@ -21,10 +18,35 @@ function! octarect#lightline#init() abort
     \   'fugitive': 'octarect#lightline#fugitive',
     \   'gitgutter': 'octarect#lightline#gitgutter',
     \ },
+    \ 'tab': {
+    \   'active': ['num', 'icon', 'filename', 'modified'],
+    \   'inactive': ['num', 'icon', 'filename', 'modified']
+    \ },
+    \ 'tab_component_function': {
+    \   'num':      'lightline#tab#tabnum',
+    \   'icon':     'octarect#lightline#tabicon',
+    \   'filename': 'octarect#lightline#tabfilename',
+    \   'modified': 'lightline#tab#modified',
+    \   'readonly': 'lightline#tab#readonly',
+    \ },
     \ }
   let g:unite_force_overwrite_statusline = 0
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimshell_force_overwrite_statusline = 0
+endfunction
+
+function! octarect#lightline#tabfilename(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let _ = pathshorten(expand('#' . buflist[winnr - 1] . ':f'))
+  return _ !=# '' ? _ : '[No Name]'
+endfunction
+
+function! octarect#lightline#tabicon(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let filename = expand('#' . buflist[winnr - 1] . ':f')
+  return WebDevIconsGetFileTypeSymbol(filename)
 endfunction
 
 function! octarect#lightline#filename()
