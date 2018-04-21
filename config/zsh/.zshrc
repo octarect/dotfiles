@@ -69,6 +69,14 @@ function checkout() {
   cd $1
 }
 
+function mkproj() {
+  project_name=$1
+  checkout $DEVPATH/src/localhost/${project_name}
+  if [ ! -e .git ]; then
+    git init
+  fi
+}
+
 function gh() {
   if [ $# -eq 1 ]; then
     echo "https://github.com/$1.git"
