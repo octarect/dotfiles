@@ -1,0 +1,39 @@
+#!/bin/sh
+
+function committer_date() {
+  h=$1
+  date=$(git log --format="%H	%ci" | grep "${h}" | cut -f2)
+  echo $date
+}
+
+function bodies_after() {
+  date=$1
+  logs=$(git log --format="%H	%b" --since="${date}" | head -n -1 | cut -f2)
+  echo -e "$logs"
+}
+
+PREV_HEAD_FILE="cache/.prev_commit_head"
+
+if [ -e ${PREV_HEAD_FILE} ]; then
+  prev_update=$(cat ${PREV_HEAD_FILE})
+  date=$(committer_date ${prev_update})
+  messages=$(bodies_after "${date}")
+
+  targets=$(echo -e "${messages}" | grep -E "^\!" | sed -e "s/^\!//" | sort | uniq)
+
+  echo -e "${targets}" | while read target
+  do
+    echo "${target}"
+    if [ -n "${target}" ]; then
+      if [ -e "inst/${target}" ]; then
+        script="inst/${target}/make.sh"
+        /bin/sh ${script} clean && /bin/sh ${script} install
+      else
+        echo "[ERROR] inst/${target} not found"
+      fi
+    fi
+  done
+else
+  touch ${PREV_HEAD_FILE}
+  echo $(git log --format="%H" | head -n 1) > ${PREV_HEAD_FILE}
+fi

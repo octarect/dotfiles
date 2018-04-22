@@ -31,6 +31,9 @@ if [ ! -z $2 ]; then
   exit 0
 fi
 
+# put git hooks for the future updates
+makesh git-hooks install
+
 # install or clean configulations in $XDG_CONFIG_HOME
 makesh config $op
 
