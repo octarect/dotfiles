@@ -12,7 +12,7 @@ makesh() {
   op=$2
   script=${REPO_DIR}/inst/${cmd}/make.sh
   if [ -e $script ]; then
-    log info "Executing ${script}."
+    log info "${script} ${cmd} ${op}"
     $EXEC $script $op
   else
     log fail "$script not found."

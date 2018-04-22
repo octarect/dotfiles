@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function committer_date() {
   h=$1
@@ -12,7 +12,20 @@ function bodies_after() {
   echo -e "$logs"
 }
 
-PREV_HEAD_FILE="cache/.prev_commit_head"
+function head_hash() {
+  echo $(git log --format="%H" | head -n 1)
+}
+
+# get absolute path to dir of the dotfiles' repo
+REPO_DIR="$(cd $(dirname $0) && pwd)/../.."
+# load convenient functions
+. ${REPO_DIR}/sh/util.sh
+
+PREV_HEAD_FILE="${REPO_DIR}/cache/.prev_commit_head"
+EXEC=/bin/bash
+MAKESH="${REPO_DIR}/make.sh"
+
+log info "Starting post-merge hook"
 
 if [ -e ${PREV_HEAD_FILE} ]; then
   prev_update=$(cat ${PREV_HEAD_FILE})
@@ -23,17 +36,15 @@ if [ -e ${PREV_HEAD_FILE} ]; then
 
   echo -e "${targets}" | while read target
   do
-    echo "${target}"
+    log info "Updating ${target}"
     if [ -n "${target}" ]; then
-      if [ -e "inst/${target}" ]; then
-        script="inst/${target}/make.sh"
-        /bin/sh ${script} clean && /bin/sh ${script} install
-      else
-        echo "[ERROR] inst/${target} not found"
-      fi
+      ${EXEC} ${MAKESH} clean ${target} && ${EXEC} ${MAKESH} install ${target}
     fi
   done
+
+  echo $(head_hash) > ${PREV_HEAD_FILE}
 else
+  ${EXEC} ${MAKESH} clean && ${EXEC} ${MAKESH} install
   touch ${PREV_HEAD_FILE}
-  echo $(git log --format="%H" | head -n 1) > ${PREV_HEAD_FILE}
+  echo $(head_hash) > ${PREV_HEAD_FILE}
 fi
