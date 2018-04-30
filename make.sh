@@ -37,6 +37,9 @@ makesh git-hooks install
 # install or clean configulations in $XDG_CONFIG_HOME
 makesh config $op
 
+# font
+makesh config $op
+
 # execute command-specific installations
 targets=$(find ${REPO_DIR}/inst/* -maxdepth 0 -type d)
 for target in $targets
