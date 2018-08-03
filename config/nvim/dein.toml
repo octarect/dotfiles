@@ -78,9 +78,6 @@ repo = 'elzr/vim-json'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
-
-[[plugins]]
 repo = 'dag/vim-fish'
 
 [[plugins]]
