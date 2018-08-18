@@ -23,14 +23,16 @@ if filereadable(s:init_tab_path)
   execute 'source ' . s:init_tab_path
 endif
 
-"### Feature
+"# Feature
 set clipboard=unnamedplus
 set ttimeout
 set timeoutlen=500
 set nobackup
 set noswapfile
+"## for vim-gitgutter
+set updatetime=100
 
-"### Edit
+"# Edit
 set number
 set cursorline
 set tabstop=2
@@ -38,7 +40,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
-"### Search
+"# Search
 set ignorecase
 set smartcase
 set wrapscan
