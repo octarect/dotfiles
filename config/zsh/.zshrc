@@ -25,6 +25,7 @@ zplug "peco/peco", from:gh-r, as:command
 zplug "soimort/translate-shell", from:github, at:stable, \
   as:command, use:"build/*", \
   hook-build: "make build &> /dev/null"
+zplug "sharkdp/bat", from:gh-r, as:command, rename-to:bat
 
 zplug "zsh-users/zsh-completions"
 zstyle ':completion:*:default' menu select=2
