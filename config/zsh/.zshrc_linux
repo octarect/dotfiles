@@ -2,12 +2,12 @@ alias ls="ls --color=auto --show-control-chars"
 alias grep="grep -a"
 alias hisgre="history | grep"
 
-local usertempd='/tmp/octarect-session'
-if [ ! -e $usertempd/first ]; then
-  mkdir -p $usertempd && touch $usertempd/first
-  if [ $GDMSESSION = 'budgie-desktop' ]; then
-    echo 'replacing ibus-daemon ...'
-    ibus-daemon -d --xim --replace
-  fi
-fi
+# local usertempd='/tmp/octarect-session'
+# if [ ! -e $usertempd/first ]; then
+#   mkdir -p $usertempd && touch $usertempd/first
+#   if [ $GDMSESSION = 'budgie-desktop' ]; then
+#     echo 'replacing ibus-daemon ...'
+#     ibus-daemon -d --xim --replace
+#   fi
+# fi
 
