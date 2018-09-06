@@ -42,6 +42,15 @@ if [ -e ${PREV_HEAD_FILE} ]; then
     fi
   done
 
+  cmds=$(echo -e "${messages}" | grep -E "^\-" | sed -e "s/^\-//")
+  echo -e "${cmds}" | while read cmd
+  do
+    log info "Executing ${cmd}"
+    if [ -n "${cmd}" ]; then
+      ${EXEC} -c "${cmd}"
+    fi
+  done
+
   echo $(head_hash) > ${PREV_HEAD_FILE}
 else
   ${EXEC} ${MAKESH} clean && ${EXEC} ${MAKESH} install
