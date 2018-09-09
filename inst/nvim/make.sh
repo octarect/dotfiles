@@ -15,8 +15,8 @@ if has anyenv; then
 
     eval "$(anyenv init - --no-rehash)"
 
-    py2latest=$(pyenv install --list | grep -E "^\s*2(\.[0-9]+)+$" | tail -n1)
-    py3latest=$(pyenv install --list | grep -E "^\s*3(\.[0-9]+)+$" | tail -n1)
+    py2latest=$(pyenv install --list | grep -E "^\s*2(\.[0-9]+)+$" | tail -n1 | sed 's/\s\s*//')
+    py3latest=$(pyenv install --list | grep -E "^\s*3(\.[0-9]+)+$" | tail -n1 | sed 's/\s\s*//')
     pyenv install ${py2latest}
     pyenv install ${py3latest}
     pyenv virtualenv ${py2latest} neovim-2
