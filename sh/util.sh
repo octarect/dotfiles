@@ -13,3 +13,7 @@ log() {
   echo "[$(to_upper $1)] $2"
 }
 
+log_and_exec() {
+  echo "[EXEC] $@"
+  $@
+}

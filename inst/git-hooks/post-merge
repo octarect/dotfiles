@@ -38,7 +38,7 @@ if [ -e ${PREV_HEAD_FILE} ]; then
   do
     log info "Updating ${target}"
     if [ -n "${target}" ]; then
-      ${EXEC} ${MAKESH} clean ${target} && ${EXEC} ${MAKESH} install ${target}
+      log_and_exec ${EXEC} ${MAKESH} clean ${target} && ${EXEC} ${MAKESH} install ${target}
     fi
   done
 
@@ -47,7 +47,7 @@ if [ -e ${PREV_HEAD_FILE} ]; then
   do
     log info "Executing ${cmd}"
     if [ -n "${cmd}" ]; then
-      ${EXEC} -c "${cmd}"
+      log_and_exec ${EXEC} -c "${cmd}"
     fi
   done
 
