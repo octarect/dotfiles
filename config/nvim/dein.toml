@@ -64,6 +64,10 @@ hook_add = '''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 depends = ['junegunn/vim-emoji']
+hook_add = '''
+  nmap gk <Plug>GitGutterPrevHunk
+  nmap gj <Plug>GitGutterNextHunk
+'''
 
 [[plugins]]
 repo = 'junegunn/vim-emoji'
