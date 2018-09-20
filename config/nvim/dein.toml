@@ -119,3 +119,6 @@ hook_add = '''
   let g:limelight_conceal_guifg = 'DarkGray' "gvim
   nmap <Leader>l :Limelight!!<CR>
 '''
+
+[[plugins]]
+repo = 'thinca/vim-localrc'
