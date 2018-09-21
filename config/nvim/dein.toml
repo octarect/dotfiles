@@ -122,9 +122,3 @@ hook_add = '''
 
 [[plugins]]
 repo = 'thinca/vim-localrc'
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-hook_add = '''
-  nmap <C-k> :TagbarToggle<CR>
-'''

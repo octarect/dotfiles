@@ -18,6 +18,7 @@ end
 call dein#begin(s:state_dir)
 call dein#load_toml(g:conf_dir . '/dein.toml', {'lazy': 0})
 call dein#load_toml(g:conf_dir . '/dein.lazy.toml', {'lazy': 1})
+call dein#load_toml(g:conf_dir . '/dein.ctags.toml', {'lazy': 1})
 call dein#load_toml(g:conf_dir . '/dein.ft.toml')
 call dein#end()
 call dein#save_state()
