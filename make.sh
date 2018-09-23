@@ -8,12 +8,12 @@ REPO_DIR=$(cd $(dirname $0) && pwd)
 . ${REPO_DIR}/sh/util.sh
 
 makesh() {
-  cmd=$1
-  op=$2
-  script=${REPO_DIR}/inst/${cmd}/make.sh
+  _cmd=$1
+  _op=$2
+  script=${REPO_DIR}/inst/${_cmd}/make.sh
   if [ -e $script ]; then
-    log info "${script} ${cmd} ${op}"
-    $EXEC $script $op
+    log info "${script} ${_cmd} ${_op}"
+    $EXEC $script $_op
   else
     log fail "$script not found."
   fi
@@ -32,13 +32,13 @@ if [ ! -z $2 ]; then
 fi
 
 # put git hooks for the future updates
-makesh git-hooks install
+makesh git-hooks $op
 
 # install or clean configulations in $XDG_CONFIG_HOME
 makesh config $op
 
 # font
-makesh config $op
+makesh font $op
 
 # execute command-specific installations
 targets=$(find ${REPO_DIR}/inst/* -maxdepth 0 -type d)
