@@ -111,3 +111,15 @@ repo = 'godlygeek/tabular'
 
 [[plugins]]
 repo = 'joker1007/vim-markdown-quote-syntax'
+
+[[plugins]]
+repo = 'elixir-editors/vim-elixir'
+on_ft = 'elixir'
+
+[[plugins]]
+repo = 'slashmili/alchemist.vim'
+on_ft = 'elixir'
+
+[[plugins]]
+repo = 'rhysd/vim-crystal'
+on_ft = 'crystal'
