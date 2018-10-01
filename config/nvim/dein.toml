@@ -8,7 +8,13 @@ build = 'make'
 [[plugins]]
 repo = 'tomasr/molokai'
 hook_add = '''
-  autocmd VimEnter * nested call octarect#molokai#init()
+  " autocmd VimEnter * nested call octarect#molokai#init()
+'''
+
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+hook_add = '''
+  autocmd VimEnter * nested call octarect#spring_night#init()
 '''
 
 [[plugins]]
