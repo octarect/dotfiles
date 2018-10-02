@@ -94,6 +94,20 @@ depends = ['vim-textobj-user', 'vim-textobj-function']
 on_ft = 'python'
 
 [[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+depends = ['yajs.vim']
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+depends = ['yajs.vim']
+on_ft = 'javascript'
+
+[[plugins]]
 repo = 'mattn/webapi-vim'
 
 [[plugins]]
