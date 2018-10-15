@@ -38,9 +38,6 @@ depends = 'scrooloose/nerdtree'
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'ujihisa/neco-look'
-
-[[plugins]]
 repo = 'Shougo/neco-syntax'
 
 [[plugins]]
