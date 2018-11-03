@@ -15,7 +15,7 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-depends = 'Shougo/deoplete.nvim'
+depends = 'deoplete.nvim'
 on_i = 1
 
 # [[plugins]]
@@ -80,6 +80,7 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
+depends = 'deoplete.nvim'
 build = 'make'
 on_i = 1
 on_ft = 'go'
