@@ -18,7 +18,7 @@ export DEVPATH="${HOME}/code"
 export GOPATH="${DEVPATH}"
 export GOROOT=`go env GOROOT`
 export GO15VENDOREXPERIMENT=1
-mkdir -p ${DEVPATH}/{bin,src,pkg}
+mkdir -p ${DEVPATH}/{bin,src,pkg,zplug_repos}
 
 # ----- cache -----
 export DOTCACHE="${DOTDIR}/cache"
@@ -27,7 +27,7 @@ export DOTCACHE="${DOTDIR}/cache"
 export XDG_CONFIG_HOME=${HOME}/.config
 export ZDOTDIR="${DOTDIR}/config/zsh/"
 export ZPLUG_HOME="${DEVPATH}/src/github.com/zplug/zplug"
-export ZPLUG_REPOS="${DEVPATH}/src/github.com"
+export ZPLUG_REPOS="${DEVPATH}/zplug_repos"
 export ZPLUG_BIN="${DEVPATH}/bin"
 
 # ----- default option -----
