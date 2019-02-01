@@ -78,7 +78,11 @@ function checkout() {
 
 function mkproj() {
   project_name=$1
-  checkout $DEVPATH/src/localhost/${project_name}
+  namespace=$2
+  if [ -z "${namespace}" ]; then
+    namespace="localhost"
+  fi
+  checkout $DEVPATH/src/${namespace}/${project_name}
   if [ ! -e .git ]; then
     git init
   fi
