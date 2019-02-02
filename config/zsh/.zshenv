@@ -20,6 +20,9 @@ export GOROOT=`go env GOROOT`
 export GO15VENDOREXPERIMENT=1
 mkdir -p ${DEVPATH}/{bin,src,pkg,zplug_repos}
 
+# ----- erlang -----
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # ----- cache -----
 export DOTCACHE="${DOTDIR}/cache"
 
