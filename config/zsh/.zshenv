@@ -28,7 +28,7 @@ export DOTCACHE="${DOTDIR}/cache"
 
 # ----- configuration store -----
 export XDG_CONFIG_HOME=${HOME}/.config
-export ZDOTDIR="${DOTDIR}/config/zsh/"
+export ZDOTDIR="${DOTDIR}/config/zsh"
 export ZPLUG_HOME="${DEVPATH}/src/github.com/zplug/zplug"
 export ZPLUG_REPOS="${DEVPATH}/zplug_repos"
 export ZPLUG_BIN="${DEVPATH}/bin"
