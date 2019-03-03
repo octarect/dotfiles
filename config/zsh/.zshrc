@@ -23,7 +23,8 @@ source "${ZDOTDIR}/lib/history.zsh"
 #################################
 # zplug
 #################################
-source "${ZDOTDIR}/lib/zplug/plugins.zsh"
+# source "${ZDOTDIR}/lib/zplug/plugins.zsh"
+source "${ZDOTDIR}/lib/zplugin/plugins.zsh"
 
 #################################
 # functions
