@@ -1,7 +1,0 @@
-[[plugins]]
-repo = 'majutsushi/tagbar'
-normalized_name = 'tagbar'
-hook_add = '''
-  nmap <C-k> :TagbarToggle<CR>
-'''
-

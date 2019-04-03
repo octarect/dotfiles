@@ -1,1 +1,0 @@
-/home/octarect/.config/fisherman/dartfish/fish_right_prompt.fish
