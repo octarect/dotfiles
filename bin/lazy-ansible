@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+dot_path="$(realpath $(dirname $0)/..)"
+
+lazy_ansible_path="${dot_path}/src/lazy-ansible"
+
+env \
+  ANSIBLE_HOME="${dot_path}/tmp/ansible" \
+  ${lazy_ansible_path}/init.sh ansible

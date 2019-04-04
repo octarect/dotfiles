@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  connection: local
-  become: yes
-  vars:
-    retry_files_enabled: no
-  tasks:
-    - name: main / test connection
-      ping:
