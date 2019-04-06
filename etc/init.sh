@@ -24,6 +24,9 @@ if [ -z ${DOT_PATH} ]; then
     exit 1
 fi
 
+# Global variables
+DOT_TMP_PATH=${DOT_PATH}/tmp
+
 source ${DOT_PATH}/src/dotlib/init.sh
 
 source_all $(init_scripts)
