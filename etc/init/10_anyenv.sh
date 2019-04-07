@@ -10,7 +10,7 @@ if [ ! -e ${anyenv_path} ]; then
 fi
 
 if [ ! -e ${HOME}/.config/anyenv/anyenv-install ]; then
-    ${anyenv_bin} install --init
+    yes | ${anyenv_bin} install --init
 fi
 
 eval "$(${anyenv_bin} init - --no-rehash)"
