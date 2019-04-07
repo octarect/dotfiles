@@ -5,3 +5,6 @@ all:
 
 init:
 	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/init.sh
+
+deploy:
+	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/deploy.sh
