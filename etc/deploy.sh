@@ -2,13 +2,10 @@
 
 set -eu
 
-source ${DOT_PATH}/src/dotlib/init.sh
-
 deploy() {
     local src="$1"
     local dst="$2"
     ln -fnsv ${src} ${dst}
-    __dotlib::log info "${src} -> ${dst}"
 }
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
