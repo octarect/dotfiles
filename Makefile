@@ -8,3 +8,6 @@ init:
 
 deploy:
 	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/deploy.sh
+
+install: init deploy
+	@exec $$SHELL

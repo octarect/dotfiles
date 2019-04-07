@@ -12,5 +12,5 @@ git clone https://github.com/nbitmage/dotfiles -b ${DOT_BRANCH} ${DOT_PATH}
 
 current_path=$(pwd)
 cd ${DOT_PATH}
-make init
+make install
 cd ${current_path}
