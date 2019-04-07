@@ -4,14 +4,15 @@ set -e
 
 init_scripts() {
     local init_script_dir="${DOT_PATH}/etc/init"
-    echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f)
+    echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f | sort)
 }
 
 source_all() {
-    local script_paths="$1"
-    for file in ${script_paths}
+    echo $@
+    for file in $@
     do
-        source "${file}"
+        echo ${file}
+        source ${file}
     done
 }
 
