@@ -9,9 +9,17 @@ deploy() {
 }
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-DOT_DEPLOY_PATH=${DOT_PATH}/etc/deploy
+
+DOT_DEPLOY_PATH=${DOT_PATH}/home
 DOT_CONFIG_PATH=${DOT_DEPLOY_PATH}/config
-DOT_ZSHENV_PATH=${DOT_DEPLOY_PATH}/config/zsh/.zshenv
+
+########################################
+# files directly under $HOME
+########################################
+for src_path in $(find ${DOT_DEPLOY_PATH} -maxdepth 1 -type f)
+do
+    deploy ${src_path} ${HOME}/$(basename ${src_path})
+done
 
 ########################################
 # .config
@@ -23,8 +31,3 @@ do
     dst_path=${XDG_CONFIG_HOME}/${conf_name}
     deploy ${src_path} ${dst_path}
 done
-
-########################################
-# .zshenv
-########################################
-deploy ${DOT_ZSHENV_PATH} ${HOME}/.zshenv
