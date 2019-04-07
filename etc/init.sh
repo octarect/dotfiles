@@ -2,10 +2,6 @@
 
 set -e
 
-run_init_scripts() {
-    echo "aaa"
-}
-
 init_scripts() {
     local init_script_dir="${DOT_PATH}/etc/init"
     echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f)
@@ -13,7 +9,7 @@ init_scripts() {
 
 source_all() {
     local script_paths="$1"
-    for file in "$(init_scripts)"
+    for file in ${script_paths}
     do
         source "${file}"
     done
