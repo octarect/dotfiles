@@ -20,3 +20,7 @@ apply:
 
 install: apply init deploy
 	@exec $$SHELL
+
+test:
+	@docker build --force-rm -t dotfiles .
+	@docker container run --rm --privileged dotfiles
