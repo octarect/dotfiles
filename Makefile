@@ -1,5 +1,9 @@
 DOT_PATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-TMP_PATH		:= $(DOT_PATH)/tmp
+
+define DOTENV
+export DOT_DIR=$(DOT_PATH)
+export DOT_CACHE_DIR=$(HOME)/.cache/dotfiles
+endef
 
 all:
 
@@ -9,5 +13,10 @@ init:
 deploy:
 	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/deploy.sh
 
-install: init deploy
+export DOTENV
+apply:
+	@rm -f $${HOME}/.dotenv
+	@echo "$${DOTENV}" > $${HOME}/.dotenv
+
+install: apply init deploy
 	@exec $$SHELL

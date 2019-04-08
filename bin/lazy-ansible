@@ -2,10 +2,10 @@
 
 set -e
 
-dot_path="$(realpath $(dirname $0)/..)"
+source ${HOME}/.dotenv
 
-lazy_ansible_path="${dot_path}/src/lazy-ansible"
+lazy_ansible_path="${DOT_DIR}/src/lazy-ansible"
 
 env \
-  ANSIBLE_HOME="${dot_path}/tmp/ansible" \
+  ANSIBLE_HOME="${DOT_CACHE_DIR}/ansible" \
   ${lazy_ansible_path}/init.sh ansible

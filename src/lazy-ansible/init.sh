@@ -9,10 +9,9 @@ shift
 ansible_lib_path="${ANSIBLE_HOME}/${ANSIBLE_VERSION}"
 ansible_bin_path="${ansible_lib_path}/bin"
 
-if [ ! -e "${ansible_lib_path}" ]; then
+if [ ! -e "${ansible_bin_path}" ]; then
     mkdir -p ${ansible_lib_path}
     pip install -t ${ansible_lib_path} ansible==${ANSIBLE_VERSION}
 fi
-
 
 env PYTHONPATH=${ansible_lib_path} ${ansible_bin_path}/${COMMAND_NAME} $@
