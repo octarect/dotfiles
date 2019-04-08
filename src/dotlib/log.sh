@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 __dotlib::log() {
-    local level="${1^^}"; shift
+    if [ "${SHELL}" = "bash" ]; then
+        local level="${1^^}"; shift
+    else
+        local level="$(tr '[a-z]' '[A-Z]' <<< $1)"
+    fi
     local body="$@"
     local msg="[${level}] ${body}"
 
