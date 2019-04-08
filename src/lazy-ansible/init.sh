@@ -10,7 +10,7 @@ ansible_lib_path="${ANSIBLE_HOME}/${ANSIBLE_VERSION}"
 ansible_bin_path="${ansible_lib_path}/bin"
 
 if [ ! -e "${ansible_bin_path}" ]; then
-    mkdir -p ${ansible_lib_path}
+    pip install -U pip
     pip install -t ${ansible_lib_path} ansible==${ANSIBLE_VERSION}
 fi
 
