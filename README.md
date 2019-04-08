@@ -5,6 +5,12 @@ The configurations of my development environment.
 
 ## dotfiles v2 is currently developped
 
+## Install
+
+```
+curl https://raw.githubusercontent.com/nbitmage/dotfiles/v2/install.sh | sh
+```
+
 ## Environment Variables
 
 | Variable      | Description                                       |
