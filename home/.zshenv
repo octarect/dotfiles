@@ -14,9 +14,13 @@ export TERM=xterm-256color
 ########################################
 # path
 ########################################
+setopt no_global_rcs
+if [ -L /sbin ]; then
+    export path=(/bin /usr/bin)
+fi
 export path=(
     /usr/local/bin(N-/)
-    $path
+    ${path}
 )
 
 ########################################
