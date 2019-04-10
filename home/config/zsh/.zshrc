@@ -12,6 +12,11 @@ mkdir -p "${DOT_CACHE_DIR}/zsh"
 setopt extended_glob
 
 #################################
+# Enable Nix package manager
+#################################
+__dotlib::load_nix
+
+#################################
 # Load additional config
 #################################
 for file in $(find ${ZDOTDIR}/rc.d -maxdepth 1 -type f | sort)

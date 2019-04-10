@@ -8,7 +8,6 @@ init_scripts() {
 }
 
 source_all() {
-    echo $@
     for file in $@
     do
         echo ${file}
@@ -22,5 +21,8 @@ if [ -z ${DOT_PATH} ]; then
 fi
 
 source ${DOT_PATH}/src/dotlib/init.sh
+
+source ${HOME}/.dotenv
+mkdir -p ${DOT_CACHE_DIR}
 
 source_all $(init_scripts)
