@@ -19,7 +19,7 @@ apply:
 	@echo "$${DOTENV}" > $${HOME}/.dotenv
 
 install: apply init deploy
-	@exec $$SHELL
+	@exec $$SHELL -l
 
 test:
 	@docker build --force-rm -t dotfiles .
