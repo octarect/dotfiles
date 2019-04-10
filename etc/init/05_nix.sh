@@ -8,3 +8,4 @@ source ${DOT_PATH}/src/dotlib/init.sh
 __dotlib::load_nix
 
 nix-channel --update
+nix-env --install neofetch
