@@ -12,6 +12,16 @@ mkdir -p "${DOT_CACHE_DIR}/zsh"
 setopt extended_glob
 
 #################################
+# path
+#################################
+typeset -gU path
+path=(
+    ${DOT_DIR}/bin(N-/)
+    ${HOME}/.local/bin(N-/)
+    ${path}
+)
+
+#################################
 # Enable Nix package manager
 #################################
 __dotlib::load_nix
