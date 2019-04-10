@@ -10,3 +10,11 @@ mkdir -p "${DOT_CACHE_DIR}/zsh"
 # zsh options
 #################################
 setopt extended_glob
+
+#################################
+# Load additional config
+#################################
+for file in $(find ${ZDOTDIR}/rc.d -maxdepth 1 -type f | sort)
+do
+    source ${file}
+done
