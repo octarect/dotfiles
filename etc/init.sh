@@ -20,7 +20,7 @@ if [ -z ${DOT_PATH} ]; then
     exit 1
 fi
 
-source ${DOT_PATH}/src/dotlib/init.sh
+source ${DOT_PATH}/lib/dotlib/init.sh
 
 source ${HOME}/.dotenv
 mkdir -p ${DOT_CACHE_DIR}

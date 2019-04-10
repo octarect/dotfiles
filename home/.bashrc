@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 source ${HOME}/.dotenv
-source ${DOT_DIR}/src/dotlib/init.sh
+source ${DOT_DIR}/lib/dotlib/init.sh
 
 export PATH="${DOT_DIR}/bin ${PATH}"
 
