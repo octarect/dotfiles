@@ -8,10 +8,10 @@ endef
 all:
 
 init:
-	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/init.sh
+	@DOT_PATH=$(DOT_PATH) bash $(DOT_PATH)/etc/init.sh
 
 deploy:
-	@DOT_PATH=$(DOT_PATH) $(DOT_PATH)/etc/deploy.sh
+	@DOT_PATH=$(DOT_PATH) bash $(DOT_PATH)/etc/deploy.sh
 
 export DOTENV
 apply:
