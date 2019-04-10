@@ -27,6 +27,13 @@ path=(
 __dotlib::load_nix
 
 #################################
+# History
+#################################
+export HISTFILE="${DOT_CACHE_DIR}/zsh/.zhistory"
+export HISTSIZE=5000
+export SAVEHIST=20000
+
+#################################
 # Load additional config
 #################################
 for file in $(find ${ZDOTDIR}/rc.d -maxdepth 1 -type f | sort)
