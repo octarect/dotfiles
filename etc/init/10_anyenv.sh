@@ -14,6 +14,3 @@ if [ ! -e ${HOME}/.config/anyenv/anyenv-install ]; then
 fi
 
 eval "$(${anyenv_bin} init - --no-rehash)"
-
-${anyenv_bin} install pyenv
-${anyenv_bin} install rbenv
