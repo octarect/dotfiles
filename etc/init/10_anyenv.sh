@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
 
 ANYENV_GIT_REPO=https://github.com/riywo/anyenv
 
