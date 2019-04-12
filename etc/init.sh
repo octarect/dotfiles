@@ -2,6 +2,19 @@
 
 set -e
 
+greet() {
+cat << 'EOS'
+
+ /\ \        /\ \__  /'___\ __ /\_ \
+ \_\ \    ___\ \ ,_\/\ \__//\_\\//\ \      __    ____
+ /'_` \  / __`\ \ \/\ \ ,__\/\ \ \ \ \   /'__`\ /',__\
+/\ \L\ \/\ \L\ \ \ \_\ \ \_/\ \ \ \_\ \_/\  __//\__, `\
+\ \___,_\ \____/\ \__\\ \_\  \ \_\/\____\ \____\/\____/
+ \/__,_ /\/___/  \/__/ \/_/   \/_/\/____/\/____/\/___/
+
+EOS
+}
+
 init_scripts() {
     local init_script_dir="${DOT_PATH}/etc/init"
     echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f | sort)
@@ -14,6 +27,8 @@ source_all() {
         source ${file}
     done
 }
+
+greet
 
 if [ -z ${DOT_PATH} ]; then
     echo '$DOT_PATH is required.' >&2
