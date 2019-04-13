@@ -8,7 +8,7 @@ The configurations of my development environment.
 ## Install
 
 ```
-curl https://raw.githubusercontent.com/nbitmage/dotfiles/v2/install.sh | sh
+curl https://raw.githubusercontent.com/nbitmage/dotfiles/master/install.sh | sh
 ```
 
 ## Environment Variables
