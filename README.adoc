@@ -1,0 +1,15 @@
+= dotfiles
+
+== Requirements
+
+* git
+* curl
+* make
+* bash
+
+== Install
+
+[source, bash]
+----
+curl https://raw.githubusercontent.com/nbitmage/dotfiles/master/install.sh | bash
+----
