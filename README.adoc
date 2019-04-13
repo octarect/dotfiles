@@ -9,7 +9,18 @@
 
 == Install
 
+Simple one-liner is available in your terminal;
+
 [source, bash]
 ----
-curl https://raw.githubusercontent.com/nbitmage/dotfiles/master/install.sh | bash
+$ curl https://raw.githubusercontent.com/nbitmage/dotfiles/master/install.sh | bash
+----
+
+or you can clone repository and install it manually. (This is what the above script does automatically.)
+
+[source, bash]
+----
+$ git clone https://github.com/nbitmage/dotfiles
+$ cd dotfiles
+$ make install
 ----
