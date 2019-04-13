@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TMUX_PLUGINS_DIR="${DOT_LOCAL_DIR}/tmux/plugins"
+TMUX_PLUGINS_DIR="${HOME}/.tmux/plugins"
 TPM_REPO_URL="https://github.com/tmux-plugins/tpm"
 
 mkdir -p ${TMUX_PLUGINS_DIR}
