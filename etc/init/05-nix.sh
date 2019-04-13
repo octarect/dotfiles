@@ -2,6 +2,11 @@
 
 [[ "${DOT_NIX_DISABLED}" = "1" ]] && return 0
 
+sudo sysctl kernel.unprivileged_userns_clone=1
+cat <<EOF | sudo tee /etc/sysctl.d/50-nix.conf >/dev/null
+kernel.unprivileged_userns_clone=1
+EOF
+
 sh <(curl -X GET -L https://nixos.org/nix/install)
 
 source ${DOT_PATH}/lib/dotlib/init.sh
