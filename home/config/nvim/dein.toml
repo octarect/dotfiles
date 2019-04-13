@@ -2,10 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
 repo = 'tomasr/molokai'
 hook_add = '''
   " autocmd VimEnter * nested call octarect#molokai#init()
@@ -88,9 +84,6 @@ repo = 'cespare/vim-toml'
 repo = 'dag/vim-fish'
 
 [[plugins]]
-repo = 'dmix/elvish.vim'
-
-[[plugins]]
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
@@ -98,6 +91,10 @@ repo = 'kana/vim-textobj-user'
 
 [[plugins]]
 repo = 'kana/vim-textobj-function'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
