@@ -30,6 +30,10 @@ fi
 # Load zplugin.
 source ${ZPLGM[BIN_DIR]}/zplugin.zsh
 
+# ghq
+zplugin ice from"gh-r" as"program" atload"git config --global ghq.root ${DEVPATH}"
+zplugin load "motemen/ghq"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2

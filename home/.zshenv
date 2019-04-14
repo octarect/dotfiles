@@ -33,3 +33,13 @@ export path=(
 ########################################
 export XDG_CONFIG_HOME=${HOME}/.config
 export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
+
+########################################
+# development
+########################################
+export DEVPATH="${HOME}/code"
+mkdir -p ${DEVPATH}/{bin,src,pkg}
+
+# Go
+export GOPATH="${DEVPATH}"
+export GOROOT=`go env GOROOT`
