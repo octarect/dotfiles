@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 ########################################
-# environment variables
+# system
 ########################################
 export LANG=en_US.UTF-8
 export EDITOR=nvim
@@ -10,6 +10,11 @@ export FCEDIT=nvim
 export PAGER=less
 export SHELL=zsh
 export TERM=xterm-256color
+
+export LESS="-F -g -i -M -R -S -w -X -z-4"
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
 
 ########################################
 # path
