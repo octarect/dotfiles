@@ -2,10 +2,12 @@
 
 [[ "${DOT_NIX_DISABLED}" = "1" ]] && return 0
 
+if __dotlib::util::has_cmd sysctl; then
 sudo sysctl kernel.unprivileged_userns_clone=1
 cat <<EOF | sudo tee /etc/sysctl.d/50-nix.conf >/dev/null
 kernel.unprivileged_userns_clone=1
 EOF
+fi
 
 sh <(curl -X GET -L https://nixos.org/nix/install)
 
