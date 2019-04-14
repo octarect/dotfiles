@@ -13,16 +13,14 @@ if [ ! -e ${HOME}/.config/anyenv/anyenv-install ]; then
     yes | ${anyenv_bin} install --init
 fi
 
-eval "$(${anyenv_bin} init -)"
-
-if ! anyenv versions | grep pyenv >/dev/null; then
-  anyenv install pyenv
+if ! ${anyenv_bin} versions | grep pyenv >/dev/null; then
+  ${anyenv_bin} install pyenv
 else
   __dotlib::log info "pyenv is already installed."
 fi
 
-if ! anyenv versions | grep rbenv >/dev/null; then
-  anyenv install rbenv
+if ! ${anyenv_bin} versions | grep rbenv >/dev/null; then
+  ${anyenv_bin} install rbenv
 else
   __dotlib::log info "rbenv is already installed."
 fi
