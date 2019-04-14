@@ -6,6 +6,7 @@ __dotlib::log() {
     else
         local level="$(tr '[a-z]' '[A-Z]' <<< $1)"
     fi
+    shift
     local body="$@"
     local msg="[${level}] ${body}"
 
