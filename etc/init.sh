@@ -17,7 +17,7 @@ EOS
 
 init_scripts() {
     local init_script_dir="${DOT_DIR}/etc/init"
-    echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f | sort)
+    echo -e "$(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f | sort)"
 }
 
 source_all() {
@@ -40,5 +40,10 @@ fi
 
 source ${DOT_DIR}/lib/dotlib/init.sh
 
+name="$1"
 
-source_all $(init_scripts)
+if [[ -z "${name}" ]]; then
+    source_all $(init_scripts)
+else
+    source $(echo -e "$(init_scripts)" | grep -E "${name}.sh")
+fi

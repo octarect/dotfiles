@@ -1,4 +1,5 @@
 DOT_DIR		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+ARG			=
 
 define DOTENV
 export DOT_DIR=$(DOT_DIR)
@@ -9,7 +10,7 @@ endef
 all:
 
 init:
-	bash $(DOT_DIR)/etc/init.sh
+	bash $(DOT_DIR)/etc/init.sh $(ARG)
 
 deploy:
 	bash $(DOT_DIR)/etc/deploy.sh
