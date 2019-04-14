@@ -21,9 +21,11 @@ link_children() {
     done
 }
 
+source ${HOME}/.dotenv
+
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
-DOT_DEPLOY_PATH=${DOT_PATH}/home
+DOT_DEPLOY_PATH=${DOT_DIR}/home
 DOT_CONFIG_PATH=${DOT_DEPLOY_PATH}/config
 DOT_FONTS_PATH=${DOT_DEPLOY_PATH}/fonts
 

@@ -16,7 +16,7 @@ EOS
 }
 
 init_scripts() {
-    local init_script_dir="${DOT_PATH}/etc/init"
+    local init_script_dir="${DOT_DIR}/etc/init"
     echo $(find ${init_script_dir} -mindepth 1 -maxdepth 1 -type f | sort)
 }
 
@@ -30,14 +30,15 @@ source_all() {
 
 greet
 
-if [ -z ${DOT_PATH} ]; then
-    echo '$DOT_PATH is required.' >&2
+source ${HOME}/.dotenv
+mkdir -p ${DOT_CACHE_DIR}
+
+if [[ -z ${DOT_DIR} ]]; then
+    echo '$DOT_DIR is required. Pleace make sure that ~/.dotenv exists.' >&2
     exit 1
 fi
 
-source ${DOT_PATH}/lib/dotlib/init.sh
+source ${DOT_DIR}/lib/dotlib/init.sh
 
-source ${HOME}/.dotenv
-mkdir -p ${DOT_CACHE_DIR}
 
 source_all $(init_scripts)

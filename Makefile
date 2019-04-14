@@ -1,7 +1,7 @@
-DOT_PATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOT_DIR		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
 define DOTENV
-export DOT_DIR=$(DOT_PATH)
+export DOT_DIR=$(DOT_DIR)
 export DOT_CACHE_DIR=$(HOME)/.cache/dotfiles
 export DOT_LOCAL_DIR=$(HOME)/.local/dotfiles
 endef
@@ -9,10 +9,10 @@ endef
 all:
 
 init:
-	@DOT_PATH=$(DOT_PATH) bash $(DOT_PATH)/etc/init.sh
+	bash $(DOT_DIR)/etc/init.sh
 
 deploy:
-	@DOT_PATH=$(DOT_PATH) bash $(DOT_PATH)/etc/deploy.sh
+	bash $(DOT_DIR)/etc/deploy.sh
 
 export DOTENV
 apply:

@@ -1,6 +1,6 @@
 #!/usr/bin/bash -e
 
-DOT_PATH="${DOT_PATH:-${HOME}/dotfiles}"
+DOT_DIR="${DOT_DIR:-${HOME}/dotfiles}"
 DOT_BRANCH="${DOT_BRANCH:-master}"
 
 if ! type git; then
@@ -8,9 +8,9 @@ if ! type git; then
     exit 1
 fi
 
-git clone https://github.com/nbitmage/dotfiles -b ${DOT_BRANCH} ${DOT_PATH}
+git clone https://github.com/nbitmage/dotfiles -b ${DOT_BRANCH} ${DOT_DIR}
 
 current_path=$(pwd)
-cd ${DOT_PATH}
+cd ${DOT_DIR}
 make install
 cd ${current_path}
