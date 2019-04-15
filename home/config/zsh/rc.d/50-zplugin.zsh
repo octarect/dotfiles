@@ -34,6 +34,10 @@ source ${ZPLGM[BIN_DIR]}/zplugin.zsh
 zplugin ice from"gh-r" as"program" atload"git config --global ghq.root ${DEVPATH}"
 zplugin load "motemen/ghq"
 
+# peco
+zplugin ice from"gh-r" as"program" mv"peco_*/peco -> peco"
+zplugin load "peco/peco"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
