@@ -2,7 +2,7 @@
 
 [[ "${DOT_NIX_DISABLED}" = "1" ]] && return 0
 
-if __dotlib::util::has_cmd sysctl; then
+if __dotlib::util::has_cmd sysctl && [[ ${OSTYPE} == linux* ]]; then
 sudo sysctl kernel.unprivileged_userns_clone=1
 cat <<EOF | sudo tee /etc/sysctl.d/50-nix.conf >/dev/null
 kernel.unprivileged_userns_clone=1
