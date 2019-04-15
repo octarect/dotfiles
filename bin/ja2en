@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# vim: set tabstop=4 shiftwidth=4:
+
+eval "trans {ja=en} \"$@\""
