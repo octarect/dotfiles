@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# vim: set tabstop=4 shiftwidth=4:
+
+# Escape string to use it in sed
+echo $(echo $1 | sed -e 's/[]\/\=\&\?$*.^[]/\\&/g')
