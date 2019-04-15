@@ -30,6 +30,10 @@ fi
 # Load zplugin.
 source ${ZPLGM[BIN_DIR]}/zplugin.zsh
 
+# translate-shell
+zplugin ice from"gh" as"program" ver"stable" atinit"make build" pick"build/trans"
+zplugin load "soimort/translate-shell"
+
 # ghq
 zplugin ice from"gh-r" as"program" atload"git config --global ghq.root ${DEVPATH}"
 zplugin load "motemen/ghq"
