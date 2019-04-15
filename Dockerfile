@@ -9,6 +9,7 @@ USER dotfiler
 ENV USER=dotfiler
 WORKDIR /home/dotfiler
 
-ENV DOT_BRANCH=v2
-CMD /usr/bin/curl https://raw.githubusercontent.com/nbitmage/dotfiles/v2/install.sh | sh
+ENV DOT_BRANCH=master
+
+CMD /usr/bin/curl https://raw.githubusercontent.com/nbitmage/dotfiles/master/install.sh | bash
 
