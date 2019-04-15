@@ -4,3 +4,16 @@ pcd() {
       cd "${project_dir}"
   fi
 }
+
+fcd() {
+  if [[ -n "$1" ]]; then
+      base_dir="$1"
+  else
+      base_dir=$(PWD)
+  fi
+  target_dir=$(find ${base_dir} -type d | peco --query "${LBUFFER}" --layout=bottom-up | xargs realpath)
+  if [[ -n "${target_dir}" ]]; then
+      cd ${target_dir}
+      print -s "cd ${target_dir}"
+  fi
+}
