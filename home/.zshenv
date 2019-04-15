@@ -43,3 +43,6 @@ mkdir -p ${DEVPATH}/{bin,src,pkg}
 # Go
 export GOPATH="${DEVPATH}"
 export GOROOT=`go env GOROOT`
+
+# Erlang
+export ERL_AFLAGS="-kernel shell_history enabled"
