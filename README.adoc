@@ -24,3 +24,24 @@ $ git clone https://github.com/nbitmage/dotfiles
 $ cd dotfiles
 $ make install
 ----
+
+== Development
+
+=== Directory Structure
+
+.Directories and their roles
+|===
+| Dir | Description 
+
+| bin/
+| Commands
+
+| etc/
+| Mainly including scripts to prepare my environment (core-logic of this dotfiles).
+
+| home/
+| My dotfiles. They will be deployed by etc/deploy.sh.
+
+| lib/
+| Source codes referred from other directories.
+
