@@ -35,7 +35,7 @@ zplugin ice from"gh" as"program" ver"stable" atinit"make build" pick"build/trans
 zplugin load "soimort/translate-shell"
 
 # ghq
-zplugin ice from"gh-r" as"program" atload"git config --global ghq.root ${DEVPATH}"
+zplugin ice from"gh-r" as"program" atload"git config --global ghq.root ${DEVPATH} >/dev/null"
 zplugin load "motemen/ghq"
 
 # peco
