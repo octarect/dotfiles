@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# vim: set tabstop=4 shiftwidth=4:
+
+for c in $(seq 0 255)
+do
+    printf "\e[48;5;${c}m  %3s  \e[m" "${c}"
+    [[ $((($c + 1) % 6)) == 4 ]] && echo
+done
