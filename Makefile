@@ -20,6 +20,10 @@ apply:
 	@rm -f $${HOME}/.dotenv
 	@echo "$${DOTENV}" | tee $${HOME}/.dotenv
 
+hook:
+	cp $(DOT_DIR)/etc/git/post-merge $(DOT_DIR)/.git/hooks/post-merge
+	chmod +x $(DOT_DIR)/.git/hooks/post-merge
+
 install: apply init deploy
 	@exec $$SHELL -l
 

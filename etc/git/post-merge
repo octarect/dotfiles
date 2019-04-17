@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# vim: set tabstop=4 shiftwidth=4:
+
+source ${HOME}/.dotenv
+source ${DOT_DIR}/lib/dotlib/init.sh
+
+# current_hash="$(git rev-parse HEAD)"
+origin_hash="$(git rev-parse ORIG_HEAD)"
+
+new_commit_hashes="$(git rev-list ORIG_HEAD..HEAD)"
+
+echo "$(git rev-list ORIG_HEAD..HEAD)" | while read commit_hash
+do
+    __dotlib::log info "Checking ${commit_hash}"
+    body="$(git show -q --format="%b")"
+    if [[ -n "${body}" ]]; then
+        echo "${body}" | while read line
+        do
+            if [[ "${line}" =~ ^\$ ]]; then
+                cmd="$(echo ${line} | sed -e 's/^\$ *//')"
+                if [[ -n "${cmd}" ]]; then
+                    __dotlib::log info "Hook found: ${cmd}"
+                    ${cmd}
+                fi
+            fi
+        done
+    fi
+done
