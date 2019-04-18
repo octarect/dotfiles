@@ -31,7 +31,7 @@ fi
 source ${ZPLGM[BIN_DIR]}/zplugin.zsh
 
 # translate-shell
-zplugin ice from"gh" as"program" ver"stable" atinit"make build" pick"build/trans"
+zplugin ice from"gh" as"program" ver"stable" make"build" pick"build/trans"
 zplugin load "soimort/translate-shell"
 
 # ghq
