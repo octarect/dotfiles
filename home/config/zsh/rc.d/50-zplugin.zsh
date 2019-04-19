@@ -42,6 +42,10 @@ zplugin load "motemen/ghq"
 zplugin ice from"gh-r" as"program" mv"peco_*/peco -> peco"
 zplugin load "peco/peco"
 
+# rancher
+zplugin ice from"gh-r" as"program" mv"rancher-*/rancher -> rancher"
+zplugin load "rancher/cli"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
