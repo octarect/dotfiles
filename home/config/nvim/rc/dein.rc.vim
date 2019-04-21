@@ -23,12 +23,18 @@ let s:dein_toml = g:conf_dir . '/rc/dein/dein.toml'
 let s:dein_lazy_toml = g:conf_dir . '/rc/dein/dein.lazy.toml'
 let s:dein_ft_toml = g:conf_dir . '/rc/dein/dein.ft.toml'
 
-call dein#begin(s:dein_cache_dir, [
-      \ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml, s:dein_ft_toml
-      \ ])
-call dein#load_toml(s:dein_toml,      {'lazy': 0})
-call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
-call dein#load_toml(s:dein_ft_toml)
+call dein#begin(s:dein_cache_dir, [ expand('<sfile>') ] + glob(g:conf_dir . 'rc/dein/*.toml', 1, 1))
+
+" Load non-lazy plugins (dein/*.toml)
+for toml in filter(glob(g:conf_dir . '/rc/dein/*.toml', 1, 1), 'v:val !~# ''lazy\.toml$''')
+  call dein#load_toml(toml, { 'lazy': 0 })
+endfor
+
+" Load lazy plugins (dein/*.lazy.toml)
+for toml in glob(g:conf_dir . '/rc/dein/*.lazy.toml', 1, 1)
+  call dein#load_toml(toml, { 'lazy': 1})
+endfor
+
 call dein#end()
 call dein#save_state()
 
