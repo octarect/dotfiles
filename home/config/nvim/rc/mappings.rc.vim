@@ -31,9 +31,11 @@ endfor
 " ========================================
 
 " Vertical splitting
-nnoremap <C-w>\| :vsplit<CR><C-w>l
+set splitright
+nnoremap <C-w>\| :vnew<CR>
 " Horizontal splitting
-nnoremap <C-w>- :split<CR><C-w>j
+set splitbelow
+nnoremap <C-w>- :new<CR>
 
 " ========================================
 "  Misc (Prefix: <Space>)
