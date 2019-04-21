@@ -55,5 +55,5 @@ if exists(':tnoremap')
   " Open terminal
   nnoremap [Space]t :terminal<CR>
   " Normal mode (I cannot do VIM in VIM anymore)
-  tnoremap <ESC>  <C-\><C-n>
+  tnoremap <C-j><C-j> <C-\><C-n>
 endif
