@@ -22,6 +22,7 @@ call s:source_rc('dein.rc.vim')
 
 call s:source_rc('options.rc.vim')
 
+filetype plugin on
 
 " For security. The below code must be put at last.
 set exrc secure
