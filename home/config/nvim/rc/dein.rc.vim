@@ -19,10 +19,6 @@ if !dein#load_state(s:dein_cache_dir)
   finish
 endif
 
-let s:dein_toml = g:conf_dir . '/rc/dein/dein.toml'
-let s:dein_lazy_toml = g:conf_dir . '/rc/dein/dein.lazy.toml'
-let s:dein_ft_toml = g:conf_dir . '/rc/dein/dein.ft.toml'
-
 call dein#begin(s:dein_cache_dir, [ expand('<sfile>') ] + glob(g:conf_dir . 'rc/dein/*.toml', 1, 1))
 
 " Load non-lazy plugins (dein/*.toml)
@@ -32,7 +28,7 @@ endfor
 
 " Load lazy plugins (dein/*.lazy.toml)
 for toml in glob(g:conf_dir . '/rc/dein/*.lazy.toml', 1, 1)
-  call dein#load_toml(toml, { 'lazy': 1})
+  call dein#load_toml(toml, { 'lazy': 1 })
 endfor
 
 call dein#end()
