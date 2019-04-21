@@ -17,6 +17,31 @@ hook_post_source = '''
 '''
 
 [[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = [ 'vimproc.vim' ]
+on_cmd = 'QuickRun'
+hook_add = '''
+  nnoremap [Space]r :cclose<CR>:write<CR>:QuickRun -mode n<CR>
+  vnoremap [Space]r :QuickRun -mode n<CR>
+'''
+hook_source = '''
+  let g:quickrun_config = {
+        \ '_': {
+        \   'runner': 'vimproc',
+        \   'runner/vimproc/updatetime': 100,
+        \   'outputter': 'error',
+        \   'outputter/error/success': 'buffer',
+        \   'outputter/error/error': 'quickfix',
+        \   'outputter/buffer/split': ':botright 8sp',
+        \ },
+        \ }
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_cmd = 'EasyAlign'
 hook_add = '''

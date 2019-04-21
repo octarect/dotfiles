@@ -42,9 +42,11 @@ nnoremap <C-w>- :split<CR><C-w>j
 " [Space]: My useful mappings
 nnoremap [Space] <Nop>
 nmap <Space> [Space]
+vnoremap [Space] <Nop>
+vmap <Space> [Space]
 
 " Reload configuration
-execute 'nnoremap [Space]r :source ' . g:conf_dir . '/rc/init.vim<CR>'
+execute 'nnoremap [Space]R :source ' . g:conf_dir . '/rc/init.vim<CR>'
 
 " Terminal mode
 if exists(':tnoremap')
