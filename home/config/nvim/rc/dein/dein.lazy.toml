@@ -92,6 +92,14 @@ defx = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = [ 'context_filetype.vim' ]
+on_i = 1
+hook_source = '''
+  call deoplete#enable()
+'''
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 depends = [ 'vimproc.vim' ]
 on_cmd = 'QuickRun'
@@ -135,5 +143,45 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
+
+########################################
+# Language / Filetype
+########################################
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = 'markdown'
+depends = [ 'vim-markdown-quote-syntax' ]
+hook_source = '''
+  let g:vim_markdown_folding_disabled = 1
+'''
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+depends = [ 'yajs.vim' ]
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+depends = [ 'yajs.vim' ]
+on_ft = 'javascript'
