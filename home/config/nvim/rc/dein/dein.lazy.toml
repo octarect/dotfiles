@@ -100,6 +100,20 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+on_source = 'deoplete.nvim'
+rev = 'next'
+build = 'bash install.sh'
+on_i = 1
+hook_source = '''
+  " Required for operations modifying multiple buffers like rename
+  set hidden
+  let g:LanguageClient_serverCommands = {
+  \ 'ruby': [ 'solargraph', 'stdio' ],
+  \ }
+'''
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 depends = [ 'vimproc.vim' ]
 on_cmd = 'QuickRun'
@@ -124,6 +138,20 @@ hook_source = '''
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
+########################################
+# Edit
+########################################
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+on_map = { n = '<Plug>' }
+hook_add = '''
+  let g:NERDSpaceDelims=1
+  let g:NERDDefaultAlign='left'
+  let g:NERDCompactSexyComs = 1
+  map <silent>co <Plug>NERDCommenterToggle
+'''
+
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_cmd = 'EasyAlign'
@@ -136,7 +164,7 @@ repo = 'itchyny/vim-cursorword'
 
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
-on_map = {n = '<Plug>'}
+on_map = { n = '<Plug>' }
 hook_add = '''
   nmap <silent>j <Plug>(accelerated_jk_gj)
   nmap <silent>k <Plug>(accelerated_jk_gk)
@@ -185,15 +213,3 @@ on_ft = 'javascript'
 repo = 'MaxMEllon/vim-jsx-pretty'
 depends = [ 'yajs.vim' ]
 on_ft = 'javascript'
-
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-on_source = 'deoplete.nvim'
-rev = 'next'
-build = 'bash install.sh'
-on_i = 1
-hook_source = '''
-  let g:LanguageClient_serverCommands = {
-  \ 'ruby': [ 'solargraph', 'stdio' ],
-  \ }
-'''

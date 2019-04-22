@@ -22,13 +22,3 @@ hook_add = '''
   nmap gk <Plug>GitGutterPrevHunk
   nmap gj <Plug>GitGutterNextHunk
 '''
-
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
-hook_add = '''
-  let g:NERDSpaceDelims=1
-  let g:NERDDefaultAlign='left'
-  let g:NERDCompactSexyComs = 1
-  map <silent>co <Plug>NERDCommenterToggle
-  filetype plugin on
-'''
