@@ -9,7 +9,7 @@ hook_add = '''
   nmap <C-u>  [denite]
   nmap <silent> [denite]f :<C-u>Denite file/rec<CR>
 '''
-hook_post_source = '''
+hook_source = '''
   if executable('rg')
     call denite#custom#var('file/rec', 'command',
           \ [ 'rg', '--files', '--follow', '--hidden', '--glob', '!.git' ])
@@ -185,3 +185,15 @@ on_ft = 'javascript'
 repo = 'MaxMEllon/vim-jsx-pretty'
 depends = [ 'yajs.vim' ]
 on_ft = 'javascript'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+on_source = 'deoplete.nvim'
+rev = 'next'
+build = 'bash install.sh'
+on_i = 1
+hook_source = '''
+  let g:LanguageClient_serverCommands = {
+  \ 'ruby': [ 'solargraph', 'stdio' ],
+  \ }
+'''

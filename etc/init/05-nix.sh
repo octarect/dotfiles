@@ -19,3 +19,4 @@ nix-env --install tmux
 nix-env --install neovim
 nix-env --install neofetch
 nix-env --install ripgrep
+nix-env --install solargraph
