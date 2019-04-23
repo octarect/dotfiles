@@ -144,12 +144,12 @@ build = 'make'
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
-on_map = { n = '<Plug>' }
+on_map = { n = '<Plug>NERDCom' }
 hook_add = '''
   let g:NERDSpaceDelims=1
   let g:NERDDefaultAlign='left'
   let g:NERDCompactSexyComs = 1
-  map <silent>co <Plug>NERDCommenterToggle
+  nmap <silent>co <Plug>NERDCommenterToggle
 '''
 
 [[plugins]]
