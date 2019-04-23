@@ -19,6 +19,15 @@ hook_add = '''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
+  let g:gitgutter_sign_added = '+'
+  let g:gitgutter_sign_modified = '*'
+  let g:gitgutter_sign_removed = '-'
   nmap gk <Plug>GitGutterPrevHunk
   nmap gj <Plug>GitGutterNextHunk
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
