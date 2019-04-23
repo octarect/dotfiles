@@ -46,6 +46,10 @@ zplugin load "peco/peco"
 zplugin ice from"gh-r" as"program" mv"rancher-*/rancher -> rancher"
 zplugin load "rancher/cli"
 
+# pixterm
+zplugin ice from"gh" as"program" atinit"go get -d && go build -o pixterm" pick"pixterm"
+zplugin load "eliukblau/pixterm"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
