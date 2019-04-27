@@ -8,6 +8,7 @@ hook_add = '''
   nnoremap [denite] <Nop>
   nmap <C-u>  [denite]
   nmap <silent> [denite]f :<C-u>Denite file/rec<CR>
+  nmap <silent> [denite]b :<C-u>Denite buffer<CR>
 '''
 hook_source = '''
   if executable('rg')
