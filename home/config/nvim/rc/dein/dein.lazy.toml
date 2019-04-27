@@ -144,6 +144,10 @@ build = 'make'
 ########################################
 
 [[plugins]]
+repo = 'ujihisa/neco-look'
+on_source = 'deoplete.nvim'
+
+[[plugins]]
 repo = 'scrooloose/nerdcommenter'
 on_map = { n = '<Plug>NERDCom' }
 hook_add = '''
