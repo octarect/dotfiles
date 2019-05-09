@@ -8,4 +8,4 @@ lazy_ansible_path="${DOT_DIR}/lib/lazy-ansible"
 
 env \
   ANSIBLE_HOME="${DOT_CACHE_DIR}/ansible" \
-  ${lazy_ansible_path}/init.sh ansible-playbook
+  ${lazy_ansible_path}/init.sh ansible-playbook $@
