@@ -58,3 +58,18 @@ set autoread
 " Enable cycle-completion for filename in command
 set wildmenu
 set wildmode=full
+
+" True color
+if $COLORTERM == 'truecolor' || $COLORTERM == '24bit' || $TERM =~ '256color'
+  " For Neovim 0.1.5 or later
+  if has('neovim')
+    set termguicolors
+
+  " For Vim 7.4.1799 or later
+  elseif has('termguicolors')
+    set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+endif
+
