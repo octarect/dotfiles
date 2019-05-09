@@ -9,7 +9,6 @@ export VISUAL=nvim
 export FCEDIT=nvim
 export PAGER=less
 export SHELL=zsh
-export TERM=xterm-256color
 
 export LESS="-F -g -i -M -R -S -w -X -z-4"
 if (( $#commands[(i)lesspipe(|.sh)] )); then
