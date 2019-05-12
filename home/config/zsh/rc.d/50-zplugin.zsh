@@ -50,6 +50,10 @@ zplugin load "rancher/cli"
 zplugin ice from"gh" as"program" atinit"go get -d && go build -o pixterm" pick"pixterm"
 zplugin load "eliukblau/pixterm"
 
+# bat
+zplugin ice from"gh-r" as"program" mv"bat-*/bat -> bat"
+zplugin load "sharkdp/bat"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
