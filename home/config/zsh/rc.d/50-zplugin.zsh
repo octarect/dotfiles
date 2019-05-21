@@ -35,7 +35,7 @@ zplugin ice from"gh" as"program" ver"stable" make"build" pick"build/trans"
 zplugin load "soimort/translate-shell"
 
 # ghq
-zplugin ice from"gh-r" as"program" atinit"git config --global ghq.root ${DEVPATH} >/dev/null"
+zplugin ice from"gh-r" as"program" pick"ghq_*/ghq" atinit"git config --global ghq.root ${DEVPATH}/src >/dev/null"
 zplugin load "motemen/ghq"
 
 # peco
@@ -64,9 +64,11 @@ zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
 
+zplugin light nnao45/zsh-kubectl-completion
+
 # Enable completion
 autoload -Uz compinit
-compinit -d ${DOT_CACHE_DIR}/zsh/.zcompdump
+compinit -d ${ZPLGM[HOME_DIR]}/.zcompdump
 zplugin cdreplay -q
 
 # Syntax highlight future
