@@ -196,6 +196,14 @@ repo = 'elzr/vim-json'
 on_ft = 'json'
 
 [[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'tf'
+hook_source = '''
+  let g:terraform_fold_sections = 1
+  let g:terraform_fmt_on_save = 1
+'''
+
+[[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = 'markdown'
 depends = [ 'vim-markdown-quote-syntax' ]
@@ -218,3 +226,7 @@ on_ft = 'javascript'
 repo = 'MaxMEllon/vim-jsx-pretty'
 depends = [ 'yajs.vim' ]
 on_ft = 'javascript'
+
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = 'yaml'
