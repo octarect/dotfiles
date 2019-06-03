@@ -34,3 +34,12 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_add = '''
+  let g:loaded_matchparen = 1
+'''
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
