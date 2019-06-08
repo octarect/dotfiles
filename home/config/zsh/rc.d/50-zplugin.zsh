@@ -54,6 +54,14 @@ zplugin load "eliukblau/pixterm"
 zplugin ice from"gh-r" as"program" mv"bat-*/bat -> bat"
 zplugin load "sharkdp/bat"
 
+# gotop
+zplugin ice from"gh-r" as"program" mv"gotop-*/gotop -> gotop"
+zplugin load "cjbassi/gotop"
+
+# jq
+zplugin ice from"gh-r" as"program" mv"jq-* -> jq"
+zplugin load "stedolan/jq"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
@@ -72,11 +80,11 @@ compinit -d ${ZPLGM[HOME_DIR]}/.zcompdump
 zplugin cdreplay -q
 
 # Syntax highlight future
-zplugin ice wait'1' atload'_zsh_highlight'
+zplugin ice wait'0' atload'_zsh_highlight'
 zplugin light zdharma/fast-syntax-highlighting
 
 # Auto-suggestion of command, based on history.
-zplugin ice wait'1' atload'_zsh_autosuggest_start'
+zplugin ice wait'0' atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
 # History search future
