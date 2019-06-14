@@ -15,6 +15,7 @@ set smartindent
 set ignorecase
 set smartcase
 set wrapscan
+set incsearch
 
 "+--------------------------------------+
 "| Appearance                           |
@@ -22,6 +23,7 @@ set wrapscan
 
 " Show number of line
 set number
+set numberwidth=3
 " Show cursor line
 set cursorline
 " Always show tabline
