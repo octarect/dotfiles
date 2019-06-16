@@ -62,6 +62,9 @@ zplugin load "cjbassi/gotop"
 zplugin ice from"gh-r" as"program" mv"jq-* -> jq"
 zplugin load "stedolan/jq"
 
+zplugin ice from"gh" as"program"
+zplugin load "johanhaleby/kubetail"
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
@@ -72,12 +75,14 @@ zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
 
-zplugin light nnao45/zsh-kubectl-completion
-
 # Enable completion
 autoload -Uz compinit
 compinit -d ${ZPLGM[HOME_DIR]}/.zcompdump
 zplugin cdreplay -q
+
+if __dotlib::util::has_cmd kubectl; then
+  source <(kubectl completion zsh)
+fi
 
 # Syntax highlight future
 zplugin ice wait'0' atload'_zsh_highlight'
