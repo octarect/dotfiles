@@ -34,6 +34,9 @@ endfor
 call dein#end()
 call dein#save_state()
 
+filetype plugin indent on
+syntax enable
+
 if dein#check_install()
   " Installation check
   call dein#install()
