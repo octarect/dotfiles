@@ -59,7 +59,11 @@ zplugin ice from"gh-r" as"program" mv"gotop-*/gotop -> gotop"
 zplugin load "cjbassi/gotop"
 
 # jq
-zplugin ice from"gh-r" as"program" mv"jq-* -> jq"
+if [ "$(uname)" = "Darwin" ]; then
+  zplugin ice from"gh-r" as"program" mv"jq-* -> jq" bpick:"*osx*"
+else
+  zplugin ice from"gh-r" as"program" mv"jq-* -> jq"
+fi
 zplugin load "stedolan/jq"
 
 zplugin ice from"gh" as"program"

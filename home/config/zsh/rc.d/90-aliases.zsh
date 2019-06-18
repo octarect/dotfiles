@@ -5,5 +5,6 @@ case ${OSTYPE} in
         alias pbcopy="xsel --clipboard --input"
         ;;
     darwin*)
+        alias ls="gls --color=auto --show-control-chars"
         ;;
 esac
