@@ -16,9 +16,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = [ 'context_filetype.vim' ]
 on_i = 1
