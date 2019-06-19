@@ -101,6 +101,9 @@ zplugin light zsh-users/zsh-autosuggestions
 # See README.md on its Github repo for details.
 zplugin light zsh-users/zsh-history-substring-search
 
+zplugin ice wait'0' as"program" from"gh" mv"gdown.pl -> gdown"
+zplugin load circulosmeos/gdown.pl
+
 # Load prompt.
 zplugin ice pick'spaceship.zsh' wait'!0'
 zplugin light denysdovhan/spaceship-zsh-theme
