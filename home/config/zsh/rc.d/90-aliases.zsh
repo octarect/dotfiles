@@ -5,6 +5,10 @@ case ${OSTYPE} in
         alias pbcopy="xsel --clipboard --input"
         ;;
     darwin*)
+        alias readlink="greadlink"
         alias ls="gls --color=auto --show-control-chars"
+        alias sed="gsed"
+        alias awk="gawk"
+        alias date="gdate"
         ;;
 esac
