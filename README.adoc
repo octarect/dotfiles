@@ -6,10 +6,12 @@
 * curl
 * make
 * bash
+* jq
+* docker (test)
 
 == Install
 
-Simple one-liner is available in your terminal;
+Simple one-liner is available;
 
 [source, bash]
 ----
@@ -27,21 +29,11 @@ $ make install
 
 == Development
 
-=== Directory Structure
+=== Test
 
-.Directories and their roles
-|===
-| Dir | Description 
+Run install.sh in a docker container.
 
-| bin/
-| Commands
-
-| etc/
-| Mainly including scripts to prepare my environment (core-logic of this dotfiles).
-
-| home/
-| My dotfiles. They will be deployed by etc/deploy.sh.
-
-| lib/
-| Source codes referred from other directories.
-
+[source, bash]
+---
+$ make test
+---
