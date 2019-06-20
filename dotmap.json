@@ -1,0 +1,9 @@
+{
+  ".bashrc":    "$HOME/.bashrc",
+  ".tmux.conf": "$HOME/.tmux.conf",
+  ".zshenv":    "$HOME/.zshenv",
+  "nvim":       "$XDG_CONFIG_HOME/nvim",
+  "zsh":        "$XDG_CONFIG_HOME/zsh",
+  ".config/*":  "$XDG_CONFIG_HOME/*",
+  "fonts":      "$HOME/.local/share/fonts"
+}

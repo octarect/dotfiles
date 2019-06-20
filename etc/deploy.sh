@@ -21,35 +21,22 @@ link_children() {
     done
 }
 
-source ${HOME}/.dotenv
 
+source ${HOME}/.dotenv
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
-DOT_DEPLOY_PATH=${DOT_DIR}/home
-DOT_CONFIG_PATH=${DOT_DEPLOY_PATH}/config
-DOT_FONTS_PATH=${DOT_DEPLOY_PATH}/fonts
+DOTMAP_JSON="$(cat ${DOT_DIR}/dotmap.json)"
 
-########################################
-# files directly under $HOME
-########################################
-for src_path in $(find ${DOT_DEPLOY_PATH} -maxdepth 1 -type f)
+set -o noglob
+for src in $(echo "${DOTMAP_JSON}" | jq -r "keys[]")
 do
-    deploy ${src_path} ${HOME}/$(basename ${src_path})
-done
+  dst="$(echo "${DOTMAP_JSON}" | jq -r ".[\"${src}\"]")"
+  dst="$(eval echo "${dst}")"
 
-########################################
-# .config
-########################################
-mkdir -p ${XDG_CONFIG_HOME}
-for src_path in $(find ${DOT_CONFIG_PATH} -mindepth 1 -maxdepth 1)
-do
-    conf_name=$(realpath ${src_path} --relative-base ${DOT_CONFIG_PATH})
-    dst_path=${XDG_CONFIG_HOME}/${conf_name}
-    deploy ${src_path} ${dst_path}
+  if [[ "${src}" =~ /\*$ ]]; then
+    link_children $(dirname ${src}) $(dirname ${dst})
+  else
+    deploy ${src} ${dst}
+  fi
 done
-link_children ${DOT_CONFIG_PATH} ${XDG_CONFIG_HOME}
-
-########################################
-# font
-########################################
-link_children ${DOT_FONTS_PATH} ${HOME}/.local/share/fonts
+set +o noglob
