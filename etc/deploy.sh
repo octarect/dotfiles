@@ -32,6 +32,7 @@ for src in $(echo "${DOTMAP_JSON}" | jq -r "keys[]")
 do
   dst="$(echo "${DOTMAP_JSON}" | jq -r ".[\"${src}\"]")"
   dst="$(eval echo "${dst}")"
+  src="${DOT_DIR}/${src}"
 
   if [[ "${src}" =~ /\*$ ]]; then
     link_children $(dirname ${src}) $(dirname ${dst})

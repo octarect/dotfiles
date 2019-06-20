@@ -5,5 +5,5 @@
   "nvim":       "$XDG_CONFIG_HOME/nvim",
   "zsh":        "$XDG_CONFIG_HOME/zsh",
   ".config/*":  "$XDG_CONFIG_HOME/*",
-  "fonts":      "$HOME/.local/share/fonts"
+  "fonts/*":    "$HOME/.local/share/fonts/*"
 }
