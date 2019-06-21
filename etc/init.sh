@@ -32,6 +32,7 @@ greet
 
 source ${HOME}/.dotenv
 mkdir -p ${DOT_CACHE_DIR}
+mkdir -p ${DOT_LOCAL_DIR}/bin
 
 if [[ -z ${DOT_DIR} ]]; then
     echo '$DOT_DIR is required. Pleace make sure that ~/.dotenv exists.' >&2
