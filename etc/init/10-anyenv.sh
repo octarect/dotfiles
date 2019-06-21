@@ -25,8 +25,5 @@ else
   __dotlib::log info "rbenv is already installed."
 fi
 
-eval "$(${anyenv_bin} init -)"
-
-py36latest=$(pyenv install --list | grep -E "^\s*3.6.[0-9]$" | tail -n1 | sed 's/\s\s*//')
-pyenv install ${py36latest}
-pyenv global ${py36latest}
+# Install pyenv-virtualenv
+git clone https://github.com/pyenv/pyenv-virtualenv ${anyenv_path}/envs/pyenv/plugins/pyenv-virtualenv
