@@ -51,9 +51,9 @@ vmap <Space> [Space]
 execute 'nnoremap [Space]R :source ' . g:conf_dir . '/rc/init.vim<CR>'
 
 " Terminal mode
-if exists(':tnoremap')
-  " Open terminal
-  nnoremap [Space]t :terminal<CR>
-  " Normal mode (I cannot do VIM in VIM anymore)
-  tnoremap <C-j><C-j> <C-\><C-n>
-endif
+" if exists(':tnoremap')
+"   Open terminal
+"   nnoremap [Space]t :terminal<CR>
+"   Normal mode (I cannot do VIM in VIM anymore)
+"   tnoremap <C-j><C-j> <C-\><C-n>
+" endif

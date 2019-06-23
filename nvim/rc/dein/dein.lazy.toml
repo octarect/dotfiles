@@ -16,6 +16,16 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deol.nvim'
+on_source = 'denite.nvim'
+hook_add = '''
+  nnoremap <silent> [Space]t :<C-u>Deol zsh -no-start-insert<CR>
+'''
+hook_source = '''
+tnoremap <C-j><C-j> <C-\><C-n>
+'''
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = [ 'context_filetype.vim' ]
 on_i = 1
