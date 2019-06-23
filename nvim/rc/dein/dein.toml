@@ -35,6 +35,9 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+  let g:webdevicons_enable_denite = 1
+'''
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'
