@@ -69,6 +69,9 @@ zplugin load "stedolan/jq"
 zplugin ice from"gh" as"program"
 zplugin load "johanhaleby/kubetail"
 
+zplugin ice from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv" src"zhook.zsh"
+zplugin light direnv/direnv
+
 # Zsh completions
 zplugin light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
