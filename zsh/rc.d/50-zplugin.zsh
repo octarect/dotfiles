@@ -91,7 +91,7 @@ if __dotlib::util::has_cmd kubectl; then
   source <(kubectl completion zsh)
 fi
 
-# Syntax highlight future
+# Syntax highlight feature
 zplugin ice wait'0' atload'_zsh_highlight'
 zplugin light zdharma/fast-syntax-highlighting
 
@@ -99,7 +99,7 @@ zplugin light zdharma/fast-syntax-highlighting
 zplugin ice wait'0' atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
 
-# History search future
+# History search feature
 # It must be loaded after `zsh-syntax-highlighting`.
 # See README.md on its Github repo for details.
 zplugin light zsh-users/zsh-history-substring-search
