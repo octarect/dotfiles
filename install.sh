@@ -8,7 +8,7 @@ if ! type git; then
     exit 1
 fi
 
-git clone https://github.com/nbitmage/dotfiles -b ${DOT_BRANCH} ${DOT_DIR}
+git clone https://github.com/rkoder/dotfiles -b ${DOT_BRANCH} ${DOT_DIR}
 
 current_path=$(pwd)
 cd ${DOT_DIR}
