@@ -136,7 +136,7 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
-on_ft = 'tf'
+on_ft = 'terraform'
 hook_source = '''
   let g:terraform_fold_sections = 1
   let g:terraform_fmt_on_save = 1
