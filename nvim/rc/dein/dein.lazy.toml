@@ -169,3 +169,20 @@ on_ft = 'javascript'
 [[plugins]]
 repo = 'stephpy/vim-yaml'
 on_ft = 'yaml'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+hook_source = '''
+  let g:user_emmet_leader_key ='<C-Y>'
+  let g:user_emmet_complete_tag = 1
+  let g:user_emmet_settings = {
+  \ 'lang': 'ja',
+  \ 'html': {
+  \   'filters': 'html',
+  \ },
+  \ 'css': {
+  \   'filters': 'fc',
+  \ },
+  \}
+'''
