@@ -12,20 +12,8 @@ export SHELL=zsh
 
 export LESS="-F -g -i -M -R -S -w -X -z-4"
 if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+    export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-########################################
-# path
-########################################
-setopt no_global_rcs
-if [ -L /sbin ]; then
-    export path=(/bin /usr/bin)
-fi
-export path=(
-    /usr/local/bin(N-/)
-    ${path}
-)
 
 ########################################
 # configuration path
@@ -45,3 +33,17 @@ export GOROOT=`go env GOROOT`
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+########################################
+# path
+########################################
+setopt no_global_rcs
+if [ -L /sbin ]; then
+    export path=(/bin /usr/bin)
+fi
+export path=(
+    ${GOPATH}/bin(N-/)
+    /usr/local/bin(N-/)
+    ${path}
+)
+
