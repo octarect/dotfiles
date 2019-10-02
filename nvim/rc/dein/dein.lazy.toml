@@ -96,12 +96,13 @@ on_source = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
-on_map = { n = '<Plug>NERDCom' }
+on_map = '<Plug>NERDCom'
 hook_add = '''
   let g:NERDSpaceDelims=1
   let g:NERDDefaultAlign='left'
   let g:NERDCompactSexyComs = 1
   nmap <silent>co <Plug>NERDCommenterToggle
+  vmap <silent>co <Plug>NERDCommenterToggle
 '''
 
 [[plugins]]
