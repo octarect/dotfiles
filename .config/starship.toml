@@ -1,0 +1,4 @@
+[git_status]
+ahead = "^"
+behind = "v"
+deleted = "x"
