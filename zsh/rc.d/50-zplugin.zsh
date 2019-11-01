@@ -108,5 +108,5 @@ zplugin ice wait'0' as"program" from"gh" mv"gdown.pl -> gdown"
 zplugin load circulosmeos/gdown.pl
 
 # Load prompt.
-zplugin ice as'program' from'gh-r' atload'eval $(starship init zsh)' ver'v0.25.0'
+zplugin ice as'program' from'gh-r' mv'target/*/release/starship -> starship' atload'eval $(starship init zsh)'
 zplugin light starship/starship
