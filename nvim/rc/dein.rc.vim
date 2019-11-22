@@ -4,7 +4,7 @@
 
 let g:dein#install_max_processes = 16
 let g:dein#enable_notification = 1
-let g:dein#install_progress_type = 'none'
+let g:dein#install_progress_type = 'echo'
 let g:dein#install_log_filename = g:rc#cache_path . '/dein.log'
 
 let s:dein_path = g:rc#cache_path . '/dein'

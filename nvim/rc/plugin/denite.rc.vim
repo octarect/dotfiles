@@ -1,7 +1,7 @@
 call denite#custom#option('default', {
     \ 'source_names': 'short',
     \ 'split': 'floating',
-    \ 'matchers': 'matcher/fuzzy',
+    \ 'matchers': 'matcher/fruzzy',
     \ 'prompt': '>',
     \ 'start_filter': v:true,
     \ 'statusline': v:false,
