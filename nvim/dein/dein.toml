@@ -1,0 +1,34 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0
+rev = 'release'
+hook_add = "call rc#source_rc('plugin/coc.rc.vim')"
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+hook_add = '''
+    let g:loaded_matchparen = 1
+'''
+
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+merged = 0
+hook_add = '''
+    let g:spring_night_high_contrast = 1
+    let g:spring_night_highlight_terminal = 1
+    let g:spring_night_cterm_italic = 1
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+    let g:webdevicons_enable_denite = 1
+'''
+

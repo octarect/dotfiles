@@ -1,0 +1,9 @@
+{
+    "git.addedSign.text": "+",
+    "git.removedSign.text": "-",
+    "git.topRemovedSign.text": "-",
+    "git.changeRemovedSign.text": "*",
+    "git.virtualTextPrefix": " >> ",
+    "git.addGBlameToVirtualText": true,
+    "git.addGBlameToBufferVar": true
+}

@@ -1,0 +1,77 @@
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = 'vim-devicons'
+on_cmd = 'Denite'
+hook_source = "call rc#source_rc('plugin/denite.rc.vim')"
+hook_add = '''
+    nmap <silent> <Leader>df :<C-u>Denite file/rec<CR>
+    nmap <silent> <Leader>db :<C-u>Denite buffer<CR>
+    nmap <silent> <Leader>dg :<C-u>Denite grep<CR>
+    nmap <silent> <Leader>dm :<C-u>Denite menu<CR>
+    nmap <silent> <Leader>dp :<C-u>Denite dein<CR>
+    nmap <silent> <Leader>dc :<C-u>Denite colorscheme<CR>
+'''
+
+[[plugins]]
+repo = 'pocari/vim-denite-emoji'
+on_source = 'vim-emoji'
+hook_add = '''
+    nmap <silent> <Leader>de :<C-u>Denite emoji<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+on_source = 'denite.nvim'
+
+#-----------------------------------------------------------
+# Edit
+#-----------------------------------------------------------
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+on_map = '<Plug>NERDCom'
+hook_add = '''
+    let g:NERDSpaceDelims = 1
+    let g:NERDDefaultAlign = 'left'
+    let g:NERDCompactSexyComs = 1
+    nmap <silent>co <Plug>NERDCommenterToggle
+    vmap <silent>co <Plug>NERDCommenterToggle
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_cmd = 'EasyAlign'
+hook_add = '''
+    vnoremap <silent><Enter> :EasyAlign<cr>
+'''
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = { n = '<Plug>' }
+hook_add = '''
+    nmap <silent>j <Plug>(accelerated_jk_gj)
+    nmap <silent>k <Plug>(accelerated_jk_gk)
+'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
+
+#-----------------------------------------------------------
+# Language / FileType
+#-----------------------------------------------------------
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
