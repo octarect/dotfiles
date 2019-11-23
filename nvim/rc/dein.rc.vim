@@ -29,7 +29,7 @@ endif
 let s:dein_toml_paths = glob(g:rc#runtime_path . '/dein/*.toml', 1, 1)
 
 " Add local plugin list if exists
-let s:local_toml_path = rc#local#get_path('dein_local.toml')
+let s:local_toml_path = rc#local_config_path('dein_local.toml')
 if filereadable(s:local_toml_path)
     let s:dein_toml_paths += [s:local_toml_path]
 endif

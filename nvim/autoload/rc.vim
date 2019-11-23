@@ -73,3 +73,8 @@ augroup rc-color
     autocmd ColorScheme * call rc#source_rc('color.rc.vim')
     autocmd ColorScheme * call rc#cache_color()
 augroup END
+
+let s:local_config_path = expand('$HOME/.local/share/nvim/local')
+function! rc#local_config_path(name)
+    return s:local_config_path . '/' . a:name
+endfunction

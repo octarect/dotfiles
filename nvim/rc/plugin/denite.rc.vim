@@ -20,6 +20,17 @@ if executable('rg')
 endif
 
 let s:menus = {}
+let s:menus.configuration = {'description': '⚙  Configuration'}
+let s:menus.configuration.command_candidates = [
+    \ ['🍺 Colorscheme - Change colorscheme', 'Denite colorscheme'],
+    \ ['📝 Vim         - Edit vimrcs', 'Denite file/rec:' . g:rc#runtime_path],
+    \ ]
+let s:menus.plugin = {'description': '😎 Plugin'}
+let s:menus.plugin.file_candidates = [
+    \ ['💎 Plugin       - Normal plugins', fnamemodify($MYVIMRC, ':h') . '/dein/dein.toml'],
+    \ ['💎 Lazy Plugin  - Lazy-loaded plugins', fnamemodify($MYVIMRC, ':h') . '/dein/dein.lazy.toml'],
+    \ ['💎 Local Plugin - Local dein plugins', rc#local_config_path('dein_local.toml')],
+    \ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
 call denite#custom#source(
