@@ -22,9 +22,9 @@ execute 'nnoremap <Leader>rc :source $MYVIMRC<CR>'
 nnoremap <F10> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Terminal mode
-if exists(':tnoremap')
-    " Open terminal
-    nnoremap <Leader>t :terminal<CR>
-    " Normal mode (I cannot do VIM in VIM anymore)
-    tnoremap <C-j><C-j> <C-\><C-n>
-endif
+" if exists(':tnoremap')
+"     " Open terminal
+"     nnoremap <Leader>t :terminal<CR>
+"     " Normal mode (I cannot do VIM in VIM anymore)
+"     tnoremap <C-j><C-j> <C-\><C-n>
+" endif
