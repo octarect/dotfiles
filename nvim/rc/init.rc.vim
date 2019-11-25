@@ -2,6 +2,11 @@ if &compatible
     set nocompatible
 endif
 
+augroup MyAutoCmd
+    autocmd!
+    autocmd VimResized * wincmd =
+augroup END
+
 " Use <Leader> in global plugin
 let g:mapleader = "\<Space>"
 " Use <LocalLeader> in filetype plugin
@@ -46,11 +51,6 @@ endif
 
 call rc#source_rc('options.rc.vim')
 call rc#source_rc('mappings.rc.vim')
-
-augroup MyAutoCmd
-    autocmd!
-    autocmd VimResized * wincmd =
-augroup END
 
 if has('nvim')
     set termguicolors
