@@ -1,3 +1,10 @@
+let s:ignored_globs = ['.git/*', 'vendor/*']
+let s:glob_opts = []
+for pat in s:ignored_globs
+  call add(s:glob_opts, '--glob')
+  call add(s:glob_opts, '!' . pat)
+endfor
+
 call denite#custom#option('default', {
     \ 'source_names': 'short',
     \ 'split': 'floating',
@@ -10,13 +17,13 @@ call denite#custom#option('default', {
 if executable('rg')
   call denite#custom#var('_', 'command', ['rg', ''])
   call denite#custom#var('file/rec', 'command',
-      \ ['rg', '--files', '--follow', '--hidden', '--glob', '!.git'])
+      \ ['rg', '--files', '--follow', '--hidden'] + s:glob_opts)
   call denite#custom#var('grep', 'command', ['rg'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'final_opts', [])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'default_opts',
-      \ ['-i', '--vimgrep', '--no-heading'])
+      \ ['-i', '--vimgrep', '--no-heading'] + s:glob_opts)
 endif
 
 let s:menus = {}
