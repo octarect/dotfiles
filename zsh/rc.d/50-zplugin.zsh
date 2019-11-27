@@ -46,6 +46,9 @@ zplugin load "peco/peco"
 zplugin ice from"gh-r" as"program" mv"rancher-*/rancher -> rancher"
 zplugin load "rancher/cli"
 
+zplugin ice from"gh-r" as"program" mv"rio-* -> rio"
+zplugin load "rancher/rio"
+
 # pixterm
 zplugin ice from"gh" as"program" atinit"go get -d && go build -o pixterm" pick"pixterm"
 zplugin load "eliukblau/pixterm"
