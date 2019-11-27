@@ -35,7 +35,7 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_rrhelper          = 1
 let g:loaded_tutor_mode_plugin = 1
 let g:loaded_logiPat           = 1
-let g:loaded_matchit           = 1
+" let g:loaded_matchit           = 1
 let g:loaded_matchparen        = 1
 
 "-----------------------------------------------------------
