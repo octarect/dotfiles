@@ -96,6 +96,10 @@ repo = 'cohama/lexima.vim'
 on_i = 1
 
 [[plugins]]
+repo = 'itchyny/vim-cursorword'
+on_event = ['BufRead']
+
+[[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
 
