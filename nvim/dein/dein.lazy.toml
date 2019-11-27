@@ -86,6 +86,7 @@ hook_add = '''
 repo = 'rhysd/accelerated-jk'
 on_map = { n = '<Plug>' }
 hook_add = '''
+  let g:accelerated_jk_acceleration_table = [3,5,8,12,16,20,24]
   nmap <silent>j <Plug>(accelerated_jk_gj)
   nmap <silent>k <Plug>(accelerated_jk_gk)
 '''
