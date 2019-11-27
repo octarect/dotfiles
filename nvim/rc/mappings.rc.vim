@@ -5,7 +5,7 @@
 " Tab
 let s:maximum_tab_number = 9
 for i in range(1, s:maximum_tab_number)
-    execute 'nnoremap <silent> t' . i . ' :<C-u>tabnext' . i . '<CR>' 
+  execute 'nnoremap <silent> t' . i . ' :<C-u>tabnext' . i . '<CR>'
 endfor
 nnoremap <silent> tc :tabnew<CR>
 nnoremap <silent> tq :tabclose<CR>
@@ -23,8 +23,8 @@ nnoremap <F10> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Terminal mode
 " if exists(':tnoremap')
-"     " Open terminal
-"     nnoremap <Leader>t :terminal<CR>
-"     " Normal mode (I cannot do VIM in VIM anymore)
-"     tnoremap <C-j><C-j> <C-\><C-n>
+"   " Open terminal
+"   nnoremap <Leader>t :terminal<CR>
+"   " Normal mode (I cannot do VIM in VIM anymore)
+"   tnoremap <C-j><C-j> <C-\><C-n>
 " endif

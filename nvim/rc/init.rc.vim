@@ -1,10 +1,10 @@
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
 augroup MyAutoCmd
-    autocmd!
-    autocmd VimResized * wincmd =
+  autocmd!
+  autocmd VimResized * wincmd =
 augroup END
 
 " Use <Leader> in global plugin
@@ -46,13 +46,13 @@ call rc#source_rc('dein.rc.vim')
 
 filetype plugin indent on
 if has('vim_starting')
-    syntax enable
+  syntax enable
 endif
 
 call rc#source_rc('options.rc.vim')
 call rc#source_rc('mappings.rc.vim')
 
 if has('nvim')
-    set termguicolors
+  set termguicolors
 endif
 call rc#init_color()

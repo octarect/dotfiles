@@ -35,10 +35,10 @@ let g:lightline = {
     \}
 
 function! LightlineTabIcon(n) abort
-    let buflist  = tabpagebuflist(a:n)
-    let winnr    = tabpagewinnr(a:n)
-    let filename = expand('#' . buflist[winnr - 1] . ':f')
-    return WebDevIconsGetFileTypeSymbol(filename)
+  let buflist  = tabpagebuflist(a:n)
+  let winnr    = tabpagewinnr(a:n)
+  let filename = expand('#' . buflist[winnr - 1] . ':f')
+  return WebDevIconsGetFileTypeSymbol(filename)
 endfunction
 
 function! LightlineFileName(n) abort

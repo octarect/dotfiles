@@ -1,21 +1,26 @@
 [ftplugin]
-html = '''
-setlocal tabstop=2
-setlocal shiftwidth=2
+vim = '''
+  setlocal tabstop=2
+  setlocal shiftwidth=2
 '''
 
 yaml = '''
-setlocal tabstop=2
-setlocal shiftwidth=2
+  setlocal tabstop=2
+  setlocal shiftwidth=2
 '''
 
 make = '''
-setlocal tabstop=4
-setlocal shiftwidth=4
-setlocal noexpandtab
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal noexpandtab
+'''
+
+html = '''
+  setlocal tabstop=2
+  setlocal shiftwidth=2
 '''
 
 sass = '''
-setlocal tabstop=4
-setlocal noexpandtab
+  setlocal tabstop=4
+  setlocal noexpandtab
 '''
