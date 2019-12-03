@@ -88,3 +88,12 @@ set listchars=tab:>·,nbsp:+,trail:·,extends:→,precedes:←
 
 " Height of commnad-line window
 set cmdheight=2
+
+" Transparency
+set pumblend=15
+augroup Transparent
+  autocmd!
+  autocmd FileType denite set winblend=10
+  autocmd FileType denite-filter set winblend=10
+  autocmd FileType deol set winblend=10
+augroup END
