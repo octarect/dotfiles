@@ -1,8 +1,14 @@
 {
-    "git.addedSign.text": "+",
-    "git.removedSign.text": "-",
-    "git.topRemovedSign.text": "-",
-    "git.changeRemovedSign.text": "*",
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+    "git.addedSign.text": "█",
+    "git.removedSign.text": "█",
+    "git.changedSign.text": "█",
+    "git.topRemovedSign.text": "█",
+    "git.changeRemovedSign.text": "█",
     "git.virtualTextPrefix": " >> ",
     "git.addGBlameToVirtualText": true,
     "git.addGBlameToBufferVar": true

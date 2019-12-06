@@ -21,3 +21,9 @@ endif
 if has('nvim') || has('patch-7.4.237')
   hi EndOfBuffer gui=NONE guifg=#2c2c2c
 endif
+
+" Highlight groups for gitgutter
+hi GitGutterAdd          ctermfg=2 guifg=#00e676 ctermbg=NONE guibg=NONE
+hi GitGutterChange       ctermfg=3 guifg=#ffc400 ctermbg=NONE guibg=NONE
+hi GitGutterChangeDelete ctermfg=3 guifg=#ffc400 ctermbg=NONE guibg=NONE
+hi GitGutterDelete       ctermfg=1 guifg=#ff3d00 ctermbg=NONE guibg=NONE
