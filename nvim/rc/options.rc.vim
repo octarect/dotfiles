@@ -90,7 +90,7 @@ set listchars=tab:>·,nbsp:+,trail:·,extends:→,precedes:←
 set cmdheight=2
 
 " Transparency
-set pumblend=10
+" set pumblend=10
 augroup Transparent
   autocmd!
   autocmd FileType denite set winblend=5
