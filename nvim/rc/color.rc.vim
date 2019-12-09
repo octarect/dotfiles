@@ -9,7 +9,7 @@ function! s:get_highlight(group, key)
 endfunction
 
 hi LineNr ctermbg=NONE ctermfg=252 guibg=NONE guifg=252
-hi Whitespace ctermfg=96 ctermbg=NONE
+hi Whitespace ctermfg=96 guifg=#b0bec5 ctermbg=NONE guibg=NONE
 hi VertSplit ctermfg=Black guifg=Black guibg=NONE ctermbg=NONE
 hi SignColumn ctermfg=187 ctermbg=NONE guifg=#ebdbb2 guibg=NONE guisp=NONE cterm=NONE gui=NONE
 
