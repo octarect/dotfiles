@@ -25,7 +25,13 @@ html = '''
   setlocal shiftwidth=2
 '''
 
+javascript = '''
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+'''
+
 sass = '''
   setlocal tabstop=4
+  setlocal shiftwidth=4
   setlocal noexpandtab
 '''
