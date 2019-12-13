@@ -95,5 +95,5 @@ augroup Transparent
   autocmd!
   autocmd FileType denite set winblend=5
   autocmd FileType denite-filter set winblend=5
-  autocmd FileType deol set winblend=5
+  " autocmd FileType deol set winblend=5
 augroup END
