@@ -24,3 +24,12 @@ endfunction
 " coc-git
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
+
+augroup MyCocAutoCmd
+  autocmd!
+  autocmd FileType go call <SID>coc_go_settings()
+augroup END
+
+function! s:coc_go_settings() abort
+  nmap ms :<C-u>CocCommand go.test.toggle<CR>
+endfunction

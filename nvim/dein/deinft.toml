@@ -35,3 +35,9 @@ sass = '''
   setlocal shiftwidth=4
   setlocal noexpandtab
 '''
+
+go = '''
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal noexpandtab
+'''
