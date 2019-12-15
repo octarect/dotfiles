@@ -6,8 +6,9 @@ let g:coc_status_error_sign = 'x'
 let g:coc_status_warning_sign = '!'
 let g:coc_global_extensions = [
     \ 'coc-marketplace',
-    \ 'coc-vimlsp',
     \ 'coc-git',
+    \ 'coc-vimlsp',
+    \ 'coc-go',
     \ ]
 
 " Use <TAB> for trigger completion with characters ahead and navigate.
