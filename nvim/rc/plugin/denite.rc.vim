@@ -38,6 +38,9 @@ let s:menus.plugin.file_candidates = [
     \ ['💎 Lazy Plugin  - Lazy-loaded plugins', fnamemodify($MYVIMRC, ':h') . '/dein/dein.lazy.toml'],
     \ ['💎 Local Plugin - Local dein plugins', rc#local_config_path('dein_local.toml')],
     \ ]
+let s:menus.plugin.command_candidates = [
+    \ ['🔃 Recache', 'call dein#recache_runtimepath()'],
+    \ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
 call denite#custom#source(
