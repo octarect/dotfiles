@@ -140,3 +140,32 @@ hook_source = '''
   let g:go_doc_keywordprg_enabled = 0
   nnoremap <LocalLeader>t :<C-u>GoTest<CR>
 '''
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+hook_source = '''
+  let g:vim_markdown_folding_disabled = 1
+  nnoremap <LocalLeader>t :<C-u>TableFormat<CR>
+  nnoremap <LocalLeader>i :<C-u>HeaderIncrease<CR>
+  nnoremap <LocalLeader>d :<C-u>HeaderDecrease<CR>
+'''
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_source = 'vim-markdown'
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_source = 'vim-markdown'
+
+[[plugins]]
+repo = 'previm/previm'
+on_ft = ['markdown', 'asciidoc']
+hook_source = '''
+  nnoremap <LocalLeader>r :<C-u>PrevimOpen<CR>
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_source = 'previm'
