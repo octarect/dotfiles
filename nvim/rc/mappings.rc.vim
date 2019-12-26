@@ -21,6 +21,9 @@ execute 'nnoremap <Leader>rc :source $MYVIMRC<CR>'
 " Color Debugging
 nnoremap <F10> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
+" Remap default keys
+nnoremap M m
+
 " Terminal mode
 " if exists(':tnoremap')
 "   " Open terminal
