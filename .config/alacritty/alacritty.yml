@@ -220,15 +220,15 @@ colors:
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black:   '0x333333'
-    red:     '0xf2777a'
-    green:   '0x99cc99'
-    yellow:  '0xffcc66'
-    blue:    '0x6699cc'
-    magenta: '0xcc99cc'
-    cyan:    '0x66cccc'
-    white:   '0xdddddd'
+  # dim:
+  #   black:   '0x333333'
+  #   red:     '0xf2777a'
+  #   green:   '0x99cc99'
+  #   yellow:  '0xffcc66'
+  #   blue:    '0x6699cc'
+  #   magenta: '0xcc99cc'
+  #   cyan:    '0x66cccc'
+  #   white:   '0xdddddd'
 
   # Indexed Colors
   #
@@ -238,7 +238,14 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-  indexed_colors: []
+  # indexed_colors: []
+  indexed_colors:
+    - { index: 16, color: "0xdc9656" }
+    - { index: 17, color: "0xa26946" }
+    - { index: 18, color: "0x282828" }
+    - { index: 19, color: "0x383838" }
+    - { index: 20, color: "0xb8b8b8" }
+    - { index: 21, color: "0xe8e8e8" }
 
 # Visual Bell
 #
