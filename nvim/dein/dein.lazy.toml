@@ -169,3 +169,11 @@ hook_source = '''
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_source = 'previm'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
+hook_source = '''
+  " let g:terraform_fold_sections = 1
+  let g:terraform_fmt_on_save = 1
+'''
