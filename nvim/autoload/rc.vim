@@ -67,6 +67,11 @@ function! rc#cache_color() abort
   endif
 endfunction
 
+function! rc#get_highlight(group, key)
+  let l:output = execute('hi ' . a:group)
+  return matchstr(output, a:key . '=\zs\S*')
+endfunction
+
 augroup rc-color
   autocmd!
   autocmd ColorSchemePre * hi clear

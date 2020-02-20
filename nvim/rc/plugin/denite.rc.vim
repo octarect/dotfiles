@@ -55,7 +55,10 @@ augroup rc-plugin-denite
 augroup END
 
 function! s:configure() abort
-  hi! link CursorLine Visual
+  if rc#get_highlight('Visual', 'guibg') !=? rc#get_highlight('Pmenu', 'guibg')
+    hi! link CursorLine Visual
+  endif
+  " hi! link CursorLine Search
   nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
   nnoremap <silent><buffer><expr> t       denite#do_map('do_action', 'tabopen')
   nnoremap <silent><buffer><expr> v       denite#do_map('do_action', 'vsplit')
