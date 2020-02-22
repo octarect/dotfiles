@@ -14,7 +14,7 @@ if rc#get_highlight('Pmenu', 'guibg') ==# 'Magenta'
 endif
 
 if has('nvim') || has('patch-7.4.237')
-  hi EndOfBuffer gui=NONE guifg=#2c2c2c
+  hi EndOfBuffer gui=NONE guibg=NONE
 endif
 
 " Highlight groups for gitgutter
