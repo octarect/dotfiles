@@ -4,14 +4,18 @@ set -e
 
 NVIM_PREFIX="${HOME}/.local"
 NVIM_BUILD_TMP="/tmp/nvim-build-$(date "+%Y%m%d%H%M%S")"
+NVIM_GIT_REF=master
+NVIM_INSTALL_PYENV=0
 
 cur_dir="$(pwd)"
-git clone https://github.com/neovim/neovim ${NVIM_BUILD_TMP}
+git clone -b ${NVIM_GIT_REF} https://github.com/neovim/neovim ${NVIM_BUILD_TMP}
 cd ${NVIM_BUILD_TMP}
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${NVIM_PREFIX}"
 make install
 cd ${cur_dir}
 rm -rf ${NVIM_BUILD_TMP}
+
+[[ "${NVIM_INSTALL_PYENV}" = "0" ]] && exit 0
 
 ########################################
 # Provider: python
