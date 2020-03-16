@@ -1,0 +1,54 @@
+#!/bin/bash
+TF_VERSION_DEFAULT=0.12.23
+TF_VERSION=${TF_VERSION:-$TF_VERSION_DEFAULT}
+DOCKER_ATTACH_OPT=-it
+TF_CLI_ARGS_plan="--parallelism=32"
+TF_CLI_ARGS_apply="--parallelism=32"
+TF_CLI_ARGS_destroy="--parallelism=32"
+
+tf_image=hashicorp/terraform:$TF_VERSION
+tf_env_vars=$(env | grep -e '^TF' | xargs -I{} echo "-e {}")
+tf_container_name=tf-$(echo $(pwd) | md5sum | awk '{ print substr($1, 1, 6) }')
+
+tf_container_exists() {
+    result=$(docker container ls -q -f name=$tf_container_name)
+    test -n "$result"
+}
+
+if [ "$1" = "container" ]; then
+    case "$2" in
+        start)
+            if ! tf_container_exists; then
+                docker container run --rm -d \
+                    -w /work -v $(pwd):/work --entrypoint= \
+                    --name $tf_container_name $tf_image /usr/bin/tail -f
+            fi
+            ;;
+        kill)
+            if tf_container_exists; then
+                docker container kill $tf_container_name
+            fi
+            ;;
+        ls)
+            docker container ls -f name=tf-
+            ;;
+        *)
+            echo Invalid subcommand: $2
+            exit 1
+            ;;
+    esac
+    exit 0
+fi
+
+if [[ "$@" =~ fmt ]]; then
+    DOCKER_ATTACH_OPT=-i
+fi
+
+if tf_container_exists; then
+    docker container exec $DOCKER_ATTACH_OPT \
+        $tf_env_vars $tf_container_name terraform $@
+else
+    docker container run --rm $DOCKER_ATTACH_OPT \
+        -w /work -v $(pwd):/work \
+        $tf_env_vars $tf_image $@
+fi
