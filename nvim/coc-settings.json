@@ -11,5 +11,12 @@
     "git.changeRemovedSign.text": "█",
     "git.virtualTextPrefix": " >> ",
     "git.addGBlameToVirtualText": true,
-    "git.addGBlameToBufferVar": true
+    "git.addGBlameToBufferVar": true,
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-lsp",
+            "filetypes": ["terraform"],
+            "initializationOptions": {}
+        }
+    }
 }
