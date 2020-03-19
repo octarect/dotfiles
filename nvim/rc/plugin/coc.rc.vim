@@ -10,6 +10,8 @@ let g:coc_global_extensions = [
     \ 'coc-tabnine',
     \ 'coc-vimlsp',
     \ 'coc-go',
+    \ 'coc-tsserver',
+    \ 'coc-eslint',
     \ ]
 
 " Use <TAB> for trigger completion with characters ahead and navigate.

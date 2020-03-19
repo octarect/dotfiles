@@ -12,6 +12,10 @@
     "git.virtualTextPrefix": " >> ",
     "git.addGBlameToVirtualText": true,
     "git.addGBlameToBufferVar": true,
+    "tsserver.enableJavascript": "true",
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+    "eslint.autoFix": true,
+    "eslint.autoFixOnSave": true,
     "languageserver": {
         "terraform": {
             "command": "terraform-lsp",
