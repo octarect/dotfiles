@@ -62,6 +62,13 @@ deol = '''
 setlocal signcolumn=no
 '''
 
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
+on_source = 'denite.nvim'
+hook_add = '''
+  nnoremap <silent> <Leader>dj :<C-u>Denite junkfile:new junkfile<CR>
+'''
+
 #-----------------------------------------------------------
 # Edit
 #-----------------------------------------------------------
