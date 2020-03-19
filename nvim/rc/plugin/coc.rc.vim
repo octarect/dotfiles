@@ -7,6 +7,7 @@ let g:coc_status_warning_sign = '!'
 let g:coc_global_extensions = [
     \ 'coc-marketplace',
     \ 'coc-snippets',
+    \ 'coc-word',
     \ 'coc-git',
     \ 'coc-tabnine',
     \ 'coc-vimlsp',

@@ -9,6 +9,8 @@ hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
   let g:loaded_matchparen = 1
+  let g:parenmatch_highlight = 0
+  highlight link ParenMatch MatchParen
 '''
 
 [[plugins]]

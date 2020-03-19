@@ -83,6 +83,7 @@ on_event = 'InsertEnter'
 [[plugins]]
 repo = 'honza/vim-snippets'
 depends = ['coc.nvim']
+on_source = 'coc.nvim'
 
 #-----------------------------------------------------------
 # Edit
