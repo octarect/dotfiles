@@ -70,6 +70,21 @@ hook_add = '''
 '''
 
 #-----------------------------------------------------------
+# Completion & Intelligence
+#-----------------------------------------------------------
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0
+rev = 'release'
+hook_source = "call rc#source_rc('plugin/coc.rc.vim')"
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+depends = ['coc.nvim']
+
+#-----------------------------------------------------------
 # Edit
 #-----------------------------------------------------------
 

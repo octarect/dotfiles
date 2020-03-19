@@ -6,6 +6,7 @@ let g:coc_status_error_sign = 'x'
 let g:coc_status_warning_sign = '!'
 let g:coc_global_extensions = [
     \ 'coc-marketplace',
+    \ 'coc-snippets',
     \ 'coc-git',
     \ 'coc-tabnine',
     \ 'coc-vimlsp',
@@ -15,8 +16,11 @@ let g:coc_global_extensions = [
     \ ]
 
 " Use <TAB> for trigger completion with characters ahead and navigate.
+" Instead of "/<C-n>" coc#_select_confirm is also OK if you want to select
+" first item immediately.
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])\<CR>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 

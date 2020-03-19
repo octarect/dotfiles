@@ -2,12 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-merged = 0
-rev = 'release'
-hook_add = "call rc#source_rc('plugin/coc.rc.vim')"
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
 
