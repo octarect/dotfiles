@@ -5,6 +5,8 @@ endif
 augroup MyAutoCmd
   autocmd!
   autocmd VimResized * wincmd =
+  autocmd BufWritePost,FileWritePost, *.vim,*.toml
+    \ source $MYVIMRC | redraw
 augroup END
 
 " Use <Leader> in global plugin
@@ -55,4 +57,9 @@ call rc#source_rc('mappings.rc.vim')
 if has('nvim')
   set termguicolors
 endif
-call rc#init_color()
+
+if ! exists('g:colors_name')
+  call rc#init_color()
+endif
+
+set secure
