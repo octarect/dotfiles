@@ -58,8 +58,6 @@ if has('nvim')
   set termguicolors
 endif
 
-if ! exists('g:colors_name')
-  call rc#init_color()
-endif
+call theme#init()
 
 set secure
