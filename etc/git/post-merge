@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# vim: set tabstop=4 shiftwidth=4:
+#!/bin/bash
+# vi: set ts=4 sw=4:
 
 source ${HOME}/.dotenv
 source ${DOT_DIR}/lib/dotlib/init.sh
@@ -20,7 +20,7 @@ do
                 cmd="$(echo ${line} | sed -e 's/^\$ *//')"
                 if [[ -n "${cmd}" ]]; then
                     __dotlib::log info "Hook found: ${cmd}"
-                    ${cmd}
+                    bash -c "${cmd}"
                 fi
             fi
         done

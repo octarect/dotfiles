@@ -12,5 +12,3 @@ source ${HOME}/.dotenv
 source ${DOT_DIR}/lib/dotlib/init.sh
 
 export PATH="${DOT_DIR}/bin ${PATH}"
-
-__dotlib::load_nix

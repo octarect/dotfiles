@@ -25,11 +25,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 #################################
-# Enable Nix package manager
-#################################
-__dotlib::load_nix
-
-#################################
 # History
 #################################
 export HISTFILE="${DOT_CACHE_DIR}/zsh/.zhistory"
