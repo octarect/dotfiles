@@ -12,7 +12,7 @@ new_commit_hashes="$(git rev-list ORIG_HEAD..HEAD)"
 echo "$(git rev-list ORIG_HEAD..HEAD)" | while read commit_hash
 do
     __dotlib::log info "Checking ${commit_hash}"
-    body="$(git show -q --format="%b")"
+    body="$(git show ${commit_hash} -q --format="%b")"
     if [[ -n "${body}" ]]; then
         echo "${body}" | while read line
         do
