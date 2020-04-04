@@ -51,10 +51,15 @@ zinit load "stedolan/jq"
 zinit ice from"gh-r" as"program" mv"yq_* -> yq"
 zinit load "mikefarah/yq"
 
+# Directory specific environment variable
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
     atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh"
 zinit light "direnv/direnv"
+
+# grep tool
+zinit ice from"gh-r" as"program" pick"ripgrep*/rg"
+zinit light "BurntSushi/ripgrep"
 
 if __dotlib::util::has_cmd kubectl; then
     zinit ice from"gh" as"program"
