@@ -40,7 +40,7 @@ if [ "$1" = "container" ]; then
     exit 0
 fi
 
-if [[ "$@" =~ fmt ]]; then
+if [[ "$@" =~ fmt|output|show|version ]]; then
     DOCKER_ATTACH_OPT=-i
 fi
 
