@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CIVO_IMAGE=civo/cli:latest
+JSON_PATH="${JSON_PATH:-$HOME/.civo.json}"
+
+if ! command -v docker 2>&1 >/dev/null; then
+    echo "You need to install docker first :_("
+    exit 1
+fi
+
+if [ ! -f $JSON_PATH ]; then
+    touch $JSON_PATH
+    chmod 666 $JSON_PATH
+fi
+
+docker container run -it --rm \
+    -v $HOME/.civo.json:/home/user/.civo.json \
+    $CIVO_IMAGE $@
