@@ -45,7 +45,11 @@ zinit ice from"gh-r" as"program"
 zinit load "cjbassi/ytop"
 
 # Data interchange
-zinit ice from"gh-r" as"program" mv"jq-* -> jq"
+if [ "$(uname)" = "Darwin" ]; then
+    zinit ice from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick:"*osx*"
+else
+    zinit ice from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick:"*linux64*"
+fi
 zinit load "stedolan/jq"
 
 zinit ice from"gh-r" as"program" mv"yq_* -> yq"
