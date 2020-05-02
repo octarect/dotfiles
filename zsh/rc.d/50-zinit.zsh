@@ -69,7 +69,11 @@ if __dotlib::util::has_cmd kubectl; then
     zinit ice from"gh" as"program"
     zinit load "johanhaleby/kubetail"
 
-    # Rancher
+    # OpenFaaS
+    zinit ice from"gh-r" as"program" mv"faas-cli-* -> faas"
+    zinit load "openfaas/faas-cli"
+
+    # Rancher rio
     zinit ice from"gh-r" as"program" mv"rio-* -> rio"
     zinit load "rancher/rio"
     source <(kubectl completion zsh)
