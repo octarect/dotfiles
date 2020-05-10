@@ -1,11 +1,24 @@
 #!/bin/bash
 
-CIVO_IMAGE=civo/cli:latest
+set -e
+
+SCRIPT_PATH=$(cd $(dirname $0); pwd)
 JSON_PATH="${JSON_PATH:-$HOME/.civo.json}"
+KUBE_CONFIG="${KUBE_CONFIG:-$HOME/.kube/config}"
+CIVO_IMAGE=civo-cli
+CIVO_REBUILD=${CIVO_REBUILD:-0}
 
 if ! command -v docker 2>&1 >/dev/null; then
     echo "You need to install docker first :_("
     exit 1
+fi
+
+if [ "$CIVO_REBUILD" = "1" -o "$(docker image ls -q $CIVO_IMAGE 2> /dev/null)" = "" ]; then
+    docker image build \
+        --build-arg CONF_UID=$(id -u $USER) \
+        --build-arg CONF_GID=$(id -g $USER) \
+        -t $CIVO_IMAGE \
+        -f $SCRIPT_PATH/../lib/docker-civo/Dockerfile .
 fi
 
 if [ ! -f $JSON_PATH ]; then
@@ -13,6 +26,11 @@ if [ ! -f $JSON_PATH ]; then
     chmod 666 $JSON_PATH
 fi
 
+if [ ! -f $KUBE_CONFIG ]; then
+    touch $KUBE_CONFIG
+fi
+
 docker container run -it --rm \
-    -v $HOME/.civo.json:/home/user/.civo.json \
+    -v $JSON_PATH:/home/user/.civo.json \
+    -v $KUBE_CONFIG:/home/user/.kube/config \
     $CIVO_IMAGE $@
