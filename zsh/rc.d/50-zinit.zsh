@@ -69,6 +69,9 @@ if __dotlib::util::has_cmd kubectl; then
     zinit ice from"gh" as"program"
     zinit load "johanhaleby/kubetail"
 
+    zinit ice from"gh-r" as"program" mv"k9s-* -> k9s"
+    zinit load "derailed/k9s"
+
     # OpenFaaS
     zinit ice from"gh-r" as"program" mv"faas-cli-* -> faas"
     zinit load "openfaas/faas-cli"
