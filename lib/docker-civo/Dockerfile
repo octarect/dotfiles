@@ -1,9 +1,4 @@
-FROM civo/cli:latest
-
-ARG CONF_UID=9001
-ARG CONF_GID=9001
-
-USER root
+FROM civo/cli:v0.6.6
 
 RUN apk add --update --no-cache --virtual .deps curl shadow
 
@@ -12,10 +7,5 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
  && chmod +x ./kubectl \
  && mv ./kubectl /usr/local/bin/kubectl
 
-# Modify UID and GID
-RUN usermod -u $CONF_UID -o user
-
 # Clean up
 RUN apk del .deps
-
-USER user

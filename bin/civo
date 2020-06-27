@@ -15,8 +15,6 @@ fi
 
 if [ "$CIVO_REBUILD" = "1" -o "$(docker image ls -q $CIVO_IMAGE 2> /dev/null)" = "" ]; then
     docker image build \
-        --build-arg CONF_UID=$(id -u $USER) \
-        --build-arg CONF_GID=$(id -g $USER) \
         -t $CIVO_IMAGE \
         -f $SCRIPT_PATH/../lib/docker-civo/Dockerfile .
 fi
@@ -31,6 +29,6 @@ if [ ! -f $KUBE_CONFIG ]; then
 fi
 
 docker container run -it --rm \
-    -v $JSON_PATH:/home/user/.civo.json \
-    -v $KUBE_CONFIG:/home/user/.kube/config \
+    -v $JSON_PATH:/.civo.json \
+    -v $KUBE_CONFIG:/root/.kube/config \
     $CIVO_IMAGE $@
