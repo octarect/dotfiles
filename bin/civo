@@ -15,6 +15,7 @@ fi
 
 if [ "$CIVO_REBUILD" = "1" -o "$(docker image ls -q $CIVO_IMAGE 2> /dev/null)" = "" ]; then
     docker image build \
+        --pull \
         -t $CIVO_IMAGE \
         -f $SCRIPT_PATH/../lib/docker-civo/Dockerfile .
 fi

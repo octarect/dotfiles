@@ -1,4 +1,4 @@
-FROM civo/cli:v0.6.6
+FROM civo/cli:latest
 
 RUN apk add --update --no-cache --virtual .deps curl shadow
 
