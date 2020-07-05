@@ -204,3 +204,7 @@ hook_source = '''
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ["html", "eruby", "htmldjango"]
+
+[[plugins]]
+repo = 'elixir-editors/vim-elixir'
+on_ft = 'elixir'
