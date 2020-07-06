@@ -75,7 +75,7 @@ set nowritebackup
 set undofile
 let &g:undodir = g:rc#cache_path . '/undo'
 
-set shortmess=aTIc
+set shortmess=aTc
 
 " Enable cycle-completion for filename in command
 set wildmenu
