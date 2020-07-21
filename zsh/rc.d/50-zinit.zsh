@@ -65,6 +65,10 @@ zinit light "direnv/direnv"
 zinit ice from"gh-r" as"program" pick"ripgrep*/rg"
 zinit light "BurntSushi/ripgrep"
 
+zinit ice from"gh-r" as"program" mv"scw-* -> scw" \
+    atload'source <(scw autocomplete script shell=zsh)'
+zinit load "scaleway/scaleway-cli"
+
 if __dotlib::util::has_cmd kubectl; then
     zinit ice from"gh" as"program"
     zinit load "johanhaleby/kubetail"
