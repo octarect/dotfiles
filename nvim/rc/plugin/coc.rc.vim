@@ -14,6 +14,7 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-tsserver',
     \ 'coc-eslint',
+    \ 'coc-elixir',
     \ ]
 
 " Use <TAB> for trigger completion with characters ahead and navigate.

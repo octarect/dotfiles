@@ -16,7 +16,6 @@
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
     "eslint.autoFix": true,
     "eslint.autoFixOnSave": true,
-    "elixir.pathToElixirLS": "~/.local/lib/elixir-ls/language_server.sh",
     "languageserver": {
         "terraform": {
             "command": "terraform-lsp",
