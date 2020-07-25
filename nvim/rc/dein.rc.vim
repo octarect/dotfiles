@@ -45,6 +45,13 @@ for toml_path in s:dein_toml_paths
   endif
 endfor
 
+if has('nvim-0.5')
+  call dein#load_toml(
+    \ g:rc#runtime_path . '/dein/experimental/nvim_lsp.lazy.toml',
+    \ { 'lazy': 1 }
+    \ )
+end
+
 call dein#end()
 call dein#save_state()
 

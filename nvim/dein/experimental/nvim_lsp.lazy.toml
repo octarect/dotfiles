@@ -1,0 +1,66 @@
+[[plugins]]
+repo = 'neovim/nvim-lsp'
+merged = 0
+on_if = 'has("nvim-0.5")'
+on_cmd = ['LspInstall', 'LspInstallInfo']
+hook_add = '''
+function! ConfigureLsp() abort
+  setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = ['context_filetype.vim', 'deoplete-lsp', 'float-preview.nvim']
+on_i = 1
+hook_source = '''
+call deoplete#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete-lsp'
+
+[[plugins]]
+repo = 'ncm2/float-preview.nvim'
+
+[plugins.ftplugin]
+elixir = '''
+if has('nvim-0.5')
+  if !exists('g:my_lsp_elixir_loaded')
+  let g:my_lsp_elixir_loaded = 1
+  execute 'LspInstall elixirls'
+  lua require'nvim_lsp'.elixirls.setup{}
+  endif
+  call ConfigureLsp()
+endif
+'''
+
+javascript = '''
+if has('nvim-0.5')
+  if !exists('g:my_lsp_javascript_loaded')
+    let g:my_lsp_javascript_loaded = 1
+    execute 'LspInstall tsserver'
+    lua require'nvim_lsp'.tsserver.setup{}
+  endif
+  call ConfigureLsp()
+endif
+'''
+
+go = '''
+if has('nvim-0.5')
+  if !exists('g:my_lsp_go_loaded')
+    let g:my_lsp_go_loaded = 1
+    execute 'LspInstall gopls'
+    lua require'nvim_lsp'.gopls.setup{}
+  endif
+  call ConfigureLsp()
+endif
+'''
+

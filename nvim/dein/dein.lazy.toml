@@ -82,12 +82,6 @@ on_event = 'InsertEnter'
 on_if = '!has("nvim-0.5")'
 
 [[plugins]]
-repo = 'neovim/nvim-lsp'
-merged = 0
-on_if = 'has("nvim-0.5")'
-hook_source = 'call rc#source_rc("plugin/lsp.rc.vim")'
-
-[[plugins]]
 repo = 'honza/vim-snippets'
 depends = ['coc.nvim']
 on_source = 'coc.nvim'
