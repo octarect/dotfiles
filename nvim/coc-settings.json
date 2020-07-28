@@ -12,6 +12,7 @@
     "git.virtualTextPrefix": " >> ",
     "git.addGBlameToVirtualText": true,
     "git.addGBlameToBufferVar": true,
+    "git.showCommitInFloating": true,
     "tsserver.enableJavascript": "true",
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
     "eslint.autoFix": true,
