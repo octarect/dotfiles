@@ -32,8 +32,12 @@ function! s:check_back_space() abort
 endfunction
 
 " coc-git
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap <silent> [c <Plug>(coc-git-prevchunk)
+nmap <silent> ]c <Plug>(coc-git-nextchunk)
+" Show chunk diff at current position
+nmap <silent> <Leader>ggd <Plug>(coc-git-chunkinfo)
+" Show commit contains current position
+nmap <silent> <Leader>ggc <Plug>(coc-git-commit)
 
 augroup MyCocAutoCmd
   autocmd!
