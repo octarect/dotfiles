@@ -39,6 +39,7 @@ nmap <silent> <Leader>ggd <Plug>(coc-git-chunkinfo)
 " Show commit contains current position
 nmap <silent> <Leader>ggc <Plug>(coc-git-commit)
 
+" coc-go
 augroup MyCocAutoCmd
   autocmd!
   autocmd FileType go call <SID>coc_go_settings()
