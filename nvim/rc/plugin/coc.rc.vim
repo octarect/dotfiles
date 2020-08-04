@@ -48,3 +48,31 @@ augroup END
 function! s:coc_go_settings() abort
   nmap ms :<C-u>CocCommand go.test.toggle<CR>
 endfunction
+
+"-----------------------------------------------------------
+" From https://github.com/neoclide/coc.nvim
+"-----------------------------------------------------------
+
+" Navigate diagnostics
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gt <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
+
+" Show documentation in preview window.
+nnoremap <silent> <Leader>gs :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
