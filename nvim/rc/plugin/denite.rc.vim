@@ -41,6 +41,14 @@ let s:menus.plugin.file_candidates = [
 let s:menus.plugin.command_candidates = [
     \ ['🔃 Recache', 'call dein#recache_runtimepath()'],
     \ ]
+let s:menus.coc = {'description': '🎌 coc.nvim'}
+let s:menus.coc.file_candidates = [
+    \ ['📝 Edit coc-settings.json', fnamemodify($MYVIMRC, ':h') . '/coc-settings.json'],
+    \ ]
+let s:menus.coc.command_candidates = [
+    \ ['🏥 Diagnostics', 'CocDiagnostics'],
+    \ ['🏪 Marketplace', 'CocList marketplace'],
+    \ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
 call denite#custom#source(
