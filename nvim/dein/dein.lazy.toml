@@ -1,36 +1,20 @@
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = ['vim-devicons']
-on_cmd = 'Denite'
-hook_source = "call rc#source_rc('plugin/denite.rc.vim')"
+repo = 'junegunn/fzf.vim'
+on_map = ':<C-u>Fzf'
+hook_source = "call rc#source_rc('plugin/fzf.rc.vim')"
 hook_add = '''
-  nmap <silent> <Leader>df :<C-u>Denite file/rec<CR>
-  nmap <silent> <Leader>db :<C-u>Denite buffer<CR>
-  nmap <silent> <Leader>dg :<C-u>Denite grep<CR>
-  nmap <silent> <Leader>dm :<C-u>Denite menu<CR>
-  nmap <silent> <Leader>dp :<C-u>Denite dein<CR>
-  nmap <silent> <Leader>dc :<C-u>Denite colorscheme<CR>
-'''
-
-[[plugins]]
-repo = 'raghur/fruzzy'
-on_source = ['denite.nvim']
-hook_post_update = 'call fruzzy#install()'
-hook_source = '''
-  let g:fruzzy#usenative = 1
-  let g:fruzzy#sortonempty = 0
-'''
-
-[[plugins]]
-repo = 'pocari/vim-denite-emoji'
-on_source = ['vim-emoji']
-hook_add = '''
-  nmap <silent> <Leader>de :<C-u>Denite emoji<CR>
+  let g:fzf_command_prefix = 'Fzf'
+  nmap <silent> <Leader>df :<C-u>FzfGitFiles<CR>
+  nmap <silent> <Leader>dF :<C-u>FzfFiles<CR>
+  nmap <silent> <Leader>dg :<C-u>FzfRg<CR>
+  nmap <silent> <Leader>db :<C-u>FzfBuffers<CR>
+  nmap <silent> <Leader>dc :<C-u>FzfColors<CR>
+  nmap <silent> <Leader>de :<C-u>FzfEmoji<CR>
 '''
 
 [[plugins]]
 repo = 'junegunn/vim-emoji'
-on_source = 'denite.nvim'
+on_source = 'fzf.vim'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
