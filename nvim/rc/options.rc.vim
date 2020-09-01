@@ -4,8 +4,10 @@
 
 set encoding=utf-8
 set expandtab
-set tabstop=4
-set shiftwidth=4
+if has('vim_starting')
+  set tabstop=4
+  set shiftwidth=4
+endif
 set shiftround
 set smartindent
 set smarttab
