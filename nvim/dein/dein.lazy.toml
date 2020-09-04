@@ -13,6 +13,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'junegunn/fzf'
+merged = 0
+build = './install --bin'
+on_source = 'fzf.vim'
+
+[[plugins]]
 repo = 'junegunn/vim-emoji'
 on_source = 'fzf.vim'
 
