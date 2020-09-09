@@ -43,6 +43,7 @@ nmap <silent> <Leader>ggc <Plug>(coc-git-commit)
 " coc-go
 augroup MyCocAutoCmd
   autocmd!
+  autocmd BufWritePre *.go call CocAction('organizeImport')
   autocmd FileType go call <SID>coc_go_settings()
 augroup END
 
