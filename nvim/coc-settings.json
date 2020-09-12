@@ -17,6 +17,7 @@
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
     "eslint.autoFix": true,
     "eslint.autoFixOnSave": true,
+    "solargraph.checkGemVersion": false,
     "languageserver": {
         "terraform": {
             "command": "terraform-lsp",
