@@ -43,7 +43,7 @@ nmap <silent> <Leader>ggc <Plug>(coc-git-commit)
 " coc-go
 augroup MyCocAutoCmd
   autocmd!
-  autocmd BufWritePre *.go call CocAction('organizeImport')
+  autocmd BufWritePre *.go silent call CocAction('organizeImport')
   autocmd FileType go call <SID>coc_go_settings()
 augroup END
 
@@ -78,3 +78,9 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Apply AutoFix to problem on the current line.
+nmap <Leader>qf  <Plug>(coc-fix-current)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
