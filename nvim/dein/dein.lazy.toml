@@ -68,7 +68,7 @@ repo = 'neoclide/coc.nvim'
 merged = 0
 rev = 'release'
 hook_source = "call rc#source_rc('plugin/coc.rc.vim')"
-on_event = 'InsertEnter'
+on_event = 'BufRead'
 on_if = '!has("nvim-0.5")'
 
 [[plugins]]
