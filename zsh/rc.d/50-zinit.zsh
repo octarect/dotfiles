@@ -88,6 +88,9 @@ if __dotlib::util::has_cmd kubectl; then
     # kubebuilder
     zinit ice from"gh-r" as"program" mv"kubebuilder_*/bin/kubebuilder -> kubebuilder"
     zinit load "kubernetes-sigs/kubebuilder"
+
+    zinit ice from"gh-r" as"program" bpick"operator-sdk-*" mv"operator-sdk-* -> operator-sdk"
+    zinit load "operator-framework/operator-sdk"
 fi
 
 zinit ice blockf
