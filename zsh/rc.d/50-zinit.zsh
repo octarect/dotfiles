@@ -84,6 +84,10 @@ if __dotlib::util::has_cmd kubectl; then
     zinit ice from"gh-r" as"program" mv"rio-* -> rio"
     zinit load "rancher/rio"
     source <(kubectl completion zsh)
+
+    # kubebuilder
+    zinit ice from"gh-r" as"program" mv"kubebuilder_*/bin/kubebuilder -> kubebuilder"
+    zinit load "kubernetes-sigs/kubebuilder"
 fi
 
 zinit ice blockf
