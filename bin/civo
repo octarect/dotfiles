@@ -7,6 +7,7 @@ JSON_PATH="${JSON_PATH:-$HOME/.civo.json}"
 KUBE_CONFIG="${KUBE_CONFIG:-$HOME/.kube/config}"
 CIVO_IMAGE=civo-cli
 CIVO_REBUILD=${CIVO_REBUILD:-0}
+LIB_PATH="$SCRIPT_PATH/../lib/docker-civo"
 
 if ! command -v docker 2>&1 >/dev/null; then
     echo "You need to install docker first :_("
@@ -17,7 +18,7 @@ if [ "$CIVO_REBUILD" = "1" -o "$(docker image ls -q $CIVO_IMAGE 2> /dev/null)" =
     docker image build \
         --pull \
         -t $CIVO_IMAGE \
-        -f $SCRIPT_PATH/../lib/docker-civo/Dockerfile .
+        -f $LIB_PATH/Dockerfile $LIB_PATH
 fi
 
 if [ ! -f $JSON_PATH ]; then
