@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
     \ 'coc-git',
     \ 'coc-tabnine',
     \ 'coc-vimlsp',
+    \ 'coc-clangd',
     \ 'coc-go',
     \ 'coc-tsserver',
     \ 'coc-eslint',

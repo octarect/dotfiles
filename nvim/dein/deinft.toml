@@ -46,3 +46,13 @@ go = '''
   setlocal shiftwidth=4
   setlocal noexpandtab
 '''
+
+c = '''
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+'''
+
+cpp = '''
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+'''
