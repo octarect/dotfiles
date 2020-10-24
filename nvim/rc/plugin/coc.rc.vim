@@ -45,11 +45,13 @@ nmap <silent> <Leader>ggc <Plug>(coc-git-commit)
 augroup MyCocAutoCmd
   autocmd!
   autocmd BufWritePre *.go silent call CocAction('organizeImport')
+  autocmd BufWritePre *.go silent call CocAction('format')
   autocmd FileType go call <SID>coc_go_settings()
 augroup END
 
 function! s:coc_go_settings() abort
-  nmap ms :<C-u>CocCommand go.test.toggle<CR>
+  nmap mt :<C-u>CocCommand go.test.toggle<CR>
+  nmap mT :<C-u>CocCommand go.test.generate.file<CR>
 endfunction
 
 "-----------------------------------------------------------
