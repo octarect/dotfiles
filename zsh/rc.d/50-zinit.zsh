@@ -37,12 +37,13 @@ zinit ice as"program" pick"pixterm" \
     atclone"go build ./cmd/pixterm" atpull"%atclone"
 zinit load "eliukblau/pixterm"
 
+# Improved cat
 zinit ice from"gh-r" as"program" mv"bat-*/bat -> bat"
 zinit load "sharkdp/bat"
 
 # System monitor
-zinit ice from"gh-r" as"program"
-zinit load "cjbassi/ytop"
+zinit ice lucid wait"0" as"program" from:"gh-r" pick"btm"
+zinit light "ClementTsang/bottom"
 
 # Data interchange
 if [ "$(uname)" = "Darwin" ]; then
