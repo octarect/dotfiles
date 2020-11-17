@@ -1,0 +1,32 @@
+#!/bin/bash
+
+LINODE_IMAGE=linode-cli
+LINODE_PYTHON_VERSION=3.9
+
+LINODE_DOCKER_FILE="$(cat <<EOS
+FROM python:${LINODE_PYTHON_VERSION}-alpine
+RUN pip install linode-cli
+ENTRYPOINT ["linode-cli"]
+EOS
+)"
+
+LINODE_JSON_PATH="${LINODE_JSON_PATH:-$HOME/.config/linode-cli}"
+
+if [ "$LINODE_REBUILD" = "1" -o "$(docker image ls -q $LINODE_IMAGE 2>/dev/null)" = "" ]; then
+    echo "$LINODE_DOCKER_FILE" | docker image build --pull -t $LINODE_IMAGE -
+fi
+
+if [ ! -f $LINODE_JSON_PATH ]; then
+    touch $LINODE_JSON_PATH
+    chmod 666 $LINODE_JSON_PATH
+fi
+
+if [ "$1" = "completion" ]; then
+    docker container run --rm --entrypoint "cat" \
+        $LINODE_IMAGE /usr/local/lib/python$LINODE_PYTHON_VERSION/site-packages/etc/bash_completion.d/linode-cli.sh
+    exit
+fi
+
+docker container run -it --rm \
+    -v $LINODE_JSON_PATH:/root/.config/linode-cli \
+    $LINODE_IMAGE $@
