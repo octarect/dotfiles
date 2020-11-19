@@ -20,37 +20,34 @@ autoload -Uz compinit
 compinit -d ${ZINIT[HOME_DIR]}/.zcompdump
 
 # Repository management
-zinit ice from"gh-r" as"program" pick"ghq_*/ghq" \
+zinit ice wait lucid from"gh-r" as"program" pick"ghq_*/ghq" \
     atclone"git config --global ghq.root ${DEVPATH}/src >/dev/null"
 zinit load "x-motemen/ghq"
 
 # Filter UI
-zinit ice from"gh-r" as"program" mv"peco_*/peco -> peco"
+zinit ice wait lucid from"gh-r" as"program" mv"peco_*/peco -> peco"
 zinit load "peco/peco"
 
 # Translation
-zinit ice as"program" pick"build/trans" ver"stable" make"build"
+zinit ice wait lucid as"program" pick"build/trans" ver"stable" make"build"
 zinit load "soimort/translate-shell"
 
 # Image viewer
-zinit ice as"program" pick"pixterm" \
+zinit ice wait lucid as"program" pick"pixterm" \
     atclone"go build ./cmd/pixterm" atpull"%atclone"
 zinit load "eliukblau/pixterm"
 
 # Improved cat
-zinit ice from"gh-r" as"program" mv"bat-*/bat -> bat"
+zinit ice wait lucid from"gh-r" as"program" mv"bat-*/bat -> bat"
 zinit load "sharkdp/bat"
 
 # System monitor
-zinit ice lucid wait"0" as"program" from:"gh-r" pick"btm"
-zinit light "ClementTsang/bottom"
+zinit ice wait lucid from"gh-r" as"program" pick"btm"
+zinit load "ClementTsang/bottom"
 
 # Data interchange
-if [ "$(uname)" = "Darwin" ]; then
-    zinit ice from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick:"*osx*"
-else
-    zinit ice from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick:"*linux64*"
-fi
+[ "$(uname)" = "Darwin" ] && jq_branch="*osx*" || jq_branch="*linux64*"
+zinit ice wait lucid from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick"$jq_branch"
 zinit load "stedolan/jq"
 
 zinit ice from"gh-r" as"program" mv"yq_* -> yq"
@@ -60,39 +57,34 @@ zinit load "mikefarah/yq"
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
     atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh"
-zinit light "direnv/direnv"
+zinit load "direnv/direnv"
 
 # grep tool
 zinit ice from"gh-r" as"program" pick"ripgrep*/rg"
-zinit light "BurntSushi/ripgrep"
+zinit load "BurntSushi/ripgrep"
 
-zinit ice from"gh-r" as"program" mv"scw-* -> scw" \
-    atload'source <(scw autocomplete script shell=zsh)'
-zinit load "scaleway/scaleway-cli"
+# VPS
+zinit wait lucid for \
+    from"gh-r" as"program" mv"scw-* -> scw" atload"source <(scw autocomplete script shell=zsh)" \
+        scaleway/scaleway-cli \
+    from"gh-r" as"program" atload"source <(doctl completion zsh)" \
+        digitalocean/doctl
 
-if __dotlib::util::has_cmd kubectl; then
-    zinit ice from"gh" as"program"
-    zinit load "johanhaleby/kubetail"
-
-    zinit ice from"gh-r" as"program" mv"k9s-* -> k9s"
-    zinit load "derailed/k9s"
-
-    # OpenFaaS
-    zinit ice from"gh-r" as"program" mv"faas-cli-* -> faas"
-    zinit load "openfaas/faas-cli"
-
-    # Rancher rio
-    zinit ice from"gh-r" as"program" mv"rio-* -> rio"
-    zinit load "rancher/rio"
-    source <(kubectl completion zsh)
-
-    # kubebuilder
-    zinit ice from"gh-r" as"program" mv"kubebuilder_*/bin/kubebuilder -> kubebuilder"
-    zinit load "kubernetes-sigs/kubebuilder"
-
-    zinit ice from"gh-r" as"program" bpick"operator-sdk-*" mv"operator-sdk-* -> operator-sdk"
-    zinit load "operator-framework/operator-sdk"
-fi
+# Kubernetes
+zinit wait lucid has"kubectl" for \
+        johanhaleby/kubetail \
+    from"gh-r" as"program" mv"k9s-* -> k9s" \
+        derailed/k9s \
+    from"gh-r" as"program" mv"faas-cli-* -> faas" \
+        openfaas/faas-cli \
+    from"gh-r" as"program" mv"rio-* -> rio" \
+        rancher/rio \
+    from"gh-r" as"program" mv"kubebuilder_*/bin/kubebuilder -> kubebuilder" \
+        kubernetes-sigs/kubebuilder \
+    from"gh-r" bpick"operator-sdk-*" as"program" mv"operator-sdk-* -> operator-sdk" \
+        operator-framework/operator-sdk \
+    light-mode atload"source <(kubectl completion zsh)" \
+        zdharma/null
 
 zinit ice blockf
 zinit light zsh-users/zsh-completions
@@ -114,10 +106,10 @@ else
 fi
 zinit light starship/starship
 
-zinit wait lucid for \
-        light-mode zsh-users/zsh-history-substring-search \
-        light-mode zdharma/history-search-multi-word \
+zinit wait lucid light-mode for \
+    zsh-users/zsh-history-substring-search \
+    zdharma/history-search-multi-word \
     atload"_zsh_highlight" \
-        light-mode zdharma/fast-syntax-highlighting \
+        zdharma/fast-syntax-highlighting \
     atload"!_zsh_autosuggest_start" \
-        light-mode zsh-users/zsh-autosuggestions
+        zsh-users/zsh-autosuggestions
