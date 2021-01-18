@@ -97,9 +97,7 @@ zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
 
 if [ "$(uname)" = "Darwin" ]; then
-    zinit ice as"program" pick"target/release/starship" \
-        atclone"cargo build --release" atpull"%atclone" \
-        atload'eval $(starship init zsh)'
+    zinit ice from"gh-r" as"program" atload'eval $(starship init zsh)'
 else
     zinit ice from"gh-r" as"program" mv"target/*/release/starship -> starship" \
         atload'eval $(starship init zsh)'
