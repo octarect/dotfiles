@@ -1,6 +1,18 @@
 #!/usr/bin/env zsh
 
 ########################################
+# path
+########################################
+setopt no_global_rcs
+if [ -L /sbin ]; then
+    export path=(/bin /usr/bin)
+fi
+export path=(
+    /usr/local/bin(N-/)
+    ${path}
+)
+
+########################################
 # system
 ########################################
 export LANG=en_US.UTF-8
@@ -26,6 +38,10 @@ export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
 ########################################
 export DEVPATH="${HOME}/code"
 mkdir -p ${DEVPATH}/{bin,src,pkg}
+export path=(
+    ${DEVPATH}/bin(N-/)
+    ${path}
+)
 
 # Go
 export GOPATH="${DEVPATH}"
@@ -33,17 +49,4 @@ export GOROOT=`go env GOROOT`
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
-
-########################################
-# path
-########################################
-setopt no_global_rcs
-if [ -L /sbin ]; then
-    export path=(/bin /usr/bin)
-fi
-export path=(
-    ${GOPATH}/bin(N-/)
-    /usr/local/bin(N-/)
-    ${path}
-)
 
