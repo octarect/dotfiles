@@ -1,6 +1,11 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+merged = 0
+
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
@@ -35,6 +40,3 @@ repo = 'ryanoasis/vim-devicons'
 hook_add = '''
   let g:webdevicons_enable_denite = 1
 '''
-
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
