@@ -1,0 +1,40 @@
+#!/bin/bash
+
+TIMEOUT_SEC=1
+
+# Color of output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+CLEAR='\033[0m'
+
+# Terminate by single press of ctrl + c
+trap terminate SIGINT
+terminate() {
+    echo -e "\nAborting..."
+    exit
+}
+
+IP_RANGE_START=$1
+N=$2
+
+get_octet() {
+    echo "$1" | cut -d"." -f$2
+}
+
+ip_oct1=$(get_octet $IP_RANGE_START 1)
+ip_oct2=$(get_octet $IP_RANGE_START 2)
+ip_oct3=$(get_octet $IP_RANGE_START 3)
+ip_oct4=$(get_octet $IP_RANGE_START 4)
+
+for i in $(seq 0 $(($N - 1))); do
+    ip=$ip_oct1.$ip_oct2.$ip_oct3.$(($ip_oct4 + $i))
+    ping -c 1 -W $TIMEOUT_SEC $ip 2>&1 >/dev/null
+    if [[ $? -eq 0 ]]; then
+        result="OK"
+        resultf="${GREEN}%s${CLEAR}"
+    else
+        result="NG"
+        resultf="${RED}%s${CLEAR}"
+    fi
+    printf "%s\t${resultf}\n" $ip $result
+done
