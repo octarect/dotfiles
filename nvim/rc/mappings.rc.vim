@@ -24,6 +24,30 @@ nnoremap <F10> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 " Remap default keys
 nnoremap M m
 
+" Toggle relativenumber
+nnoremap <Leader>or :set relativenumber!<CR>
+
+" I HATE pair-programming or stuff like that.
+" Silent mode makes my great vim environment readable
+" by co-workers. (especially non-vim users)
+if !exists("g:silent_mode")
+  let g:silent_mode = 0
+endif
+function! s:toggle_silent_mode() abort
+  if g:silent_mode == 0
+    " Turn on silent mode
+    let g:silent_mode = 1
+    set listchars=tab:\ \ ,nbsp:+,trail:·,extends:→,precedes:←
+    set norelativenumber
+  else
+    " Turn off silent mode
+    let g:silent_mode = 0
+    set listchars=tab:>·,nbsp:+,trail:·,extends:→,precedes:←
+    set relativenumber
+  endif
+endfunction
+nnoremap <Leader>os :call <SID>toggle_silent_mode()<CR>
+
 " Terminal mode
 " if exists(':tnoremap')
 "   " Open terminal
