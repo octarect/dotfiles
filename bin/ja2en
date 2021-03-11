@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # vim: set tabstop=4 shiftwidth=4:
 
-eval "trans {ja=en} \"$@\""
+if command -v translate 2>&1 >/dev/null; then
+    TRANSLATE=translate
+else
+    TRANSLATE=trans
+fi
+
+eval "${TRANSLATE} {ja=en} \"$@\""
