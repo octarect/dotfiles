@@ -79,12 +79,15 @@ zinit wait lucid has"kubectl" for \
         openfaas/faas-cli \
     from"gh-r" as"program" mv"rio-* -> rio" \
         rancher/rio \
-    from"gh-r" as"program" mv"kubebuilder_*/bin/kubebuilder -> kubebuilder" \
-        kubernetes-sigs/kubebuilder \
-    from"gh-r" bpick"operator-sdk-*" as"program" mv"operator-sdk-* -> operator-sdk" \
-        operator-framework/operator-sdk \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma/null
+
+# Temporarily disable the following command. If you need them again, merge them to the above list.
+# from"gh-r" as"program" mv"kubebuilder_* -> kubebuilder" \
+# atclone'kubebuilder completion zsh > "${fpath[1]}/_kubebuilder"' atpull"%atclone" \
+#     kubernetes-sigs/kubebuilder \
+# from"gh-r" bpick"operator-sdk-*" as"program" mv"operator-sdk-* -> operator-sdk" \
+#     operator-framework/operator-sdk \
 
 zinit ice blockf
 zinit light zsh-users/zsh-completions
