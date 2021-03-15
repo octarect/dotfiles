@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+DEFAULT_HOST="github.com"
+
+usage() {
+cat <<EOS
+NAME:
+    $(basename $0) - make local git repository
+
+USAGE:
+    $(basename $0) <owner>/<repo>|<host>/<owner>/<repo>
+EOS
+}
+
+if [ $# -ne 1 ]; then
+    usage
+    exit 1
+fi
+
+[[ "$1" =~ ^(-h|--help)$  ]] && usage && exit 0
+
+args=($(echo "$1" | sed -e 's/\//\t/g'))
+
+case ${#args[@]} in
+    2)
+        host=$DEFAULT_HOST
+        owner=${args[0]}
+        repo=${args[1]}
+        ;;
+    3)
+        host=${args[0]}
+        owner=${args[1]}
+        repo=${args[2]}
+        ;;
+    *)
+        usage
+        exit
+        ;;
+esac
+
+if command -v ghq >/dev/null; then
+    base_path="$(ghq root)"
+else
+    base_path="$HOME/code/src"
+fi
+
+target_path="$base_path/$host/$owner/$repo"
+
+if [ ! -e "$target_path" ]; then
+    mkdir -p "$target_path"
+fi
+
+cd $target_path
+
+if [ ! -e ./.git ]; then
+    git init
+fi
+
+echo "project root: $target_path"
