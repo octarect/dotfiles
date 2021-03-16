@@ -1,3 +1,6 @@
+# Set aliases to bin/_*
+alias gcd='source _gcd'
+
 case ${OSTYPE} in
     linux*)
         alias ls="ls --color=auto --show-control-chars"

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if command -v ghq >/dev/null; then
+    base_path="$(ghq root)"
+else
+    base_path="$HOME/code/src"
+fi
+
+export FZF_DEFAULT_OPTS="$(cat <<EOS
+--border
+--prompt="GitRepo> "
+--preview=' \
+    bat --color=always --style=numbers --line-range :100 \
+        ${base_path}/{}/README.md 2>/dev/null \
+    || echo "README.md not found" \
+'
+EOS
+)"
+
+repo="$(ghq list | fzf)"
+if [[ -n "${repo}" ]]; then
+    cd "${base_path}/${repo}"
+fi
