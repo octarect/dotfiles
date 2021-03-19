@@ -43,6 +43,9 @@ set cursorline
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
 
+" Highlight embedded script (lua, python and ruby)
+let g:vimsyn_embed='lPr'
+
 "-----------------------------------------------------------
 " Misc
 "-----------------------------------------------------------
