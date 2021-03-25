@@ -22,3 +22,13 @@ hi GitGutterAdd          ctermfg=2 guifg=#00e676 ctermbg=NONE guibg=NONE
 hi GitGutterChange       ctermfg=3 guifg=#ffc400 ctermbg=NONE guibg=NONE
 hi GitGutterChangeDelete ctermfg=3 guifg=#ffc400 ctermbg=NONE guibg=NONE
 hi GitGutterDelete       ctermfg=1 guifg=#ff3d00 ctermbg=NONE guibg=NONE
+
+" Built-in LSP
+hi LspDiagnosticsSignError   cterm=bold ctermfg=210 gui=bold guifg=#fd8489
+hi LspDiagnosticsSignWarning cterm=bold ctermfg=222 gui=bold guifg=#fedf81
+hi LspDiagnosticsSignInformation cterm=bold ctermfg=153 gui=bold guifg=#a8d2eb
+hi LspDiagnosticsSignHint cterm=bold ctermfg=150 gui=bold guifg=#a9dd9d
+
+hi link LspReferenceRead Search
+hi link LspReferenceText Search
+hi link LspReferenceWrite Search
