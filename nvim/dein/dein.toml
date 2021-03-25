@@ -7,7 +7,24 @@ merged = 0
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = ['vim-gitgutter']
 hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+" Use block as sign
+let g:gitgutter_sign_added                   = '█'
+let g:gitgutter_sign_modified                = '█'
+let g:gitgutter_sign_removed                 = '█'
+let g:gitgutter_sign_removed_first_line      = '█'
+let g:gitgutter_sign_removed_above_and_below = '█'
+let g:gitgutter_sign_modified_removed        = '█'
+" Keymappings for hunk jumping
+nmap <silent> [c <Plug>(GitGutterPrevHunk)
+nmap <silent> ]c <Plug>(GitGutterNextHunk)
+nmap <silent> <Leader>ggd :GitGutterPreviewHunk<CR>
+'''
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'

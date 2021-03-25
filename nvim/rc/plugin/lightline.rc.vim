@@ -3,23 +3,23 @@ let g:lightline = {
     \ 'active': {
     \   'left':  [['mode', 'paste'],
     \             ['readonly', 'relativepath', 'modified'],
-    \             ['gitstatus'],
     \             ['progress']],
     \   'right': [['lineinfo'],
     \             ['percent'],
-    \             ['fileformat', 'fileencoding', 'filetype']],
+    \             ['gitstatus', 'fileformat', 'fileencoding', 'filetype']],
     \ },
     \ 'inactive': {
-    \   'left':  [['readonly', 'relativepath', 'modified'],
-    \             ['gitstatus']],
+    \   'left':  [['readonly', 'relativepath', 'modified']],
     \   'right': [['lineinfo'],
     \             ['percent'],
-    \             ['fileformat', 'fileencoding', 'filetype']],
+    \             ['gitstatus', 'fileformat', 'fileencoding', 'filetype']],
     \ },
     \ 'component': {
     \   'filetype': '%{WebDevIconsGetFileTypeSymbol()} %{&ft !=# "" ? &ft : "no ft"}',
-    \   'gitstatus': "%{get(g:, 'coc_git_status', '')}%{get(b:,'coc_git_status','')}",
     \   'progress': '%{dein#get_progress()}',
+    \ },
+    \ 'component_function': {
+    \   'gitstatus': 'LightlineGitStatus',
     \ },
     \ 'tab': {
     \   'active':   ['num', 'icon', 'filename', 'modified', 'readonly'],
@@ -46,4 +46,9 @@ function! LightlineFileName(n) abort
   let winnr   = tabpagewinnr(a:n)
   let _       = pathshorten(expand('#' . buflist[winnr - 1] . ':f'))
   return _ !=# '' ? _ : '[No Name]'
+endfunction
+
+function! LightlineGitStatus() abort
+  let [added,modified,deleted] = GitGutterGetHunkSummary()
+  return printf('git:+%d ~%d -%d', added, modified, deleted)
 endfunction
