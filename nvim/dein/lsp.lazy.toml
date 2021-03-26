@@ -2,17 +2,17 @@
 repo = 'neovim/nvim-lspconfig'
 on_event = ['BufNewFile', 'BufRead']
 hook_source = '''
-lua require('plugin.lsp')
+lua require('plugins.lsp')
 '''
+
+[[plugins]]
+repo = 'kabouzeid/nvim-lspinstall'
+on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-compe'
 on_source = 'nvim-lspconfig'
 hook_source = '''
 set completeopt=menuone,noselect
-lua require('plugin.nvim-compe')
+lua require('plugins.nvim-compe')
 '''
-
-[[plugins]]
-repo = 'kabouzeid/nvim-lspinstall'
-on_source = 'nvim-lspconfig'
