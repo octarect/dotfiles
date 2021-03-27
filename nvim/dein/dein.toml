@@ -53,6 +53,3 @@ hook_add = '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
-hook_add = '''
-  let g:webdevicons_enable_denite = 1
-'''
