@@ -20,6 +20,7 @@ require'compe'.setup {
     nvim_lua = true;
     emoji = true;
     spell = true;
+    treesitter = true;
   };
 }
 

@@ -105,16 +105,6 @@ on_event = ['BufNewFile', 'BufRead']
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
 
-[[plugins]]
-repo = 'luochen1990/rainbow'
-on_ft = ['go', 'javascript', 'python', 'vim', 'html', 'css', 'scss']
-hook_source = '''
-  let g:rainbow_active = 1
-  let g:rainbow_conf = {
-      \ 'guifgs': ['mediumorchid1', 'deepskyblue1', 'springgreen', 'yellow', 'darkorange', 'firebrick'],
-      \ }
-'''
-
 #-----------------------------------------------------------
 # Language / FileType
 #-----------------------------------------------------------

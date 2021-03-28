@@ -92,6 +92,11 @@ zinit wait lucid has"kubectl" for \
 # from"gh-r" bpick"operator-sdk-*" as"program" mv"operator-sdk-* -> operator-sdk" \
 #     operator-framework/operator-sdk \
 
+# Parser generator tool (used by nvim-treesitter on Neovim)
+zinit wait lucid for \
+    from"gh-r" as"program" mv"tree-sitter-* -> tree-sitter" \
+        tree-sitter/tree-sitter
+
 zinit ice blockf
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2

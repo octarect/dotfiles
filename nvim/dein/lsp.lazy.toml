@@ -11,8 +11,21 @@ on_source = 'nvim-lspconfig'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-compe'
-on_source = 'nvim-lspconfig'
+on_event = ['InsertEnter']
 hook_source = '''
 set completeopt=menuone,noselect
 lua require('plugins.nvim-compe')
 '''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = ['BufNewFile', 'BufRead']
+# NOTE: Make sure all plugins of nvim-treesitter are listed here
+depends = ['nvim-ts-rainbow']
+hook_source = '''
+lua require('plugins.nvim-treesitter')
+'''
+hook_post_update = 'TSUpdate'
+
+[[plugins]]
+repo = 'p00f/nvim-ts-rainbow'
