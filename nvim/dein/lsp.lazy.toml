@@ -12,10 +12,15 @@ on_source = 'nvim-lspconfig'
 [[plugins]]
 repo = 'hrsh7th/nvim-compe'
 on_event = ['InsertEnter']
+depends = ['compe-tabnine']
 hook_source = '''
 set completeopt=menuone,noselect
 lua require('plugins.nvim-compe')
 '''
+
+[[plugins]]
+repo = 'tzachar/compe-tabnine'
+build = './install.sh'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
