@@ -4,7 +4,7 @@ let lightline_icon_git_modified = ''
 let lightline_icon_git_removed = ''
 
 let g:lightline = {
-    \ 'colorscheme': 'material',
+    \ 'colorscheme': 'one',
     \ 'active': {
     \   'left':  [['mode', 'paste'],
     \             ['readonly', 'relativepath', 'modified'],
