@@ -56,3 +56,8 @@ hook_add = '''
   let g:oceanic_material_allow_italic = 1
 '''
 
+[[plugins]]
+repo = 'haishanh/night-owl.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
