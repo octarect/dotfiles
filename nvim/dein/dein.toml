@@ -3,7 +3,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['vim-gitgutter']
+depends = ['vim-gitgutter', 'vim-gitbranch', 'vim-devicons']
 hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
 
 [[plugins]]
@@ -21,6 +21,12 @@ nmap <silent> [c <Plug>(GitGutterPrevHunk)
 nmap <silent> ]c <Plug>(GitGutterNextHunk)
 nmap <silent> <Leader>ggd :GitGutterPreviewHunk<CR>
 '''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'
@@ -47,5 +53,3 @@ hook_add = '''
   let g:oceanic_material_allow_italic = 1
 '''
 
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'

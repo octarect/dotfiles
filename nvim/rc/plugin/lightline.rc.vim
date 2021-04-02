@@ -1,3 +1,8 @@
+let lightline_icon_git_branch = ''
+let lightline_icon_git_added = ''
+let lightline_icon_git_modified = ''
+let lightline_icon_git_removed = ''
+
 let g:lightline = {
     \ 'colorscheme': 'material',
     \ 'active': {
@@ -6,20 +11,19 @@ let g:lightline = {
     \             ['progress']],
     \   'right': [['lineinfo'],
     \             ['percent'],
-    \             ['gitstatus', 'fileformat', 'fileencoding', 'filetype']],
+    \             ['gitdiff', 'gitbranch', 'fileformat', 'fileencoding', 'filetype']],
     \ },
     \ 'inactive': {
     \   'left':  [['readonly', 'relativepath', 'modified']],
-    \   'right': [['lineinfo'],
-    \             ['percent'],
-    \             ['gitstatus', 'fileformat', 'fileencoding', 'filetype']],
+    \   'right': [['gitdiff', 'gitbranch', 'fileformat', 'fileencoding', 'filetype']],
     \ },
     \ 'component': {
     \   'filetype': '%{WebDevIconsGetFileTypeSymbol()} %{&ft !=# "" ? &ft : "no ft"}',
     \   'progress': '%{dein#get_progress()}',
     \ },
     \ 'component_function': {
-    \   'gitstatus': 'LightlineGitStatus',
+    \   'gitdiff': 'LightlineGitDiff',
+    \   'gitbranch': 'LightlineGitBranch',
     \ },
     \ 'tab': {
     \   'active':   ['num', 'icon', 'filename', 'modified', 'readonly'],
@@ -48,7 +52,15 @@ function! LightlineFileName(n) abort
   return _ !=# '' ? _ : '[No Name]'
 endfunction
 
-function! LightlineGitStatus() abort
+function! LightlineGitBranch() abort
+  return printf("%s %s", g:lightline_icon_git_branch, gitbranch#name())
+endfunction
+
+function! LightlineGitDiff() abort
   let [added,modified,deleted] = GitGutterGetHunkSummary()
-  return printf('git:+%d ~%d -%d', added, modified, deleted)
+  return printf('%s  %d %s  %d %s  %d',
+      \ g:lightline_icon_git_added, added,
+      \ g:lightline_icon_git_modified, modified,
+      \ g:lightline_icon_git_removed, deleted
+      \ )
 endfunction
