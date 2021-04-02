@@ -29,6 +29,9 @@ repo = 'ryanoasis/vim-devicons'
 repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
+repo = 'f-person/git-blame.nvim'
+
+[[plugins]]
 repo = 'itchyny/vim-parenmatch'
 hook_add = '''
   let g:loaded_matchparen = 1
