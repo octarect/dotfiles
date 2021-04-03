@@ -29,7 +29,7 @@ zinit ice wait lucid from"gh-r" as"program" mv"peco_*/peco -> peco"
 zinit load "peco/peco"
 
 zinit ice wait lucid from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit load junegunn/fzf
 
 # Translation
 zinit ice wait lucid as"program" pick"build/trans" ver"stable" make"build"
