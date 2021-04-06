@@ -23,7 +23,7 @@ require'compe'.setup {
     tabnine = {
       menu = '[TabNine]';
       priority = 900;
-    }
+    };
   };
 }
 
