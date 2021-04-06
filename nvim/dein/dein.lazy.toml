@@ -1,26 +1,6 @@
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-on_map = ':<C-u>Fzf'
-hook_source = "call rc#source_rc('plugin/fzf.rc.vim')"
-hook_add = '''
-  let g:fzf_command_prefix = 'Fzf'
-  nmap <silent> <Leader>df :<C-u>FzfGitFiles<CR>
-  nmap <silent> <Leader>dF :<C-u>FzfFiles<CR>
-  nmap <silent> <Leader>dg :<C-u>FzfRg<CR>
-  nmap <silent> <Leader>db :<C-u>FzfBuffers<CR>
-  nmap <silent> <Leader>dc :<C-u>FzfColors<CR>
-  nmap <silent> <Leader>de :<C-u>FzfEmoji<CR>
-'''
-
-[[plugins]]
-repo = 'junegunn/fzf'
-merged = 0
-build = './install --bin'
-on_source = 'fzf.vim'
-
-[[plugins]]
-repo = 'junegunn/vim-emoji'
-on_source = 'fzf.vim'
+#-----------------------------------------------------------
+# Terminal
+#-----------------------------------------------------------
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'

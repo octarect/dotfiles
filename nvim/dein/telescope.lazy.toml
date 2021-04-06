@@ -1,0 +1,29 @@
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+depends = ['popup.nvim', 'plenary.nvim', 'nvim-web-devicons', 'telescope-symbols.nvim']
+on_cmd = 'Telescope'
+hook_add = '''
+nnoremap <silent> <Leader>df <cmd>Telescope git_files<CR>
+nnoremap <silent> <Leader>dF <cmd>Telescope find_files<CR>
+nnoremap <silent> <Leader>dg <cmd>Telescope live_grep<CR>
+nnoremap <silent> <Leader>db <cmd>Telescope buffers<CR>
+nnoremap <silent> <Leader>dc <cmd>Telescope colorscheme<CR>
+" telescope-symbols.nvim
+nnoremap <silent> <Leader>de <cmd>Telescope symbols<CR>
+" nvim-treesitter
+'''
+hook_source = '''
+lua require('plugins.telescope')
+'''
+
+[[plugins]]
+repo = 'nvim-lua/popup.nvim'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope-symbols.nvim'
