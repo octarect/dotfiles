@@ -7,9 +7,9 @@ nnoremap <silent> <Leader>df <cmd>Telescope git_files<CR>
 nnoremap <silent> <Leader>dF <cmd>Telescope find_files<CR>
 nnoremap <silent> <Leader>dg <cmd>Telescope live_grep<CR>
 nnoremap <silent> <Leader>db <cmd>Telescope buffers<CR>
-nnoremap <silent> <Leader>dc <cmd>Telescope colorscheme<CR>
+nnoremap <silent> <Leader>dc <cmd>Telescope colorscheme theme=get_dropdown<CR>
 " telescope-symbols.nvim
-nnoremap <silent> <Leader>de <cmd>Telescope symbols<CR>
+nnoremap <silent> <Leader>de <cmd>Telescope symbols theme=get_dropdown<CR>
 " nvim-treesitter (Jump node)
 nnoremap <silent> <Leader>dj <cmd>Telescope treesitter<CR>
 '''

@@ -16,5 +16,6 @@ require('telescope').setup{
       },
     },
     winblend = 20,
+    color_devicons = true,
   },
 }
