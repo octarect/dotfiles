@@ -10,7 +10,8 @@ nnoremap <silent> <Leader>db <cmd>Telescope buffers<CR>
 nnoremap <silent> <Leader>dc <cmd>Telescope colorscheme<CR>
 " telescope-symbols.nvim
 nnoremap <silent> <Leader>de <cmd>Telescope symbols<CR>
-" nvim-treesitter
+" nvim-treesitter (Jump node)
+nnoremap <silent> <Leader>dj <cmd>Telescope treesitter<CR>
 '''
 hook_source = '''
 lua require('plugins.telescope')

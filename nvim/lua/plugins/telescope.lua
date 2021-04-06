@@ -5,9 +5,11 @@ require('telescope').setup{
     mappings = {
       i = {
         ['<C-u>'] = false,
-        -- open files in horizontal by <C-s> instead of <C-x>
+        -- Open file in horizontal by <C-s> instead of <C-x>
         ['<C-x>'] = false,
         ['<C-s>'] = actions.file_split,
+        -- Open file in new tab. (Disable tmux prefix <C-t>)
+        ['<C-t>'] = false,
       },
       n = {
         ["<esc>"] = actions.close,
