@@ -1,3 +1,13 @@
+local server_settings = {
+  yaml = {
+    yaml = {
+      schemas = {
+        kubernetes = "/*.yaml",
+      },
+    },
+  },
+}
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -47,7 +57,11 @@ local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup({ on_attach = on_attach })
+    local options = { on_attach = on_attach }
+    if server_settings[server] ~= nil then
+      options.settings = server_settings[server]
+    end
+    require'lspconfig'[server].setup(options)
   end
 end
 
