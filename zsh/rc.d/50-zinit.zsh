@@ -97,6 +97,12 @@ zinit wait lucid for \
     from"gh-r" as"program" mv"tree-sitter-* -> tree-sitter" \
         tree-sitter/tree-sitter
 
+# GitHub CLI
+zinit ice lucid wait"0" as"program" from:"gh-r" \
+    mv"gh_*/bin/gh -> gh" bpick"*.tar.gz" \
+    atload"source <(gh completion -s zsh)"
+zinit light "cli/cli"
+
 zinit ice blockf
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
