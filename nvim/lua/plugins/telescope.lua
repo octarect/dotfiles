@@ -14,17 +14,17 @@ local function exec_picker(picker, dropdown)
 end
 
 local function set_keymaps()
-  local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local set_keymap = function(...) vim.api.nvim_set_keymap(...) end
   local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', '<Leader>df', exec_picker('git_files'), opts)
-  buf_set_keymap('n', '<Leader>dF', exec_picker('find_files'), opts)
-  buf_set_keymap('n', '<Leader>dg', exec_picker('live_grep'), opts)
-  buf_set_keymap('n', '<Leader>db', exec_picker('buffers'), opts)
-  buf_set_keymap('n', '<Leader>dc', exec_picker('colorscheme', true), opts)
+  set_keymap('n', '<Leader>df', exec_picker('git_files'), opts)
+  set_keymap('n', '<Leader>dF', exec_picker('find_files'), opts)
+  set_keymap('n', '<Leader>dg', exec_picker('live_grep'), opts)
+  set_keymap('n', '<Leader>db', exec_picker('buffers'), opts)
+  set_keymap('n', '<Leader>dc', exec_picker('colorscheme', true), opts)
   -- telescope-symbols.nvim
-  buf_set_keymap('n', '<Leader>de', exec_picker('symbols'), opts)
+  set_keymap('n', '<Leader>de', exec_picker('symbols'), opts)
   -- nvim-treesitter
-  buf_set_keymap('n', '<Leader>dj', exec_picker('treesitter'), opts)
+  set_keymap('n', '<Leader>dj', exec_picker('treesitter'), opts)
 end
 
 local function init()
