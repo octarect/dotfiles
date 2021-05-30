@@ -6,6 +6,9 @@ source ${DOT_DIR}/lib/dotlib/init.sh
 # Create cache directory
 mkdir -p "${DOT_CACHE_DIR}/zsh"
 
+# Set viins key bindings
+bindkey -v
+
 #################################
 # zsh options
 #################################

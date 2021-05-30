@@ -122,9 +122,12 @@ fi
 zinit light starship/starship
 
 zinit wait lucid light-mode for \
+    atload"bindkey '^P' history-substring-search-up" \
+    atload"bindkey '^N' history-substring-search-down" \
     zsh-users/zsh-history-substring-search \
     zdharma/history-search-multi-word \
     atload"_zsh_highlight" \
         zdharma/fast-syntax-highlighting \
     atload"!_zsh_autosuggest_start" \
+    atload"bindkey '^X' autosuggest-accept" \
         zsh-users/zsh-autosuggestions
