@@ -122,7 +122,6 @@ fi
 zinit light starship/starship
 
 zinit wait lucid light-mode for \
-    jeffreytse/zsh-vi-mode \
     zsh-users/zsh-history-substring-search \
     zdharma/history-search-multi-word \
     atload"_zsh_highlight" \
