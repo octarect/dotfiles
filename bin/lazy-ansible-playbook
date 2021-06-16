@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
 set -e
-
 source ${HOME}/.dotenv
-
-lazy_ansible_path="${DOT_DIR}/lib/lazy-ansible"
-
-env \
-  ANSIBLE_HOME="${DOT_CACHE_DIR}/ansible" \
-  ${lazy_ansible_path}/init.sh ansible-playbook $@
+PKG_NAME=ansible CMD=ansible-playbook ${DOT_DIR}/lib/pip-bundle.sh $@

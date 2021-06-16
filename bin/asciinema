@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ${HOME}/.dotenv
+
+PKG_NAME=asciinema ${DOT_DIR}/lib/pip-bundle.sh $@
