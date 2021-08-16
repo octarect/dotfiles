@@ -1,12 +1,3 @@
-local server_settings = {
-  yaml = {
-    yaml = {
-      schemas = {
-        kubernetes = "/*.yaml",
-      },
-    },
-  },
-}
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -14,7 +5,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { 
+    vim.lsp.diagnostic.on_publish_diagnostics, {
       -- Don't show message as virtual text
       virtual_text = false,
     }
@@ -53,22 +44,25 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    local options = { on_attach = on_attach }
-    if server_settings[server] ~= nil then
-      options.settings = server_settings[server]
-    end
-    require'lspconfig'[server].setup(options)
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function()
-  setup_servers()
-  vim.cmd("bufdo e")
-end
+require'lspservers'.setup{
+  servers = {
+    dockerls = true,
+    gopls = true,
+    html = true,
+    sumneko_lua = true,
+    tsserver = true,
+    vimls = true,
+    yamlls = {
+      settings = {
+        yaml = {
+          schemas = {
+            kubernetes = "/*.yaml",
+          },
+        },
+      },
+    },
+  },
+  global = {
+    on_attach = on_attach,
+  }
+}

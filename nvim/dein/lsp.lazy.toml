@@ -6,7 +6,7 @@ lua require('plugins.lsp')
 '''
 
 [[plugins]]
-repo = 'kabouzeid/nvim-lspinstall'
+repo = 'octarect/nvim-lspservers'
 on_source = 'nvim-lspconfig'
 
 [[plugins]]
