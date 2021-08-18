@@ -103,6 +103,10 @@ zinit ice lucid wait"0" as"program" from:"gh-r" \
     atload"source <(gh completion -s zsh)"
 zinit light "cli/cli"
 
+# Local runner of GitHub Actions
+zinit ice lucid wait"0" as"program" from"gh-r"
+zinit light "nektos/act"
+
 zinit ice blockf
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
