@@ -12,8 +12,8 @@ local on_attach = function(client, bufnr)
   )
 
   -- Navigate diagnostics
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>', opts)
 
   -- Call hover() when holding cursor
   -- vim.cmd('autocmd CursorHold * lua vim.lsp.buf.hover()')
@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_exec([[
     augroup MyAutoCmdLspDiagnostics
       autocmd!
-      autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+      autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
     augroup END
   ]], false)
 
