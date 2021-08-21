@@ -12,10 +12,10 @@ augroup END
 " Use <Leader> in global plugin
 let g:mapleader = "\<Space>"
 " Use <LocalLeader> in filetype plugin
-let g:maplocalleader = 'm'
+let g:maplocalleader = 'z'
 " Release default keymappings for plugin leader.
 nnoremap <Space> <Nop>
-nnoremap m <Nop>
+nnoremap z <Nop>
 
 "-----------------------------------------------------------
 " Disable default plugins
