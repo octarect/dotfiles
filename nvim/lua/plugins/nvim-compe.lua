@@ -49,3 +49,7 @@ end
 -- Use <TAB> for trigger completion with characters ahead and navigate.
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+
+-- This line is important for auto-import
+vim.api.nvim_set_keymap("i", "<CR>", 'compe#confirm("<CR>")', { expr = true })
+vim.api.nvim_set_keymap("i", "<C-Space>", 'compe#complete()', { expr = true })
