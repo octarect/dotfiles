@@ -2,15 +2,18 @@
 local leader = '<LocalLeader>'
 
 -- Custom border of hover window
-local floating_border = {
-      {"+", "FloatBorder"},
-      {"-", "FloatBorder"},
-      {"+", "FloatBorder"},
-      {"|", "FloatBorder"},
-      {"+", "FloatBorder"},
-      {"-", "FloatBorder"},
-      {"+", "FloatBorder"},
-      {"|", "FloatBorder"},
+_G.__MyLspFloatingOpts = {
+  focusable = false,
+  border = {
+    {"+", "FloatBorder"},
+    {"-", "FloatBorder"},
+    {"+", "FloatBorder"},
+    {"|", "FloatBorder"},
+    {"+", "FloatBorder"},
+    {"-", "FloatBorder"},
+    {"+", "FloatBorder"},
+    {"|", "FloatBorder"},
+  },
 }
 
 local on_attach = function(client, bufnr)
@@ -19,7 +22,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local opts = { noremap=true, silent=true }
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = floating_border, focusable = false })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, _G.__MyLspFloatingOpts)
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       -- Don't show message as virtual text
@@ -28,8 +31,8 @@ local on_attach = function(client, bufnr)
   )
 
   -- Navigate diagnostics
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { focusable = false } })<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { focusable = false } })<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = _G.__MyLspFloatingOpts })<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = _G.__MyLspFloatingOpts })<CR>', opts)
 
   buf_set_keymap('n', lspmap('h'), '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', lspmap('d'), '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -55,7 +58,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_exec([[
     augroup MyAutoCmdLspDiagnostics
       autocmd!
-      autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
+      autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics(_G.__MyLspFloatingOpts)
     augroup END
   ]], false)
 
