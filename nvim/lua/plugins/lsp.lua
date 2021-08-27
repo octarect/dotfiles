@@ -72,9 +72,12 @@ end
 
 require'lspservers'.setup{
   servers = {
+    bashls = true,
     dockerls = true,
     gopls = true,
     html = true,
+    jsonls = true,
+    solargraph = true,
     sumneko_lua = true,
     tsserver = true,
     vimls = true,
