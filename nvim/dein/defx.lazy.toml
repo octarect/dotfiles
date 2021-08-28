@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
 depends = 'defx-icons'
 hook_add = '''
     nnoremap <silent> <Leader>f :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()` -columns=icons:filename:type<CR>

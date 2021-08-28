@@ -28,8 +28,8 @@ local function set_keymaps()
 end
 
 local function init()
-  local actions = require('telescope.actions')
-  require('telescope').setup{
+  local actions = require'telescope.actions'
+  require'telescope'.setup{
     defaults = {
       mappings = {
         i = {
