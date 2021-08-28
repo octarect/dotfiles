@@ -41,10 +41,11 @@ local function init()
           ['<C-t>'] = false,
         },
         n = {
-          ["<esc>"] = actions.close,
+          ['<esc>'] = actions.close,
         },
       },
       winblend = 20,
+      borderchars = { '-', '|', '-', '|', '+', '+', '+', '+' },
       color_devicons = true,
     },
   }

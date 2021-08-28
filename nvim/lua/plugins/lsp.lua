@@ -5,14 +5,14 @@ local leader = '<LocalLeader>'
 _G.__MyLspFloatingOpts = {
   focusable = false,
   border = {
-    {"+", "FloatBorder"},
-    {"-", "FloatBorder"},
-    {"+", "FloatBorder"},
-    {"|", "FloatBorder"},
-    {"+", "FloatBorder"},
-    {"-", "FloatBorder"},
-    {"+", "FloatBorder"},
-    {"|", "FloatBorder"},
+    {'+', 'FloatBorder'},
+    {'-', 'FloatBorder'},
+    {'+', 'FloatBorder'},
+    {'|', 'FloatBorder'},
+    {'+', 'FloatBorder'},
+    {'-', 'FloatBorder'},
+    {'+', 'FloatBorder'},
+    {'|', 'FloatBorder'},
   },
 }
 
@@ -90,6 +90,7 @@ require'lspservers'.setup{
         },
       },
     },
+    zeta_note = true,
   },
   global = {
     on_attach = on_attach,
