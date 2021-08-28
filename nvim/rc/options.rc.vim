@@ -94,6 +94,9 @@ set listchars=tab:>·,nbsp:+,trail:·,extends:→,precedes:←
 " Height of commnad-line window
 set cmdheight=2
 
+" Buffer becomes hidden if it is abandoned
+set hidden
+
 " Transparency
 " set pumblend=10
 augroup Transparent

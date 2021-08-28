@@ -3,33 +3,10 @@
 #-----------------------------------------------------------
 
 [[plugins]]
-repo = 'Shougo/deol.nvim'
-on_cmd='Deol'
-hook_add = '''
-  nnoremap <silent> <Leader>tt :<C-u>Deol -no-start-insert<CR>
-  " nnoremap <silent> <Leader>tf :<C-u>Deol zsh -split=floating<CR>
-  nnoremap <silent> <Leader>tq :<C-u>call deol#kill_editor()<CR>
-  function! s:open_floating() abort
-    let winwidth  = &columns > 180 ? float2nr(&columns / 2) : 90
-    let wincol    = &columns > winwidth ? (&columns - winwidth) / 2 : 0
-    let winheight = &lines > 40 ? float2nr(&lines * 5 / 8) : 24
-    let winrow    = &lines > winheight ? (&lines - winheight) / 2 : 0
-    execute 'Deol -split=floating -no-start-insert'
-        \ '-winheight=' . winheight
-        \ '-winwidth=' . winwidth
-        \ '-winrow=' . winrow
-        \ '-wincol=' . wincol
-  endfunction
-  nnoremap <silent> <Leader>tf :<C-u>call <SID>open_floating()<CR>
-'''
+repo = 'akinsho/toggleterm.nvim'
+on_map = { n = '<Leader>t' }
 hook_source = '''
-  " Normal mode (I cannot do VIM in VIM anymore)
-  tnoremap <C-j><C-j> <C-\><C-n>
-'''
-
-[plugins.ftplugin]
-deol = '''
-setlocal signcolumn=no
+  lua require('plugins.toggleterm')
 '''
 
 #-----------------------------------------------------------
