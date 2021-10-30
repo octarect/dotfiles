@@ -82,6 +82,10 @@ zinit wait lucid has"kubectl" for \
         openfaas/faas-cli \
     from"gh-r" as"program" mv"rio-* -> rio" \
         rancher/rio \
+    from"gh-r" as"program" bpick"cfssl_*" mv"cfssl_* -> cfssl" id-as"cloudflare/cfssl@cfssl" \
+        cloudflare/cfssl \
+    from"gh-r" as"program" bpick"cfssljson_*" mv"cfssljson_* -> cfssljson" id-as"cloudflare/cfssl@cfssljson" \
+        cloudflare/cfssl \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma/null
 
