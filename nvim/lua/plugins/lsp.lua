@@ -93,8 +93,12 @@ local lsp_settings = {
   },
 }
 
+local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require'nvim-lsp-installer'.on_server_ready(function(server)
-  local opts = { on_attach = on_attach }
+  local opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
   if lsp_settings[server.name] ~= nil and lsp_settings[server.name].settings ~= nil then
     opts.settings = lsp_settings[server.name].settings
   end

@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
+depends = ['nvim-lsp-installer', 'cmp-nvim-lsp']
 on_event = ['BufNewFile', 'BufRead']
 hook_source = '''
 lua require('plugins.lsp')
@@ -7,17 +8,54 @@ lua require('plugins.lsp')
 
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
-on_source = 'nvim-lspconfig'
+# on_source = 'nvim-lspconfig'
 
 [[plugins]]
-repo = 'hrsh7th/nvim-compe'
+repo = 'hrsh7th/nvim-cmp'
 on_event = ['InsertEnter']
-depends = ['compe-tabnine']
+depends = [
+  'cmp-nvim-lsp',
+  'cmp-tabnine',
+  'cmp-buffer',
+  'cmp-path',
+  'cmp-cmdline',
+  'cmp-emoji',
+  'cmp-treesitter',
+  'cmp_luasnip',
+  'lspkind-nvim',
+]
 hook_source = '''
-set completeopt=menuone,noselect
-lua require('plugins.nvim-compe')
+lua require('plugins.nvim-cmp')
 '''
 
 [[plugins]]
-repo = 'tzachar/compe-tabnine'
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'tzachar/cmp-tabnine'
 build = './install.sh'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-emoji'
+
+[[plugins]]
+repo = 'ray-x/cmp-treesitter'
+
+[[plugins]]
+repo = 'saadparwaiz1/cmp_luasnip'
+depends = ['LuaSnip']
+
+[[plugins]]
+repo = 'L3MON4D3/LuaSnip'
+
+[[plugins]]
+repo = 'onsails/lspkind-nvim'
