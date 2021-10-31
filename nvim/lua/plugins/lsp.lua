@@ -71,12 +71,23 @@ local on_attach = function(client, bufnr)
 end
 
 local lsp_settings = {
+  bashls = {},
+  dockerls = {},
+  gopls = {},
+  html = {},
+  jsonls = {},
+  solargraph = {},
+  sumneko_lua = {},
+  tsserver = {},
+  vimls = {},
   yamlls = {
-    yaml = {
-      schemas = {
-        kubernetes = "/*.yaml",
-        ["https://json.schemastore.org/ansible-playbook.json"] = { "/playbook.yml", "/ansible/*.yml" },
-        ["https://json.schemastore.org/ansible-role-2.9.json"] = { "/roles/tasks/*.yml" },
+    settings = {
+      yaml = {
+        schemas = {
+          kubernetes = "/*.yaml",
+          ["https://json.schemastore.org/ansible-playbook.json"] = { "/playbook.yml", "/ansible/*.yml" },
+          ["https://json.schemastore.org/ansible-role-2.9.json"] = { "/roles/tasks/*.yml" },
+        },
       },
     },
   },
@@ -84,38 +95,19 @@ local lsp_settings = {
 
 require'nvim-lsp-installer'.on_server_ready(function(server)
   local opts = { on_attach = on_attach }
-  if lsp_settings[server.name] ~= nil then
-    opts.settings = lsp_settings[server.name]
+  if lsp_settings[server.name] ~= nil and lsp_settings[server.name].settings ~= nil then
+    opts.settings = lsp_settings[server.name].settings
   end
   server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
--- require'lspservers'.setup{
---   servers = {
---     bashls = true,
---     dockerls = true,
---     gopls = true,
---     html = true,
---     jsonls = true,
---     solargraph = true,
---     sumneko_lua = true,
---     tsserver = true,
---     vimls = true,
---     yamlls = {
---       settings = {
---         yaml = {
---           schemas = {
---             kubernetes = "/*.yaml",
---             ["https://json.schemastore.org/ansible-playbook.json"] = { "/playbook.yml", "/ansible/*.yml" },
---             ["https://json.schemastore.org/ansible-role-2.9.json"] = { "/roles/tasks/*.yml" },
---           },
---         },
---       },
---     },
---     zeta_note = true,
---   },
---   global = {
---     on_attach = on_attach,
---   }
--- }
+local lsp_installer_servers = require'nvim-lsp-installer.servers'
+for server_name, _ in pairs(lsp_settings) do
+  local ok, server = lsp_installer_servers.get_server(server_name)
+  if ok then
+    if not server:is_installed() then
+      server:install()
+    end
+  end
+end
