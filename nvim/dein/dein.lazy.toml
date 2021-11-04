@@ -41,8 +41,11 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
-on_i = 1
+repo = 'windwp/nvim-autopairs'
+on_event = ['InsertEnter']
+hook_source = '''
+lua require('plugins.nvim-autopairs')
+'''
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
