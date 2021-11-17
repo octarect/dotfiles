@@ -10,7 +10,7 @@ ZINIT[MUTE_WARNINGS]=0
 ZPFX=${ZINIT[HOME_DIR]}/polaris
 
 if [[ ! -e ${ZINIT[BIN_DIR]} ]]; then
-    git clone https://github.com/zdharma/zinit.git ${ZINIT[BIN_DIR]}
+    git clone git@github.com:zdharma-continuum/zinit.git ${ZINIT[BIN_DIR]}
 fi
 
 source ${ZINIT[BIN_DIR]}/zinit.zsh
@@ -87,7 +87,7 @@ zinit wait lucid has"kubectl" for \
     from"gh-r" as"program" bpick"cfssljson_*" mv"cfssljson_* -> cfssljson" id-as"cloudflare/cfssl@cfssljson" \
         cloudflare/cfssl \
     light-mode atload"source <(kubectl completion zsh)" \
-        zdharma/null
+        zdharma-continuum/null
 
 # Temporarily disable the following command. If you need them again, merge them to the above list.
 # from"gh-r" as"program" mv"kubebuilder_* -> kubebuilder" \
@@ -133,9 +133,9 @@ zinit wait lucid light-mode for \
     atload"bindkey '^P' history-substring-search-up" \
     atload"bindkey '^N' history-substring-search-down" \
     zsh-users/zsh-history-substring-search \
-    zdharma/history-search-multi-word \
+    zdharma-continuum/history-search-multi-word \
     atload"_zsh_highlight" \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
     atload"!_zsh_autosuggest_start" \
     atload"bindkey '^X' autosuggest-accept" \
         zsh-users/zsh-autosuggestions
