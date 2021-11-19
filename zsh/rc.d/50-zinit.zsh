@@ -76,9 +76,9 @@ zinit wait lucid for \
 # Kubernetes
 zinit wait lucid has"kubectl" for \
         johanhaleby/kubetail \
-    from"gh-r" as"program" mv"k9s-* -> k9s" \
+    from"gh-r" as"program" \
         derailed/k9s \
-    from"gh-r" as"program" mv"faas-cli-* -> faas" \
+    from"gh-r" as"program" \
         openfaas/faas-cli \
     from"gh-r" as"program" mv"rio-* -> rio" \
         rancher/rio \
