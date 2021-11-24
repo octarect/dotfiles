@@ -1,0 +1,20 @@
+#!/bin/bash
+
+csv=()
+if [ -n "$1" ]; then
+    CURIFS=$IFS
+    IFS=$'\n'
+    for line in $(cat $1); do
+        csv+=("$line")
+    done
+    IFS=$CURIFS
+else
+    while read line; do
+        csv+=("$line")
+    done
+fi
+
+CURIFS=$IFS
+IFS=$'\n'
+echo "${csv[*]}" | column -s, -t
+IFS=$CURIFS
