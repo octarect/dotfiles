@@ -10,7 +10,7 @@ ZINIT[MUTE_WARNINGS]=0
 ZPFX=${ZINIT[HOME_DIR]}/polaris
 
 if [[ ! -e ${ZINIT[BIN_DIR]} ]]; then
-    git clone git@github.com:zdharma-continuum/zinit.git ${ZINIT[BIN_DIR]}
+    git clone https://github.com/zdharma-continuum/zinit.git ${ZINIT[BIN_DIR]}
 fi
 
 source ${ZINIT[BIN_DIR]}/zinit.zsh
