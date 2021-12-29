@@ -1,3 +1,5 @@
+alias k=kubectl
+
 # Set aliases to bin/_*
 alias gcd='source _gcd'
 
