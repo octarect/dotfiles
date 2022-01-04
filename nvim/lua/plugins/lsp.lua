@@ -31,8 +31,8 @@ local on_attach = function(client, bufnr)
   )
 
   -- Navigate diagnostics
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = _G.__MyLspFloatingOpts })<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = _G.__MyLspFloatingOpts })<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ float = _G.__MyLspFloatingOpts })<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ float = _G.__MyLspFloatingOpts })<CR>', opts)
 
   buf_set_keymap('n', lspmap('h'), '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', lspmap('d'), '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -58,7 +58,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_exec([[
     augroup MyAutoCmdLspDiagnostics
       autocmd!
-      autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics(_G.__MyLspFloatingOpts)
+      autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0, _G.__MyLspFloatingOpts)
     augroup END
   ]], false)
 
