@@ -48,6 +48,8 @@ function! s:toggle_silent_mode() abort
 endfunction
 nnoremap <Leader>os :call <SID>toggle_silent_mode()<CR>
 
+vnoremap <LocalLeader>r :'<,'>w !bash<CR>
+
 " Terminal mode
 " if exists(':tnoremap')
 "   " Open terminal
