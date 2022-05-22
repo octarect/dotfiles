@@ -3,6 +3,10 @@ local mapfuncs = {}
 local function exec_picker(picker, dropdown)
   dropdown = dropdown or false
   mapfuncs[picker] = function()
+    -- NOTE: require the root module before loading its children (and trigger on_lua)
+    if not(package.loaded['telescope']) then
+      require('telescope')
+    end
     f = require('telescope.builtin')[picker]
     if dropdown then
       f(require('telescope.themes').get_dropdown())
