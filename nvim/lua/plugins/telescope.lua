@@ -46,12 +46,25 @@ local function init()
         },
         n = {
           ['<esc>'] = actions.close,
+          ['<space>'] = actions.toggle_selection,
         },
       },
       winblend = 20,
       borderchars = { '-', '|', '-', '|', '+', '+', '+', '+' },
       color_devicons = true,
     },
+    pickers = {
+      buffers = {
+        mappings = {
+          i = {
+            ['<C-d>'] = actions.delete_buffer,
+          },
+          n = {
+            ['<C-d>'] = actions.delete_buffer,
+          },
+        },
+      }
+    }
   }
 end
 
