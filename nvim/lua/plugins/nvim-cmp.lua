@@ -46,12 +46,12 @@ cmp.setup {
       border = { '+', '-', '+', '|', '+', '-', '+', '|' },
     },
   },
-  mapping = {
-    ['<CR>'] = cmp.mapping.confirm {
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    },
-  },
+    }),
+  }),
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind = lspkind.symbolic(vim_item.kind)
@@ -74,7 +74,17 @@ cmp.setup {
 }
 
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
   },
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
+  })
 })
