@@ -68,8 +68,6 @@ zinit load "BurntSushi/ripgrep"
 
 # VPS
 zinit wait lucid for \
-    from"gh-r" as"program" mv"scw-* -> scw" atload"source <(scw autocomplete script shell=zsh)" \
-        scaleway/scaleway-cli \
     from"gh-r" as"program" atload"source <(doctl completion zsh)" \
         digitalocean/doctl
 
@@ -78,23 +76,14 @@ zinit wait lucid has"kubectl" for \
         johanhaleby/kubetail \
     from"gh-r" as"program" \
         derailed/k9s \
-    from"gh-r" as"program" \
-        openfaas/faas-cli \
-    from"gh-r" as"program" mv"rio-* -> rio" \
-        rancher/rio \
     from"gh-r" as"program" bpick"cfssl_*" mv"cfssl_* -> cfssl" id-as"cloudflare/cfssl@cfssl" \
         cloudflare/cfssl \
     from"gh-r" as"program" bpick"cfssljson_*" mv"cfssljson_* -> cfssljson" id-as"cloudflare/cfssl@cfssljson" \
         cloudflare/cfssl \
+        from"gh-r" as"program" bpick"operator-sdk_*" mv"operator-sdk_* -> operator-sdk" \
+        operator-framework/operator-sdk \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma-continuum/null
-
-# Temporarily disable the following command. If you need them again, merge them to the above list.
-# from"gh-r" as"program" mv"kubebuilder_* -> kubebuilder" \
-# atclone'kubebuilder completion zsh > "${fpath[1]}/_kubebuilder"' atpull"%atclone" \
-#     kubernetes-sigs/kubebuilder \
-# from"gh-r" bpick"operator-sdk-*" as"program" mv"operator-sdk-* -> operator-sdk" \
-#     operator-framework/operator-sdk \
 
 # Parser generator tool (used by nvim-treesitter on Neovim)
 zinit wait lucid for \
