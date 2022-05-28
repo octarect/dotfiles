@@ -41,11 +41,11 @@ zinit ice wait lucid as"program" pick"pixterm" \
 zinit load "eliukblau/pixterm"
 
 # Improved cat
-zinit ice wait lucid from"gh-r" as"program" mv"bat-*/bat -> bat"
+zinit ice wait lucid from"gh-r" as"program" mv"bat-*/bat -> bat" atload"alias cat=bat"
 zinit load "sharkdp/bat"
 
 # System monitor
-zinit ice wait lucid from"gh-r" as"program" pick"btm"
+zinit ice wait lucid from"gh-r" as"program" pick"btm" atload"alias top=btm"
 zinit load "ClementTsang/bottom"
 
 # Data interchange
