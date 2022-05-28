@@ -1,0 +1,6 @@
+#/bin/bash
+# vi: ft=sh
+SCRIPT_URL=https://gist.githubusercontent.com/octarect/b07ba73f6862be473660c65bdf0c2195/raw/remotebench.sh
+echo 'Fetching scripts from gist...'
+curl -L $SCRIPT_URL | bash -s -- $@
+echo 'Done!!'
