@@ -71,6 +71,10 @@ zinit wait lucid for \
     from"gh-r" as"program" atload"source <(doctl completion zsh)" \
         digitalocean/doctl
 
+zinit ice wait lucid as"program" pick"mc" \
+    atclone"make build" atpull"%atclone"
+zinit load "minio/mc"
+
 # Kubernetes
 zinit wait lucid has"kubectl" for \
         johanhaleby/kubetail \
