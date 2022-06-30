@@ -1,11 +1,13 @@
 local ts_config = {
+  -- Install parsers automatically
+  ensure_installed = 'all',
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = {},
+
   highlight = {
     enable = true,
     disable = {},
   },
-  -- Install parsers automatically
-  ensure_installed = 'all',
-  ignore_install = {},
   -- p00f/nvim-ts-rainbow
   rainbow = {
     enable = true,
