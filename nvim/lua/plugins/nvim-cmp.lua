@@ -47,6 +47,20 @@ cmp.setup {
     },
   },
   mapping = cmp.mapping.preset.insert({
+    ['<C-n>'] = function()
+      if cmp.visible() then
+        cmp.mapping.select_next_item()()
+      else
+        cmp.mapping.complete()()
+      end
+    end,
+    ['<C-p>'] = function()
+      if cmp.visible() then
+        cmp.mapping.select_prev_item()()
+      else
+        cmp.mapping.complete()()
+      end
+    end,
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
