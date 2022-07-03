@@ -1,14 +1,17 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['nvim-lsp-installer', 'cmp-nvim-lsp']
+depends = ['mason.nvim', 'cmp-nvim-lsp']
 on_event = ['BufNewFile', 'BufRead']
 hook_source = '''
 lua require('plugins.lsp')
 '''
 
 [[plugins]]
-repo = 'williamboman/nvim-lsp-installer'
-# on_source = 'nvim-lspconfig'
+repo = 'williamboman/mason.nvim'
+depends = ['mason-lspconfig.nvim']
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'

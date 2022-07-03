@@ -1,3 +1,5 @@
+local lspconfig = require('lspconfig')
+
 -- Leading keys to use LSP function
 local leader = '<LocalLeader>'
 
@@ -95,25 +97,33 @@ local lsp_settings = {
   },
 }
 
-local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require'nvim-lsp-installer'.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  if lsp_settings[server.name] ~= nil and lsp_settings[server.name].settings ~= nil then
-    opts.settings = lsp_settings[server.name].settings
-  end
-  server:setup(opts)
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
-
-local lsp_installer_servers = require'nvim-lsp-installer.servers'
+local required_server_names = {}
 for server_name, _ in pairs(lsp_settings) do
-  local ok, server = lsp_installer_servers.get_server(server_name)
-  if ok then
-    if not server:is_installed() then
-      server:install()
-    end
-  end
+  table.insert(required_server_names, server_name)
 end
+
+local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require('mason').setup {
+}
+
+require('mason-lspconfig').setup {
+  ensure_installed = required_server_names
+}
+
+require('mason-lspconfig').setup_handlers {
+  function(server_name)
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+    -- Override settings
+    if lsp_settings[server_name] ~= nil then
+      for k, v in pairs(lsp_settings[server_name]) do
+        opts[k] = v
+      end
+    end
+    lspconfig[server_name].setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+  end,
+}
