@@ -74,6 +74,10 @@ end
 
 local lsp_settings = {
   bashls = {},
+  denols = {
+    root_dir = lspconfig.util.root_pattern("deno.json"),
+    init_options = { lint = true },
+  },
   dockerls = {},
   gopls = {},
   html = {},
@@ -82,7 +86,9 @@ local lsp_settings = {
   sumneko_lua = {},
   terraformls = {},
   tflint = {},
-  tsserver = {},
+  tsserver = {
+    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json"),
+  },
   vimls = {},
   yamlls = {
     settings = {
