@@ -1,7 +1,35 @@
 #!/bin/bash
 
-if [ "$1" = "" ]; then
+usage() {
+cat <<EOS
+rewrite the commit history by git commit --amend
+
+Usage:
+    git-amend-date [OPTION] [NEW_DATE]
+
+Options:
+    -n, --next <STRING>
+        determine the date based on previous commit. e.g. '-n 2days' means 2 days later. (time is randomly set)
+EOS
+}
+
+if [[ "$1" = "" ]]; then
     read -p "Enter date ($(date '+%FT%T')): " new_date
+elif [[ "$1" =~ ^(-h|--help)$ ]]; then
+    usage && exit 0
+elif [[ "$1" =~ ^(-n|--next)$ ]]; then
+    [[ ! "$2" =~ ^[0-9]+\ *days?$ ]] && usage
+    dates="$(git log -2 --pretty=format:%ai)"
+    if [[ $(echo "${dates}" | wc -l) -lt 2 ]]; then
+        echo 'two or more commits must exist.'
+        exit 1
+    fi
+    prev_commit_date="$(echo "${dates}" | tail -n 1)"
+    hour=$(shuf -i 0-23 -n 1)
+    min=$(shuf -i 0-59 -n 1)
+    sec=$(shuf -i 0-59 -n 1)
+    new_date="$(date -d "${prev_commit_date} $2" "+%FT$(printf '%02d:%02d:%02d' $hour $min $sec)")"
+    # exit 1
 else
     new_date="$1"
 fi
