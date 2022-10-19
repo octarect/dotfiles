@@ -83,7 +83,15 @@ local lsp_settings = {
   html = {},
   jsonls = {},
   solargraph = {},
-  sumneko_lua = {},
+  sumneko_lua = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' },
+        },
+      },
+    },
+  },
   terraformls = {},
   tflint = {},
   tsserver = {
