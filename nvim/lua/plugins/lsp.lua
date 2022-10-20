@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', lspmap('o'), '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
   -- Highlight a symbol and its references when holding the cursor
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec([[
       augroup MyAutoCmdLspDocumentHighlight
         autocmd! * <buffer>
@@ -65,9 +65,9 @@ local on_attach = function(client, bufnr)
   ]], false)
 
   -- Add `:Format` command
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     buf_set_keymap('n', lspmap('f'), '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     buf_set_keymap('n', lspmap('f'), '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
   end
 end
