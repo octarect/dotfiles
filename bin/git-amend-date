@@ -38,4 +38,4 @@ if ! date -d "$new_date" 1>/dev/null; then
     exit
 fi
 
-GIT_COMMITER_DATE="$new_date" git commit --date="$new_date" --amend
+GIT_COMMITTER_DATE="$new_date" git commit --date="$new_date" --amend
