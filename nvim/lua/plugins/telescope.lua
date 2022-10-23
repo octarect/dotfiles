@@ -50,7 +50,7 @@ local function set_keymaps()
   set_keymap("n", "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts)
   set_keymap("n", "<Leader>dj", get_picker_cmd("builtin/treesitter"), opts)
   -- telescope-symbols.nvim
-  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols"), opts)
+  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols", { sources = { "emoji", "gitmoji" }}), opts)
   -- telescope-menu.nvim
   set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "cursor" }), opts)
   set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "cursor" }), opts)
