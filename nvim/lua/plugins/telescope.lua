@@ -1,34 +1,59 @@
--- Register a function wrapping a picker and return a vim command to invoke it.
 local mapfuncs = {}
-local function exec_picker(picker, dropdown)
-  dropdown = dropdown or false
-  mapfuncs[picker] = function()
+local mapfuncs_cnt = 0
+
+-- Create a dedicated function for mapping, and return a command to call it.
+-- @param picker_name Picker name. ex) "builtin/find_files"
+-- @param opts Picker options. The following keys are added for this function;
+-- theme: Pass theme function if you want to use a theme. Default is nil (no theme)
+local function get_picker_cmd(picker_name, opts)
+  opts = opts or {}
+
+  local theme = opts.theme
+  opts.theme = nil
+
+  mapfuncs_cnt = mapfuncs_cnt + 1
+  local i = mapfuncs_cnt
+
+  mapfuncs[i] = function()
     -- NOTE: require the root module before loading its children (and trigger on_lua)
-    if not(package.loaded['telescope']) then
-      require('telescope')
+    if not(package.loaded["telescope"]) then
+      require("telescope")
     end
-    f = require('telescope.builtin')[picker]
-    if dropdown then
-      f(require('telescope.themes').get_dropdown())
+
+    local picker
+    local picker_paths = vim.split(picker_name, "/")
+
+    if picker_paths[1] == "builtin" then
+      picker = require("telescope.builtin")[picker_paths[2]]
     else
-      f()
+      picker = require("telescope").extensions[picker_paths[1]][picker_paths[2]]
+    end
+
+    if theme == nil then
+      picker(opts)
+    else
+      picker(require("telescope.themes")["get_" .. theme](opts))
     end
   end
-  return '<cmd>lua require("plugins.telescope").mapfuncs.' .. picker ..  '()<CR>'
+
+  return string.format('<cmd>lua require("plugins.telescope").mapfuncs[%d]()<CR>', i)
 end
 
 local function set_keymaps()
   local set_keymap = function(...) vim.api.nvim_set_keymap(...) end
   local opts = { noremap=true, silent=true }
-  set_keymap('n', '<Leader>df', exec_picker('git_files'), opts)
-  set_keymap('n', '<Leader>dF', exec_picker('find_files'), opts)
-  set_keymap('n', '<Leader>dg', exec_picker('live_grep'), opts)
-  set_keymap('n', '<Leader>db', exec_picker('buffers'), opts)
-  set_keymap('n', '<Leader>dc', exec_picker('colorscheme', true), opts)
+
+  set_keymap("n", "<Leader>df", get_picker_cmd("builtin/git_files"), opts)
+  set_keymap("n", "<Leader>dF", get_picker_cmd("builtin/find_files"), opts)
+  set_keymap("n", "<Leader>dg", get_picker_cmd("builtin/live_grep"), opts)
+  set_keymap("n", "<Leader>db", get_picker_cmd("builtin/buffers"), opts)
+  set_keymap("n", "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts)
+  set_keymap("n", "<Leader>dj", get_picker_cmd("builtin/treesitter"), opts)
   -- telescope-symbols.nvim
-  set_keymap('n', '<Leader>de', exec_picker('symbols'), opts)
-  -- nvim-treesitter
-  set_keymap('n', '<Leader>dj', exec_picker('treesitter'), opts)
+  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols"), opts)
+  -- telescope-menu.nvim
+  set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "cursor" }), opts)
+  set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "cursor" }), opts)
 end
 
 local function init()
