@@ -1,9 +1,15 @@
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
-depends = ['popup.nvim', 'plenary.nvim', 'nvim-web-devicons', 'telescope-symbols.nvim']
 on_lua = 'telescope'
 hook_add = 'lua require("plugins.telescope").set_keymaps()'
 hook_source = 'lua require("plugins.telescope").init()'
+depends = [
+  'popup.nvim',
+  'plenary.nvim',
+  'nvim-web-devicons',
+  'telescope-symbols.nvim',
+  'telescope-menu.nvim',
+]
 
 [[plugins]]
 repo = 'nvim-lua/popup.nvim'
@@ -16,3 +22,6 @@ repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope-symbols.nvim'
+
+[[plugins]]
+repo = 'octarect/telescope-menu.nvim'

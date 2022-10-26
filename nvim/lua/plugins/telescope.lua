@@ -52,8 +52,9 @@ local function set_keymaps()
   -- telescope-symbols.nvim
   set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols", { sources = { "emoji", "gitmoji" }}), opts)
   -- telescope-menu.nvim
-  set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "cursor" }), opts)
-  set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "cursor" }), opts)
+  set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "dropdown" }), opts)
+  set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "dropdown" }), opts)
+  set_keymap("n", "<Leader>dd", get_picker_cmd("menu/cursor", { theme = "cursor" }), opts)
 end
 
 local function init()
@@ -88,9 +89,75 @@ local function init()
             ['<C-d>'] = actions.delete_buffer,
           },
         },
-      }
-    }
+      },
+    },
+    extensions = {
+      menu = {
+        default = {
+          items = {
+            { "⚙️ LSPInfo", "LspInfo" },
+            { "⚙️ Manage LSP servers", "Mason" },
+            { "🔃Dein: Recache runtimepath", "call dein#recache_runtimepath()" },
+            { "🔌Dein: Edit plugin settings", [[ lua require"telescope.builtin".find_files{ cwd = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/dein" } ]] },
+            { "🌈Change colorscheme", "Telescope colorscheme theme=dropdown"},
+            { "📁Browse files", "Telescope find_files" },
+            { "📁Browse files in Git Repository", "Telescope git_files" },
+            { "🔍Search in current directory (live_grep)", "Telescope live_grep" },
+            { " Lists open buffers", "Telescope buffers" },
+            { " Lists available commands", "Telescope commands" },
+            { " Lists tags in current directory", "Telescope tags" },
+            { " Lists marks", "Telescope marks" },
+            { " Lists jumplist", "Telescope jumplist" },
+            { " Lists command history", "Telescope command_history theme=ivy" },
+            { " Lists search history", "Telescope search_history theme=ivy" },
+            { " Lists registers (Paste yanked string)", "Telescope registers" },
+            { " Lists vim autocommands", "Telescope autocommands" },
+            { "🎮Lists keymaps (keymappings)", "Telescope keymaps" },
+            { "⚙️ Show vim options", "Telescope vim_options" },
+            { "😀Insert emoji", [[ lua require"telescope.builtin".symbols{ sources = {"emoji", "gitmoji"} } ]] },
+            { "😀Insert emoji (Nerd Fonts)", [[ lua require"telescope.builtin".symbols{ sources = {"nerd"} } ]] },
+            { "😀Insert emoji (kaomoji)", [[ lua require"telescope.builtin".symbols{ sources = {"kaomoji"} } ]] },
+            { "🔭Open filetype menu", "Telescope filetype" },
+            { "PrevHunk", "<Plug>(GitGutterPrevHunk)", action = require"telescope._extensions.menu.actions".keymap },
+            { "NextHunk", "    <Plug>(GitGutterNextHunk)", action = require"telescope._extensions.menu.actions".keymap },
+            { "emulate to open telescope", "<Leader>df", action = require"telescope._extensions.menu.actions".keymap },
+            { "emulate", "zr", action = require"telescope._extensions.menu.actions".keymap },
+            { "Example", function()
+              print("This is example.\n")
+            end},
+          },
+        },
+        cursor = {
+          items = {
+            { "🔍Search for the current word", "Telescope grep_string" },
+            { "📚Spell suggestions", "Telescope spell_suggest" },
+            { " Paste", "Telescope registers" },
+            { "😀Insert emoji", [[ lua require"telescope.builtin".symbols{ sources = {"emoji", "gitmoji"} } ]] },
+            { "😀Insert emoji (Nerd Fonts)", [[ lua require"telescope.builtin".symbols{ sources = {"nerd"} } ]] },
+            { "😀Insert emoji (kaomoji)", [[ lua require"telescope.builtin".symbols{ sources = {"kaomoji"} } ]] },
+          },
+        },
+        filetype = {
+          lua = {
+            items = {
+              { display = "Format", value = "!stylua %" },
+            },
+          },
+          markdown = {
+            items = {
+              { "✨Format table", "TableFormat" },
+              { "🔍Preview", "PrevimOpen" },
+              { "🚩Increase headers", "HeaderIncrease" },
+              { "🚩Decrease headers", "HeaderDecrease" },
+              { "🚩Convert Setex headers to Atx", "SetexToAtx" },
+              { "📖Table of contents", "Toch" },
+            },
+          }
+        },
+      },
+    },
   }
+  require"telescope".load_extension("menu")
 end
 
 return {
