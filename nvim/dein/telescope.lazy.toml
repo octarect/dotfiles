@@ -9,6 +9,7 @@ depends = [
   'nvim-web-devicons',
   'telescope-symbols.nvim',
   'telescope-menu.nvim',
+  'telescope-fzf-native.nvim',
 ]
 
 [[plugins]]
@@ -25,3 +26,7 @@ repo = 'nvim-telescope/telescope-symbols.nvim'
 
 [[plugins]]
 repo = 'octarect/telescope-menu.nvim'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+build = 'make'
