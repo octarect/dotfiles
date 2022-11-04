@@ -13,6 +13,12 @@ if rc#get_highlight('Pmenu', 'guibg') ==# 'Magenta'
   hi link NormalFloat Pmenu
 endif
 
+if rc#get_highlight('@text.diff.add', 'ctermfg') == ''
+  hi link @text.diff.add DiffAdd
+  hi link @text.diff.delete DiffDelete
+  hi link @attribute DiffChange
+endif
+
 if has('nvim') || has('patch-7.4.237')
   hi EndOfBuffer gui=NONE guibg=NONE
 endif

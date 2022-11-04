@@ -55,9 +55,18 @@ function! rc#init() abort
   call rc#ensure_path(g:rc#cache_path)
 endfunction
 
+let s:regex_hi_linked_group = '.\+ links to \(\S\+\)'
 function! rc#get_highlight(group, key)
-  let l:output = execute('hi ' . a:group)
-  return matchstr(output, a:key . '=\zs\S*')
+  try
+    let l:output = execute('hi ' . a:group)
+  catch
+    return ''
+  endtry
+  if match(l:output, s:regex_hi_linked_group) == 0
+    let l:linked_group = substitute(l:output, s:regex_hi_linked_group, '\1', 'g')
+    return rc#get_highlight(l:linked_group, a:key)
+  endif
+  return matchstr(l:output, a:key . '=\zs\S*')
 endfunction
 
 let s:local_config_path = expand('$HOME/.local/share/nvim/local')
