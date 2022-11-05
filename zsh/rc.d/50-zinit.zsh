@@ -48,6 +48,11 @@ zinit load "sharkdp/bat"
 zinit ice wait lucid from"gh-r" as"program" pick"btm" atload"alias top=btm"
 zinit load "ClementTsang/bottom"
 
+# Terminal recording
+# asciinema is managed by bin/asciinema because it is implemented by python.
+zinit ice wait lucid from"gh-r" as"program" mv"agg-* -> agg"
+zinit load "asciinema/agg"
+
 # Data interchange
 [ "$(uname)" = "Darwin" ] && jq_branch="*osx*" || jq_branch="*linux64*"
 zinit ice wait lucid from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick"$jq_branch"
