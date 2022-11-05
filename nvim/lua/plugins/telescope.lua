@@ -124,13 +124,6 @@ local function init()
             { "😀Insert emoji (Nerd Fonts)", [[ lua require"telescope.builtin".symbols{ sources = {"nerd"} } ]] },
             { "😀Insert emoji (kaomoji)", [[ lua require"telescope.builtin".symbols{ sources = {"kaomoji"} } ]] },
             { "🔭Open filetype menu", "Telescope filetype" },
-            { "PrevHunk", "<Plug>(GitGutterPrevHunk)", action = require"telescope._extensions.menu.actions".keymap },
-            { "NextHunk", "    <Plug>(GitGutterNextHunk)", action = require"telescope._extensions.menu.actions".keymap },
-            { "emulate to open telescope", "<Leader>df", action = require"telescope._extensions.menu.actions".keymap },
-            { "emulate", "zr", action = require"telescope._extensions.menu.actions".keymap },
-            { "Example", function()
-              print("This is example.\n")
-            end},
           },
         },
         cursor = {
