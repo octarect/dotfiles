@@ -16,8 +16,8 @@ local function get_picker_cmd(picker_name, opts)
 
   mapfuncs[i] = function()
     -- NOTE: require the root module before loading its children (and trigger on_lua)
-    if not(package.loaded["telescope"]) then
-      require("telescope")
+    if not package.loaded["telescope"] then
+      require "telescope"
     end
 
     local picker
@@ -41,16 +41,16 @@ end
 
 local function set_keymaps()
   local set_keymap = function(...) vim.api.nvim_set_keymap(...) end
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
-  set_keymap("n", "<Leader>df", get_picker_cmd("builtin/git_files"), opts)
-  set_keymap("n", "<Leader>dF", get_picker_cmd("builtin/find_files"), opts)
-  set_keymap("n", "<Leader>dg", get_picker_cmd("builtin/live_grep"), opts)
-  set_keymap("n", "<Leader>db", get_picker_cmd("builtin/buffers"), opts)
+  set_keymap("n", "<Leader>df", get_picker_cmd "builtin/git_files", opts)
+  set_keymap("n", "<Leader>dF", get_picker_cmd "builtin/find_files", opts)
+  set_keymap("n", "<Leader>dg", get_picker_cmd "builtin/live_grep", opts)
+  set_keymap("n", "<Leader>db", get_picker_cmd "builtin/buffers", opts)
   set_keymap("n", "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts)
-  set_keymap("n", "<Leader>dj", get_picker_cmd("builtin/treesitter"), opts)
+  set_keymap("n", "<Leader>dj", get_picker_cmd "builtin/treesitter", opts)
   -- telescope-symbols.nvim
-  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols", { sources = { "emoji", "gitmoji" }}), opts)
+  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols", { sources = { "emoji", "gitmoji" } }), opts)
   -- telescope-menu.nvim
   set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "dropdown" }), opts)
   set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "dropdown" }), opts)
@@ -58,35 +58,35 @@ local function set_keymaps()
 end
 
 local function init()
-  local actions = require'telescope.actions'
-  require'telescope'.setup{
+  local actions = require "telescope.actions"
+  require("telescope").setup {
     defaults = {
       mappings = {
         i = {
-          ['<C-u>'] = false,
+          ["<C-u>"] = false,
           -- Open file in horizontal by <C-s> instead of <C-x>
-          ['<C-x>'] = false,
-          ['<C-s>'] = actions.file_split,
+          ["<C-x>"] = false,
+          ["<C-s>"] = actions.file_split,
           -- Open file in new tab. (Disable tmux prefix <C-t>)
-          ['<C-t>'] = false,
+          ["<C-t>"] = false,
         },
         n = {
-          ['<esc>'] = actions.close,
-          ['<space>'] = actions.toggle_selection,
+          ["<esc>"] = actions.close,
+          ["<space>"] = actions.toggle_selection,
         },
       },
       winblend = 20,
-      borderchars = { '-', '|', '-', '|', '+', '+', '+', '+' },
+      borderchars = { "-", "|", "-", "|", "+", "+", "+", "+" },
       color_devicons = true,
     },
     pickers = {
       buffers = {
         mappings = {
           i = {
-            ['<C-d>'] = actions.delete_buffer,
+            ["<C-d>"] = actions.delete_buffer,
           },
           n = {
-            ['<C-d>'] = actions.delete_buffer,
+            ["<C-d>"] = actions.delete_buffer,
           },
         },
       },
@@ -104,8 +104,11 @@ local function init()
             { "⚙️ LSPInfo", "LspInfo" },
             { "⚙️ Manage LSP servers", "Mason" },
             { "🔃Dein: Recache runtimepath", "call dein#recache_runtimepath()" },
-            { "🔌Dein: Edit plugin settings", [[ lua require"telescope.builtin".find_files{ cwd = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/dein" } ]] },
-            { "🌈Change colorscheme", "Telescope colorscheme theme=dropdown"},
+            {
+              "🔌Dein: Edit plugin settings",
+              [[ lua require"telescope.builtin".find_files{ cwd = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/dein" } ]],
+            },
+            { "🌈Change colorscheme", "Telescope colorscheme theme=dropdown" },
             { "📁Browse files", "Telescope find_files" },
             { "📁Browse files in Git Repository", "Telescope git_files" },
             { "🔍Search in current directory (live_grep)", "Telescope live_grep" },
@@ -151,13 +154,13 @@ local function init()
               { "🚩Convert Setex headers to Atx", "SetexToAtx" },
               { "📖Table of contents", "Toch" },
             },
-          }
+          },
         },
       },
     },
   }
-  require"telescope".load_extension("fzf")
-  require"telescope".load_extension("menu")
+  require("telescope").load_extension "fzf"
+  require("telescope").load_extension "menu"
 end
 
 return {

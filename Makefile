@@ -30,3 +30,7 @@ install: apply init deploy
 test:
 	@docker build --force-rm -t dotfiles .
 	@docker container run --rm --privileged dotfiles
+
+.PHONY: nvim-fmt
+nvim-fmt:
+	@stylua nvim/
