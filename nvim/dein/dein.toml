@@ -4,7 +4,8 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['vim-gitgutter', 'vim-gitbranch', 'vim-devicons']
-hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
+# hook_add = "call rc#source_rc('plugin/lightline.rc.vim')"
+hook_add = "lua require('plugins/lightline')"
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
