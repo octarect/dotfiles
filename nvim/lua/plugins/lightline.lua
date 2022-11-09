@@ -1,7 +1,7 @@
-vim.g.lightline_icon_git_branch = ''
-vim.g.lightline_icon_git_added = ''
-vim.g.lightline_icon_git_modified = ''
-vim.g.lightline_icon_git_removed = ''
+vim.g.lightline_icon_git_branch = ""
+vim.g.lightline_icon_git_added = ""
+vim.g.lightline_icon_git_modified = ""
+vim.g.lightline_icon_git_removed = ""
 
 vim.g.lightline = {
   colorscheme = "one",
@@ -38,15 +38,16 @@ vim.g.lightline = {
     inactive = { "num", "icon", "filename", "modified", "readonly" },
   },
   tab_component_function = {
-    num = 'lightline#tab#tabnum',
-    icon = 'LightlineTabIcon',
-    filename = 'LightlineFileName',
-    modified = 'lightline#tab#modified',
-    readonly = 'lightline#tab#readonly',
+    num = "lightline#tab#tabnum",
+    icon = "LightlineTabIcon",
+    filename = "LightlineFileName",
+    modified = "lightline#tab#modified",
+    readonly = "lightline#tab#readonly",
   },
 }
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+  [[
   function! LightlineTabIcon(n) abort
     let buflist  = tabpagebuflist(a:n)
     let winnr    = tabpagewinnr(a:n)
@@ -73,4 +74,6 @@ vim.api.nvim_exec([[
         \ g:lightline_icon_git_removed, deleted
         \ )
   endfunction
-]], false)
+]],
+  false
+)
