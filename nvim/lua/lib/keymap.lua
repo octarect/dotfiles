@@ -9,7 +9,7 @@ M.flags = {
   expr = "expr",
 }
 
-local set_keymaps = function(mode, keymaps)
+local set_keymaps = function(buffer, mode, keymaps)
   for _, m in ipairs(keymaps) do
     local opts = {}
 
@@ -29,14 +29,24 @@ local set_keymaps = function(mode, keymaps)
       opts[flag] = true
     end
 
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+    if buffer then
+      vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+    else
+      vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+    end
   end
 end
 
-M.map = function(keymaps) set_keymaps("", keymaps) end
-M.nmap = function(keymaps) set_keymaps("n", keymaps) end
-M.imap = function(keymaps) set_keymaps("i", keymaps) end
-M.vmap = function(keymaps) set_keymaps("v", keymaps) end
-M.xmap = function(keymaps) set_keymaps("x", keymaps) end
+M.map = function(keymaps) set_keymaps(false, "", keymaps) end
+M.nmap = function(keymaps) set_keymaps(false, "n", keymaps) end
+M.imap = function(keymaps) set_keymaps(false, "i", keymaps) end
+M.vmap = function(keymaps) set_keymaps(false, "v", keymaps) end
+M.xmap = function(keymaps) set_keymaps(false, "x", keymaps) end
+
+M.bmap = function(keymaps) set_keymaps(true, "", keymaps) end
+M.bnmap = function(keymaps) set_keymaps(true, "n", keymaps) end
+M.bimap = function(keymaps) set_keymaps(true, "i", keymaps) end
+M.bvmap = function(keymaps) set_keymaps(true, "v", keymaps) end
+M.bxmap = function(keymaps) set_keymaps(true, "x", keymaps) end
 
 return M
