@@ -36,7 +36,7 @@ local function get_picker_cmd(picker_name, opts)
     end
   end
 
-  return string.format('<cmd>lua require("plugins.telescope").mapfuncs[%d]()<CR>', i)
+  return string.format('<cmd>lua require("packages.telescope.telescope").mapfuncs[%d]()<CR>', i)
 end
 
 local function set_keymaps()
@@ -104,6 +104,7 @@ local function init()
             { "⚙️ LSPInfo", "LspInfo" },
             { "⚙️ Manage LSP servers", "Mason" },
             { "🔃Dein: Recache runtimepath", "call dein#recache_runtimepath()" },
+            { "🔃Packer: Sync plugins", [[ lua require("lib.packer").init { reload = true } ]] },
             {
               "🔌Dein: Edit plugin settings",
               [[ lua require"telescope.builtin".find_files{ cwd = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/dein" } ]],
@@ -160,7 +161,7 @@ local function init()
     },
   }
   require("telescope").load_extension "fzf"
-  require("telescope").load_extension "menu"
+  -- require("telescope").load_extension "menu"
 end
 
 return {

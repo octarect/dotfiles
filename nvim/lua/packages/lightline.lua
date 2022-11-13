@@ -9,7 +9,6 @@ vim.g.lightline = {
     left = {
       { "mode", "paste" },
       { "readonly", "relativepath", "modified" },
-      { "progress" },
     },
     right = {
       { "lineinfo" },
@@ -27,7 +26,6 @@ vim.g.lightline = {
   },
   component = {
     filetype = "%{WebDevIconsGetFileTypeSymbol()} %{&ft !=# '' ? &ft : 'no ft'}",
-    progress = "%{dein#get_progress()}",
   },
   component_function = {
     gitdiff = "LightlineGitDiff",
