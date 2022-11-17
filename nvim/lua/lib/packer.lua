@@ -105,19 +105,20 @@ vim.api.nvim_create_autocmd({ "User" }, {
     dofile(vim.env.MYVIMRC)
   end
 })
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  group = aug,
-  -- pattern = "**/packages/**/*.lua",
-  pattern = (function()
-    local patterns = {}
-    for _, path in ipairs(plugin_def_paths) do
-      patterns[#patterns+1] = path .. "/**init.lua"
-    end
-    return patterns
-  end)(),
-  callback = function()
-    M.init { reload = true }
-  end
-})
+
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   group = aug,
+--   -- pattern = "**/packages/**/*.lua",
+--   pattern = (function()
+--     local patterns = {}
+--     for _, path in ipairs(plugin_def_paths) do
+--       patterns[#patterns+1] = path .. "/**init.lua"
+--     end
+--     return patterns
+--   end)(),
+--   callback = function()
+--     M.init { reload = true }
+--   end
+-- })
 
 return M
