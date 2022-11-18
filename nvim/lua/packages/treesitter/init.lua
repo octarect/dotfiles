@@ -5,7 +5,6 @@ packer.register {
     {
       "nvim-treesitter/nvim-treesitter",
       config = function()
-        _G.load_dependencies("treesitter.nvim")
         require("packages.treesitter.treesitter")
       end,
       run = ":TSUpdate",

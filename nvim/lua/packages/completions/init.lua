@@ -6,7 +6,6 @@ packer.register {
       "neovim/nvim-lspconfig",
       event = { "BufNewFile", "BufRead" },
       config = function()
-        _G.load_dependencies("nvim-lspconfig")
         require("packages.completions.lsp")
       end,
       requires = {
@@ -17,7 +16,6 @@ packer.register {
       "hrsh7th/nvim-cmp",
       event = { "InsertEnter" },
       config = function()
-        _G.load_dependencies("nvim-cmp")
         require("packages.completions.nvim-cmp")
       end,
       requires = {
@@ -34,9 +32,6 @@ packer.register {
     },
     {
       "saadparwaiz1/cmp_luasnip",
-      config = function()
-        _G.load_dependencies("cmp_luasnip")
-      end,
       opt = true,
       requires = {
         { "L3MON4D3/LuaSnip", opt = true },
@@ -44,9 +39,6 @@ packer.register {
     },
     {
       "williamboman/mason.nvim",
-      config = function()
-        _G.load_dependencies("mason.nvim")
-      end,
       requires = {
         { 'williamboman/mason-lspconfig.nvim', opts = true },
       },

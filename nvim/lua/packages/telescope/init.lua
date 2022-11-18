@@ -8,7 +8,6 @@ packer.register {
       "nvim-telescope/telescope.nvim",
       setup = function() require("packages.telescope.telescope").set_keymaps() end,
       config = function()
-        _G.load_dependencies("telescope.nvim")
         require("packages.telescope.telescope").init()
       end,
       requires = {

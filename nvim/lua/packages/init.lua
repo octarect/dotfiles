@@ -8,7 +8,6 @@ packer.register {
     {
       "itchyny/lightline.vim",
       setup = function()
-        _G.load_dependencies("lightline.vim")
         require("packages.lightline")
       end,
       requires = {
@@ -57,7 +56,6 @@ packer.register {
         }
       end,
       config = function()
-        _G.load_dependencies("defx.nvim")
         require("packages.defx")
       end,
       run = ":UpdateRemotePlugins",
@@ -142,8 +140,6 @@ packer.register {
       "plasticboy/vim-markdown",
       ft = { "markdown" },
       config = function()
-        _G.load_dependencies("vim-markdown")
-
         vim.g.vim_markdown_folding_disabled = 1
         _G.keymap.nmap {
           { "<LocalLeader>t", ":<C-u>TableFormat<CR>", { _G.keymap.flags.noremap } },

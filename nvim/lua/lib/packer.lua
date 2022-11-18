@@ -8,6 +8,21 @@ local packer_path = data_path .. "/pack/packer/opt/packer.nvim"
 local packer_compiled_path = data_path .. "/lua/packer_compiled.lua"
 local plugin_def_paths = { config.runtime_path .. "/lua/packages" }
 
+-- NOTE: You cannot use a local variable in this function (error like `attempt call upvalue`)
+local load_dependencies = function(plugin_name)
+  local plugin = _G.packer_registered_plugins[plugin_name]
+  if not plugin then
+    return
+  end
+
+  for _, dependency in ipairs(plugin.requires or {}) do
+    local dependency_name = string.match(dependency[1], "/([^/]+)$")
+    if not _G.packer_plugins[dependency_name].loaded then
+      vim.api.nvim_command("packadd " .. dependency_name)
+    end
+  end
+end
+
 local M = {}
 
 M.reload_plugin_list = function()
@@ -71,6 +86,17 @@ M.register = function(opts)
       end
     end
 
+    if plugin.requires and #plugin.requires > 0 then
+      -- Load dependencies automatically
+      if plugin.config then
+        plugin.config = { load_dependencies, plugin.config }
+      elseif plugin.setup then
+        plugin.setup = { load_dependencies, plugin.setup }
+      else
+        plugin.config = { load_dependencies }
+      end
+    end
+
     -- Save a plugin definition to resolve dependencies later
     local plugin_name = string.match(plugin[1], "/(.+)$")
     _G.packer_registered_plugins[plugin_name] = plugin
@@ -79,21 +105,6 @@ M.register = function(opts)
   end
 
   return true
-end
-
--- NOTE: You cannot use a local variable in this function (error like `attempt call upvalue`)
-_G.load_dependencies = function(plugin_name)
-  local plugin = _G.packer_registered_plugins[plugin_name]
-  if not plugin then
-    return
-  end
-
-  for _, dependency in ipairs(plugin.requires or {}) do
-    local dependency_name = string.match(dependency[1], "/([^/]+)$")
-    if not _G.packer_plugins[dependency_name].loaded then
-      vim.api.nvim_command("packadd " .. dependency_name)
-    end
-  end
 end
 
 local aug = vim.api.nvim_create_augroup("MyAutoCmdPacker", {})
