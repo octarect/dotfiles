@@ -95,7 +95,13 @@ M.register = function(opts)
       else
         plugin.config = { load_dependencies }
       end
+
+      -- Dependencies are optional by default.
+      for _, dependency in ipairs(plugin.requires or {}) do
+        dependency.opt = dependency.opt or true
+      end
     end
+
 
     -- Save a plugin definition to resolve dependencies later
     local plugin_name = string.match(plugin[1], "/(.+)$")

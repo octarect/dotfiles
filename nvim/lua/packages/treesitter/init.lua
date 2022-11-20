@@ -10,7 +10,7 @@ packer.register {
       run = ":TSUpdate",
       event = { "BufNewFile", "BufRead" },
       requires = {
-        { "p00f/nvim-ts-rainbow", opt = true },
+        { "p00f/nvim-ts-rainbow" },
       },
     },
   },

@@ -13,7 +13,6 @@ packer.register {
       requires = {
         {
           "airblade/vim-gitgutter",
-          opt = true,
           setup = function()
             -- Use block as sign
             vim.g.gitgutter_sign_added                   = '█'
@@ -32,8 +31,8 @@ packer.register {
             }
           end,
         },
-        { "ryanoasis/vim-devicons", opt = true },
-        { "itchyny/vim-gitbranch", opt = true },
+        { "ryanoasis/vim-devicons" },
+        { "itchyny/vim-gitbranch" },
       },
     },
     { "f-person/git-blame.nvim" },
@@ -60,7 +59,7 @@ packer.register {
       end,
       run = ":UpdateRemotePlugins",
       requires = {
-        { "kristijanhusak/defx-icons", opt = true },
+        { "kristijanhusak/defx-icons" },
       },
     },
 
@@ -148,8 +147,8 @@ packer.register {
         }
       end,
       requires = {
-        { "godlygeek/tabular", opt = true },
-        { "joker1007/vim-markdown-quote-syntax", opt = true },
+        { "godlygeek/tabular" },
+        { "joker1007/vim-markdown-quote-syntax" },
       },
     },
     {
@@ -161,7 +160,7 @@ packer.register {
         }
       end,
       requires = {
-        { "tyru/open-browser.vim", opt = true },
+        { "tyru/open-browser.vim" },
       },
     },
     {

@@ -9,7 +9,7 @@ packer.register {
         require("packages.completions.lsp")
       end,
       requires = {
-        { "hrsh7th/cmp-nvim-lsp", opt = true },
+        { "hrsh7th/cmp-nvim-lsp" },
       }
     },
     {
@@ -19,28 +19,28 @@ packer.register {
         require("packages.completions.nvim-cmp")
       end,
       requires = {
-        { "hrsh7th/cmp-nvim-lsp", opt = true },
-        { "tzachar/cmp-tabnine", opt = true, run = "./install.sh" },
-        { "hrsh7th/cmp-buffer", opt = true },
-        { "hrsh7th/cmp-path", opt = true },
-        { "hrsh7th/cmp-cmdline", opt = true },
-        { "hrsh7th/cmp-emoji", opt = true },
-        { "ray-x/cmp-treesitter", opt = true },
-        { "saadparwaiz1/cmp_luasnip", opt = true },
-        { "onsails/lspkind-nvim", opt = true },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "tzachar/cmp-tabnine", run = "./install.sh" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-cmdline" },
+        { "hrsh7th/cmp-emoji" },
+        { "ray-x/cmp-treesitter" },
+        { "saadparwaiz1/cmp_luasnip" },
+        { "onsails/lspkind-nvim" },
       }
     },
     {
       "saadparwaiz1/cmp_luasnip",
       opt = true,
       requires = {
-        { "L3MON4D3/LuaSnip", opt = true },
+        { "L3MON4D3/LuaSnip" },
       },
     },
     {
       "williamboman/mason.nvim",
       requires = {
-        { 'williamboman/mason-lspconfig.nvim', opts = true },
+        { 'williamboman/mason-lspconfig.nvim' },
       },
     },
   },
