@@ -26,7 +26,7 @@ vim.g.loaded_logiPat = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 
-require "lib.packer".init()
+require("lib.packer").init()
 
 vim.api.nvim_command "filetype plugin indent on"
 if vim.fn.has "vim_starting" == 1 then

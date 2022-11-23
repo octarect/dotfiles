@@ -3,7 +3,7 @@ local config = require "core.config"
 local uv = vim.loop
 local packer = nil
 
-local data_path = vim.fn.stdpath("data") .. "/site"
+local data_path = vim.fn.stdpath "data" .. "/site"
 local packer_path = data_path .. "/pack/packer/opt/packer.nvim"
 local packer_compiled_path = data_path .. "/lua/packer_compiled.lua"
 local plugin_def_paths = { config.runtime_path .. "/lua/packages" }
@@ -53,7 +53,7 @@ M.init = function(opts)
   end
 
   if not packer then
-    vim.api.nvim_command("packadd packer.nvim")
+    vim.api.nvim_command "packadd packer.nvim"
     packer = require "packer"
   end
 
@@ -61,12 +61,12 @@ M.init = function(opts)
     compile_path = packer_compiled_path,
   }
   packer.reset()
-  packer.use({ "wbthomason/packer.nvim", opt = true })
+  packer.use { "wbthomason/packer.nvim", opt = true }
   M.reload_plugin_list()
   if opts.reload then
     packer.sync()
   else
-    require("packer_compiled")
+    require "packer_compiled"
   end
 end
 
@@ -102,7 +102,6 @@ M.register = function(opts)
       end
     end
 
-
     -- Save a plugin definition to resolve dependencies later
     local plugin_name = string.match(plugin[1], "/(.+)$")
     _G.packer_registered_plugins[plugin_name] = plugin
@@ -120,7 +119,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
   callback = function()
     vim.notify("Compile done!!", vim.log.levels.INFO, { title = "Packer" })
     dofile(vim.env.MYVIMRC)
-  end
+  end,
 })
 
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {

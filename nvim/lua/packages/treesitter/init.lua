@@ -4,9 +4,7 @@ packer.register {
   plugins = {
     {
       "nvim-treesitter/nvim-treesitter",
-      config = function()
-        require("packages.treesitter.treesitter")
-      end,
+      config = function() require "packages.treesitter.treesitter" end,
       run = ":TSUpdate",
       event = { "BufNewFile", "BufRead" },
       requires = {

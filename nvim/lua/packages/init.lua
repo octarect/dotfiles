@@ -1,26 +1,24 @@
 local packer = require "lib.packer"
 
-_G.keymap = require("lib.keymap")
+_G.keymap = require "lib.keymap"
 
 packer.register {
   plugins = {
     -- Statusline
     {
       "itchyny/lightline.vim",
-      setup = function()
-        require("packages.lightline")
-      end,
+      setup = function() require "packages.lightline" end,
       requires = {
         {
           "airblade/vim-gitgutter",
           setup = function()
             -- Use block as sign
-            vim.g.gitgutter_sign_added                   = '█'
-            vim.g.gitgutter_sign_modified                = '█'
-            vim.g.gitgutter_sign_removed                 = '█'
-            vim.g.gitgutter_sign_removed_first_line      = '█'
-            vim.g.gitgutter_sign_removed_above_and_below = '█'
-            vim.g.gitgutter_sign_modified_removed        = '█'
+            vim.g.gitgutter_sign_added = "█"
+            vim.g.gitgutter_sign_modified = "█"
+            vim.g.gitgutter_sign_removed = "█"
+            vim.g.gitgutter_sign_removed_first_line = "█"
+            vim.g.gitgutter_sign_removed_above_and_below = "█"
+            vim.g.gitgutter_sign_modified_removed = "█"
             -- Keymappings for hunk jumping
             local keymap = require "lib.keymap"
             local silent = keymap.flags.silent
@@ -51,12 +49,14 @@ packer.register {
       cmd = "Defx",
       setup = function()
         _G.keymap.nmap {
-          { "<Leader>f", "<Cmd>Defx -listed -resume -buffer-name=tab`tabpagenr()` -columns=icons:filename:size:time<CR>", { _G.keymap.flags.silent } },
+          {
+            "<Leader>f",
+            "<Cmd>Defx -listed -resume -buffer-name=tab`tabpagenr()` -columns=icons:filename:size:time<CR>",
+            { _G.keymap.flags.silent },
+          },
         }
       end,
-      config = function()
-        require("packages.defx")
-      end,
+      config = function() require "packages.defx" end,
       run = ":UpdateRemotePlugins",
       requires = {
         { "kristijanhusak/defx-icons" },
@@ -66,10 +66,8 @@ packer.register {
     -- Terminal
     {
       "akinsho/toggleterm.nvim",
-      keys = { {"n", "<Leader>t" } },
-      config = function()
-        require("packages.toggleterm")
-      end,
+      keys = { { "n", "<Leader>t" } },
+      config = function() require "packages.toggleterm" end,
     },
 
     -- Edit
@@ -113,9 +111,7 @@ packer.register {
     {
       "windwp/nvim-autopairs",
       event = { "InsertEnter" },
-      config = function()
-        require("nvim-autopairs").setup {}
-      end,
+      config = function() require("nvim-autopairs").setup {} end,
     },
     {
       "itchyny/vim-cursorword",
@@ -156,7 +152,7 @@ packer.register {
       ft = { "markdown", "asciidoc" },
       config = function()
         _G.keymap.nmap {
-          { "<LocalLeader>r", ":<C-u>PrevimOpen<CR>", },
+          { "<LocalLeader>r", ":<C-u>PrevimOpen<CR>" },
         }
       end,
       requires = {
@@ -166,9 +162,7 @@ packer.register {
     {
       "hashivim/vim-terraform",
       ft = { "terraform" },
-      config = function()
-        vim.g.terraform_fmt_on_save = 1
-      end,
+      config = function() vim.g.terraform_fmt_on_save = 1 end,
     },
     {
       "mattn/emmet-vim",

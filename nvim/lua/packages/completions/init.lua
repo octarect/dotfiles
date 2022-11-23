@@ -5,19 +5,15 @@ packer.register {
     {
       "neovim/nvim-lspconfig",
       event = { "BufNewFile", "BufRead" },
-      config = function()
-        require("packages.completions.lsp")
-      end,
+      config = function() require "packages.completions.lsp" end,
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
-      }
+      },
     },
     {
       "hrsh7th/nvim-cmp",
       event = { "InsertEnter" },
-      config = function()
-        require("packages.completions.nvim-cmp")
-      end,
+      config = function() require "packages.completions.nvim-cmp" end,
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "tzachar/cmp-tabnine", run = "./install.sh" },
@@ -28,7 +24,7 @@ packer.register {
         { "ray-x/cmp-treesitter" },
         { "saadparwaiz1/cmp_luasnip" },
         { "onsails/lspkind-nvim" },
-      }
+      },
     },
     {
       "saadparwaiz1/cmp_luasnip",
@@ -40,7 +36,7 @@ packer.register {
     {
       "williamboman/mason.nvim",
       requires = {
-        { 'williamboman/mason-lspconfig.nvim' },
+        { "williamboman/mason-lspconfig.nvim" },
       },
     },
   },
