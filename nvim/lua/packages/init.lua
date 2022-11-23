@@ -6,33 +6,36 @@ packer.register {
   plugins = {
     -- Statusline
     {
+     "airblade/vim-gitgutter",
+      setup = function()
+        -- Use block as sign
+        vim.g.gitgutter_sign_added = "█"
+        vim.g.gitgutter_sign_modified = "█"
+        vim.g.gitgutter_sign_removed = "█"
+        vim.g.gitgutter_sign_removed_first_line = "█"
+        vim.g.gitgutter_sign_removed_above_and_below = "█"
+        vim.g.gitgutter_sign_modified_removed = "█"
+        -- Keymappings for hunk jumping
+        local keymap = require "lib.keymap"
+        local silent = keymap.flags.silent
+        keymap.nmap {
+          { "[c", "<Plug>(GitGutterPrevHunk)", { silent } },
+          { "]c", "<Plug>(GitGutterNextHunk)", { silent } },
+          { "<Leader>ggd", "<Cmd>GitGutterPreviewHunk>CR>", { silent } },
+        }
+      end,
+    },
+    {
       "itchyny/lightline.vim",
       setup = function() require "packages.lightline" end,
       requires = {
-        {
-          "airblade/vim-gitgutter",
-          setup = function()
-            -- Use block as sign
-            vim.g.gitgutter_sign_added = "█"
-            vim.g.gitgutter_sign_modified = "█"
-            vim.g.gitgutter_sign_removed = "█"
-            vim.g.gitgutter_sign_removed_first_line = "█"
-            vim.g.gitgutter_sign_removed_above_and_below = "█"
-            vim.g.gitgutter_sign_modified_removed = "█"
-            -- Keymappings for hunk jumping
-            local keymap = require "lib.keymap"
-            local silent = keymap.flags.silent
-            keymap.nmap {
-              { "[c", "<Plug>(GitGutterPrevHunk)", { silent } },
-              { "]c", "<Plug>(GitGutterNextHunk)", { silent } },
-              { "<Leader>ggd", "<Cmd>GitGutterPreviewHunk>CR>", { silent } },
-            }
-          end,
-        },
+        { "airblade/vim-gitgutter" },
         { "ryanoasis/vim-devicons" },
         { "itchyny/vim-gitbranch" },
       },
     },
+
+    -- Info
     { "f-person/git-blame.nvim" },
     {
       "itchyny/vim-parenmatch",
