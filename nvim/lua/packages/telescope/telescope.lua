@@ -161,7 +161,7 @@ local function init()
     },
   }
   require("telescope").load_extension "fzf"
-  -- require("telescope").load_extension "menu"
+  require("telescope").load_extension "menu"
 end
 
 return {
