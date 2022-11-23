@@ -27,9 +27,9 @@ local M = {}
 
 M.reload_plugin_list = function()
   for _, path in ipairs(plugin_def_paths) do
-    local module_paths = vim.split(path .. "\n" .. vim.fn.globpath(path, "**/"), "\n")
+    local module_paths = vim.split(vim.fn.globpath(path, "**/init.lua"), "\n")
     for _, module_path in ipairs(module_paths) do
-      local module_name = string.match(module_path, "lua/(.+)$")
+      local module_name = string.match(module_path, "lua/(.+)/init%.lua$")
 
       if package.loaded[module_name] ~= nil then
         package.loaded[module_name] = nil
