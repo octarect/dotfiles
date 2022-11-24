@@ -117,7 +117,7 @@ local lsp_settings = {
 
 local required_server_names = {}
 for server_name, _ in pairs(lsp_settings) do
-  table.insert(required_server_names, server_name)
+  required_server_names[#required_server_names + 1] = server_name
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())

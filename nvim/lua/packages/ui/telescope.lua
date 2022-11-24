@@ -36,7 +36,7 @@ local function get_picker_cmd(picker_name, opts)
     end
   end
 
-  return string.format('<cmd>lua require("packages.telescope.telescope").mapfuncs[%d]()<CR>', i)
+  return string.format('<cmd>lua require("packages.ui.telescope").mapfuncs[%d]()<CR>', i)
 end
 
 local function set_keymaps()

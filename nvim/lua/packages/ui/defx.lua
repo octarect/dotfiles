@@ -1,10 +1,12 @@
+local keymap = require "lib.keymap"
+
 local aug = vim.api.nvim_create_augroup("MyAutoCmdDefx", {})
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = aug,
   pattern = "defx",
   callback = function(_)
-    local opts = { _G.keymap.flags.silent, _G.keymap.flags.noremap, _G.keymap.flags.expr }
-    _G.keymap.bnmap {
+    local opts = { keymap.flags.silent, keymap.flags.noremap, keymap.flags.expr }
+    keymap.bnmap {
       { "<CR>", "defx#do_action('open')", opts },
       { "l", "defx#do_action('open')", opts },
       { "c", "defx#do_action('copy')", opts },
