@@ -72,6 +72,28 @@ end
 
 _G.packer_registered_plugins = {}
 
+local function optimize_plugin(plugin)
+  if plugin.requires and #plugin.requires > 0 then
+    -- Load dependencies automatically
+    if plugin.config then
+      plugin.config = { load_dependencies, plugin.config }
+    elseif plugin.setup then
+      plugin.setup = { load_dependencies, plugin.setup }
+    else
+      plugin.config = { load_dependencies }
+    end
+
+    for _, dependency in ipairs(plugin.requires or {}) do
+      -- Dependencies are optional by default.
+      if dependency.opt == nil then
+        dependency.opt = true
+      end
+
+      optimize_plugin(dependency)
+    end
+  end
+end
+
 M.register = function(opts)
   opts = opts or {}
 
@@ -86,21 +108,7 @@ M.register = function(opts)
       end
     end
 
-    if plugin.requires and #plugin.requires > 0 then
-      -- Load dependencies automatically
-      if plugin.config then
-        plugin.config = { load_dependencies, plugin.config }
-      elseif plugin.setup then
-        plugin.setup = { load_dependencies, plugin.setup }
-      else
-        plugin.config = { load_dependencies }
-      end
-
-      -- Dependencies are optional by default.
-      for _, dependency in ipairs(plugin.requires or {}) do
-        dependency.opt = dependency.opt or true
-      end
-    end
+    optimize_plugin(plugin)
 
     -- Save a plugin definition to resolve dependencies later
     local plugin_name = string.match(plugin[1], "/(.+)$")
