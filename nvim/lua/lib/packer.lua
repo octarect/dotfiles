@@ -15,12 +15,13 @@ local load_dependencies = function(plugin_name)
     return
   end
 
+  local dependencies = {}
   for _, dependency in ipairs(plugin.requires or {}) do
     local dependency_name = string.match(dependency[1], "/([^/]+)$")
-    if not _G.packer_plugins[dependency_name].loaded then
-      vim.api.nvim_command("packadd " .. dependency_name)
-    end
+    dependencies[#dependencies + 1] = dependency_name
   end
+
+  require("packer").loader(unpack(dependencies))
 end
 
 local M = {}
