@@ -5,28 +5,140 @@ local packer = nil
 
 local data_path = vim.fn.stdpath "data" .. "/site"
 local packer_path = data_path .. "/pack/packer/opt/packer.nvim"
-local packer_compiled_path = data_path .. "/lua/packer_compiled.lua"
+local packer_compiled_path = data_path .. "/plugin/packer_compiled.lua"
+local packer_deps_path = data_path .. "/lua/packer_deps.lua"
 local plugin_def_paths = { config.runtime_path .. "/lua/packages" }
 
--- NOTE: You cannot use a local variable in this function (error like `attempt call upvalue`)
-local load_dependencies = function(plugin_name)
-  local plugin = _G.packer_registered_plugins[plugin_name]
-  if not plugin then
-    return
+local Dependencies = (function()
+  local Dependencies = {}
+
+  Dependencies.data = {}
+
+  local get_plugin_name = function(plugin) return string.match(plugin[1], "/(.+)$") end
+
+  Dependencies.push = function(plugin)
+    local name = get_plugin_name(plugin)
+    Dependencies.data[name] = {}
+    for _, dep in ipairs(plugin.requires or {}) do
+      local dep_name = get_plugin_name(dep)
+      Dependencies.data[name][dep_name] = true
+      if dep.requires ~= nil and #dep.requires > 0 then
+        Dependencies.push(dep)
+      end
+    end
   end
 
-  local dependencies = {}
-  for _, dependency in ipairs(plugin.requires or {}) do
-    local dependency_name = string.match(dependency[1], "/([^/]+)$")
-    dependencies[#dependencies + 1] = dependency_name
+  Dependencies.clear = function() Dependencies.plugins = {} end
+
+  Dependencies.save = function(path)
+    local script = string.format("return vim.fn.json_decode('%s')", vim.fn.json_encode(Dependencies.data))
+
+    local parent_dir = string.match(path, "^(.+)/(.+)/?$")
+    if not uv.fs_stat(parent_dir) then
+      os.execute("mkdir -p " .. parent_dir)
+    end
+
+    local f = io.open(path, "w+")
+    if f ~= nil then
+      f:write(script)
+      f:close()
+    else
+      error("Failed to open " .. path)
+    end
   end
 
-  require("packer").loader(unpack(dependencies))
-end
+  return Dependencies
+end)()
 
-local M = {}
+local Registerer = (function()
+  local Registerer = {}
 
-M.reload_plugin_list = function()
+  -- NOTE: You cannot use a local variable in this function (error like `attempt call upvalue`)
+  local load_dependencies = function(plugin_name)
+    local plugin = require("packer_deps")[plugin_name]
+    if not plugin then
+      return
+    end
+
+    local dependencies = {}
+    for dependency_name, _ in pairs(plugin or {}) do
+      dependencies[#dependencies + 1] = dependency_name
+    end
+
+    require("packer").loader(unpack(dependencies))
+  end
+
+  local optimize_plugin
+  optimize_plugin = function(plugin)
+    if plugin.requires and #plugin.requires > 0 then
+      -- Load dependencies automatically
+      if plugin.config then
+        plugin.config = { load_dependencies, plugin.config }
+      elseif plugin.setup then
+        plugin.setup = { load_dependencies, plugin.setup }
+      else
+        plugin.config = { load_dependencies }
+      end
+
+      for _, dependency in ipairs(plugin.requires or {}) do
+        -- Dependencies are optional by default.
+        if dependency.opt == nil then
+          dependency.opt = true
+        end
+
+        optimize_plugin(dependency)
+      end
+    end
+  end
+
+  Registerer.register = function(opts)
+    opts = opts or {}
+
+    local plugins = opts.plugins
+    opts.plugins = nil
+
+    for _, plugin in ipairs(plugins) do
+      -- Apply default options
+      for k, v in pairs(opts) do
+        if plugin[k] == nil then
+          plugin[k] = v
+        end
+      end
+
+      optimize_plugin(plugin)
+
+      -- Save a plugin definition to resolve dependencies later
+      Dependencies.push(plugin)
+
+      packer.use(plugin)
+    end
+  end
+
+  return Registerer
+end)()
+
+local init = function()
+  if not uv.fs_stat(packer_path) then
+    os.execute("git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. packer_path)
+  end
+
+  if not packer then
+    vim.api.nvim_command "packadd packer.nvim"
+    packer = require "packer"
+  end
+
+  packer.init {
+    compile_path = packer_compiled_path,
+    disable_commands = true,
+    display = {
+      open_fn = require("packer.util").float,
+    },
+  }
+  packer.reset()
+  packer.use { "wbthomason/packer.nvim", opt = true }
+
+  -- Reload plugin definitions
+  Dependencies.clear()
   for _, path in ipairs(plugin_def_paths) do
     local module_paths = vim.split(vim.fn.globpath(path, "**/init.lua"), "\n")
     for _, module_path in ipairs(module_paths) do
@@ -40,86 +152,17 @@ M.reload_plugin_list = function()
   end
 end
 
-M.init = function(opts)
-  opts = opts or {}
-  opts.reload = opts.reload or false
-
-  if not uv.fs_stat(packer_path) then
-    os.execute("git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. packer_path)
-    opts.reload = true
-  end
-
-  if not uv.fs_stat(packer_compiled_path) then
-    opts.reload = true
-  end
-
-  if not packer then
-    vim.api.nvim_command "packadd packer.nvim"
-    packer = require "packer"
-  end
-
-  packer.init {
-    compile_path = packer_compiled_path,
-  }
-  packer.reset()
-  packer.use { "wbthomason/packer.nvim", opt = true }
-  M.reload_plugin_list()
-  if opts.reload then
-    packer.sync()
-  else
-    require "packer_compiled"
-  end
-end
-
-_G.packer_registered_plugins = {}
-
-local function optimize_plugin(plugin)
-  if plugin.requires and #plugin.requires > 0 then
-    -- Load dependencies automatically
-    if plugin.config then
-      plugin.config = { load_dependencies, plugin.config }
-    elseif plugin.setup then
-      plugin.setup = { load_dependencies, plugin.setup }
-    else
-      plugin.config = { load_dependencies }
+local M = setmetatable({}, {
+  __index = function(_, key)
+    init()
+    if key == "sync" then
+      Dependencies.save(packer_deps_path)
     end
+    return packer[key]
+  end,
+})
 
-    for _, dependency in ipairs(plugin.requires or {}) do
-      -- Dependencies are optional by default.
-      if dependency.opt == nil then
-        dependency.opt = true
-      end
-
-      optimize_plugin(dependency)
-    end
-  end
-end
-
-M.register = function(opts)
-  opts = opts or {}
-
-  local plugins = opts.plugins
-  opts.plugins = nil
-
-  for _, plugin in ipairs(plugins) do
-    -- Apply default options
-    for k, v in pairs(opts) do
-      if plugin[k] == nil then
-        plugin[k] = v
-      end
-    end
-
-    optimize_plugin(plugin)
-
-    -- Save a plugin definition to resolve dependencies later
-    local plugin_name = string.match(plugin[1], "/(.+)$")
-    _G.packer_registered_plugins[plugin_name] = plugin
-
-    packer.use(plugin)
-  end
-
-  return true
-end
+M.register = Registerer.register
 
 local aug = vim.api.nvim_create_augroup("MyAutoCmdPacker", {})
 vim.api.nvim_create_autocmd({ "User" }, {
@@ -131,19 +174,6 @@ vim.api.nvim_create_autocmd({ "User" }, {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
---   group = aug,
---   -- pattern = "**/packages/**/*.lua",
---   pattern = (function()
---     local patterns = {}
---     for _, path in ipairs(plugin_def_paths) do
---       patterns[#patterns+1] = path .. "/**init.lua"
---     end
---     return patterns
---   end)(),
---   callback = function()
---     M.init { reload = true }
---   end
--- })
+-- TODO: define user command
 
 return M
