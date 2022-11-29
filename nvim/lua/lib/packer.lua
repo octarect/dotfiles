@@ -178,6 +178,17 @@ vim.api.nvim_create_autocmd({ "User" }, {
   end,
 })
 
--- TODO: define user command
+-- Define user-commands
+local cmds = {
+  "Compile",
+  "Install",
+  "Update",
+  "Sync",
+  "Clean",
+  "Status",
+}
+for _, cmd in ipairs(cmds) do
+  vim.api.nvim_create_user_command("Packer" .. cmd, function() require("lib.packer")[string.lower(cmd)]() end, {})
+end
 
 return M

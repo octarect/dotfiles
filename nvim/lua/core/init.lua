@@ -35,3 +35,5 @@ require "core.options"
 require "core.hack"
 require "core.colorscheme"
 require "core.keymap"
+
+require "lib.packer"
