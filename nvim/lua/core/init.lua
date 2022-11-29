@@ -32,6 +32,7 @@ if vim.fn.has "vim_starting" == 1 then
 end
 
 require "core.options"
+require "core.filetypes"
 require "core.hack"
 require "core.colorscheme"
 require "core.keymap"
