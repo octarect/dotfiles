@@ -33,5 +33,5 @@ end
 
 require "core.options"
 require "core.hack"
-require("core.colorscheme").init()
+require "core.colorscheme"
 require "core.keymap"

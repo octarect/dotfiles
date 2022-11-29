@@ -72,7 +72,6 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   group = aug,
   pattern = "*",
   callback = function(opts)
-
     -- Cache colorscheme to restore it on launching neovim next time
     local colorscheme = opts.match
     if vim.fn.has "vim_starting" ~= 1 then
@@ -85,15 +84,13 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   end,
 })
 
-local M = {}
-
 -- Initialize colorscheme
-M.init = function()
-  local colorscheme = kvs:read "current" or "desert"
+local colorscheme = kvs:read "current" or "desert"
 
-  vim.opt.background = "dark"
-  vim.api.nvim_command("colorscheme " .. colorscheme)
-end
+vim.opt.background = "dark"
+vim.api.nvim_command("colorscheme " .. colorscheme)
+
+local M = {}
 
 M.get_hl = get_hl
 
