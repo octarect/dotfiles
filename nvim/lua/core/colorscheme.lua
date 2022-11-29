@@ -8,7 +8,7 @@ local kvs = KVStore.new(config.cache_path .. "/kv2", "colorscheme")
 local hl = function(name, opts) vim.api.nvim_set_hl(0, name, opts) end
 local link = function(name, link_to) vim.api.nvim_set_hl(0, name, { link = link_to }) end
 local get_hl = function(name)
-  local status, result = pcall(function() return vim.api.nvim_get_hl_by_name(name, false) end)
+  local status, result = pcall(function() return vim.api.nvim_get_hl_by_name(name, true) end)
   if not status or result == nil then
     return {}
   end
@@ -43,6 +43,16 @@ local patch_colorscheme = function()
   link("LspReferenceRead", "Search")
   link("LspReferenceText", "Search")
   link("LspReferenceWrite", "Search")
+
+  -- Treesitter support
+  if not defined "@text.diff.add" then
+    link("@text.diff.add", "DiffAdd")
+    link("@text.diff.delete", "DiffDelete")
+    link("@attribute", "DiffChange")
+  end
+
+  -- Make border of floating window blend into the background
+  link("FloatBorder", "Normal")
 end
 
 -- Enable 24-bit RGB color
@@ -62,17 +72,9 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   group = aug,
   pattern = "*",
   callback = function(opts)
-    local colorscheme = opts.match
-
-    -- Treesitter support
-    -- print(vim.inspect(get_hl("@text.diff.add")))
-    if not defined "@text.diff.add" then
-      link("@text.diff.add", "DiffAdd")
-      link("@text.diff.delete", "DiffDelete")
-      link("@attribute", "DiffChange")
-    end
 
     -- Cache colorscheme to restore it on launching neovim next time
+    local colorscheme = opts.match
     if vim.fn.has "vim_starting" ~= 1 then
       kvs:write("current", colorscheme)
     end

@@ -3,6 +3,8 @@ local types = require "cmp.types"
 local lspkind = require "lspkind"
 local tabnine = require "cmp_tabnine.config"
 
+local config = require "core.config"
+
 tabnine:setup {
   max_lines = 1000,
   max_num_results = 20,
@@ -41,7 +43,7 @@ cmp.setup {
   },
   window = {
     documentation = {
-      border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+      border = config.window.border,
     },
   },
   mapping = cmp.mapping.preset.insert {

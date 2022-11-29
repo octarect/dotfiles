@@ -59,6 +59,8 @@ end
 
 local function init()
   local actions = require "telescope.actions"
+  local config = require "core.config"
+
   require("telescope").setup {
     defaults = {
       mappings = {
@@ -76,7 +78,10 @@ local function init()
         },
       },
       winblend = 20,
-      borderchars = { "-", "|", "-", "|", "+", "+", "+", "+" },
+      borderchars = (function()
+        local b = config.window.border
+        return { b[2], b[4], b[6], b[8], b[1], b[3], b[5], b[7] }
+      end)(),
       color_devicons = true,
     },
     pickers = {

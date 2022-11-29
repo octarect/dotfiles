@@ -131,7 +131,11 @@ local init = function()
     compile_path = packer_compiled_path,
     disable_commands = true,
     display = {
-      open_fn = require("packer.util").float,
+      open_fn = function()
+        local result, win, buf = require("packer.util").float(config.window)
+        vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+        return result, win, buf
+      end,
     },
   }
   packer.reset()

@@ -9,4 +9,8 @@ else
 end
 M.cache_path = vim.fn.expand(M.cache_path)
 
+M.window = {
+  border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+}
+
 return M

@@ -1,9 +1,14 @@
-require("toggleterm").setup {
+local toggleterm = require "toggleterm"
+local Terminal = require("toggleterm.terminal").Terminal
+
+local config = require "core.config"
+
+toggleterm.setup {
   hide_numbers = false,
   start_in_insert = false,
   close_on_exit = true,
   float_opts = {
-    border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+    border = config.window.border,
     width = function() return vim.o.columns > 100 and vim.fn.float2nr(vim.o.columns * 0.6) or 90 end,
     height = function() return vim.o.lines > 40 and vim.fn.float2nr(vim.o.lines * 5 / 8) or 24 end,
     highlights = {
@@ -12,8 +17,6 @@ require("toggleterm").setup {
     },
   },
 }
-
-local Terminal = require("toggleterm.terminal").Terminal
 
 local terminals = {
   shell = {
