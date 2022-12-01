@@ -11,22 +11,22 @@ packer.register {
       end,
     },
     {
-      "rhysd/accelerated-jk",
-      keys = {
-        { "n", "<Plug>(accelerated_jk_gj)" },
-        { "n", "<Plug>(accelerated_jk_gk)" },
-      },
-      setup = function()
-        local keymap = require "lib.keymap"
-        keymap.nmap {
-          { "j", "<Plug>(accelerated_jk_gj)", { keymap.flags.silent } },
-          { "k", "<Plug>(accelerated_jk_gk)", { keymap.flags.silent } },
-        }
-      end,
-    },
-    {
       "itchyny/vim-cursorword",
       event = { "BufNewFile", "BufRead" },
+    },
+    {
+      "rainbowhxch/accelerated-jk.nvim",
+      module = "accelerated-jk",
+      setup = function()
+        local keymap = require "lib.keymap"
+        local accelerated_move = function(movement)
+          return function() require("accelerated-jk").move_to(movement) end
+        end
+        keymap.nmap {
+          { "j", accelerated_move "j", { keymap.flags.silent } },
+          { "k", accelerated_move "k", { keymap.flags.silent } },
+        }
+      end,
     },
   },
 }

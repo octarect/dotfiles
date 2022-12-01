@@ -1,14 +1,13 @@
 local packer = require "lib.packer"
 
 packer.register {
+  -- Statusline
   plugins = {
-    -- Statusline
     {
-      "itchyny/lightline.vim",
-      setup = function() require "packages.ui.lightline" end,
+      "nvim-lualine/lualine.nvim",
+      config = function() require "packages.ui.lualine" end,
       requires = {
-        { "ryanoasis/vim-devicons" },
-        { "itchyny/vim-gitbranch" },
+        { "nvim-tree/nvim-web-devicons" },
       },
     },
 
