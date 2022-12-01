@@ -2,7 +2,6 @@ local packer = require "lib.packer"
 
 packer.register {
   plugins = {
-    { "f-person/git-blame.nvim" },
     {
       "itchyny/vim-parenmatch",
       setup = function()

@@ -29,11 +29,10 @@ local patch_colorscheme = function()
     hl("EndOfBuffer", {})
   end
 
-  -- Highlight groups for gitgutter
-  hl("GitGutterAdd", { fg = "#00e676", ctermfg = 2 })
-  hl("GitGutterChange", { fg = "#ffc400", ctermfg = 3 })
-  hl("GitGutterChangeDelete", { fg = "#ffc400", ctermfg = 3 })
-  hl("GitGutterDelete", { fg = "#ff3d00", ctermfg = 1 })
+  -- Highlight groups for gitsigns
+  hl("GitSignsAdd", { fg = "#00e676", ctermfg = 2 })
+  hl("GitSignsChange", { fg = "#ffc400", ctermfg = 3 })
+  hl("GitSignsDelete", { fg = "#ff3d00", ctermfg = 1 })
 
   -- Built-in LSP
   hl("LspDiagnosticsSignError", { fg = "#fd8489", ctermfg = 210, bold = true })

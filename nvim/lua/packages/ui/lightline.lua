@@ -13,7 +13,7 @@ vim.g.lightline = {
     right = {
       { "lineinfo" },
       { "percent" },
-      { "gitdiff", "gitbranch", "fileformat", "fileencoding", "filetype" },
+      { "gitbranch", "fileformat", "fileencoding", "filetype" },
     },
   },
   inactive = {
@@ -21,14 +21,13 @@ vim.g.lightline = {
       { "readonly", "relativepath", "modified" },
     },
     right = {
-      { "gitdiff", "gitbranch", "fileformat", "fileencoding", "filetype" },
+      { "gitbranch", "fileformat", "fileencoding", "filetype" },
     },
   },
   component = {
     filetype = "%{WebDevIconsGetFileTypeSymbol()} %{&ft !=# '' ? &ft : 'no ft'}",
   },
   component_function = {
-    gitdiff = "LightlineGitDiff",
     gitbranch = "LightlineGitBranch",
   },
   tab = {
@@ -62,15 +61,6 @@ vim.api.nvim_exec(
 
   function! LightlineGitBranch() abort
     return printf("%s %s", g:lightline_icon_git_branch, gitbranch#name())
-  endfunction
-
-  function! LightlineGitDiff() abort
-    let [added,modified,deleted] = GitGutterGetHunkSummary()
-    return printf('%s  %d %s  %d %s  %d',
-        \ g:lightline_icon_git_added, added,
-        \ g:lightline_icon_git_modified, modified,
-        \ g:lightline_icon_git_removed, deleted
-        \ )
   endfunction
 ]],
   false

@@ -7,32 +7,15 @@ packer.register {
       "itchyny/lightline.vim",
       setup = function() require "packages.ui.lightline" end,
       requires = {
-        { "airblade/vim-gitgutter" },
         { "ryanoasis/vim-devicons" },
         { "itchyny/vim-gitbranch" },
       },
     },
 
-    -- Visualize git diffs
+    -- Visualize git diffs and blame
     {
-      "airblade/vim-gitgutter",
-      setup = function()
-        -- Use block as sign
-        vim.g.gitgutter_sign_added = "█"
-        vim.g.gitgutter_sign_modified = "█"
-        vim.g.gitgutter_sign_removed = "█"
-        vim.g.gitgutter_sign_removed_first_line = "█"
-        vim.g.gitgutter_sign_removed_above_and_below = "█"
-        vim.g.gitgutter_sign_modified_removed = "█"
-        -- Keymappings for hunk jumping
-        local keymap = require "lib.keymap"
-        local silent = keymap.flags.silent
-        keymap.nmap {
-          { "[c", "<Plug>(GitGutterPrevHunk)", { silent } },
-          { "]c", "<Plug>(GitGutterNextHunk)", { silent } },
-          { "<Leader>ggd", "<Cmd>GitGutterPreviewHunk>CR>", { silent } },
-        }
-      end,
+      "lewis6991/gitsigns.nvim",
+      config = function() require("packages.ui.gitsigns") end,
     },
 
     -- Fuzzy finder
@@ -48,7 +31,6 @@ packer.register {
         { "nvim-telescope/telescope-symbols.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         { "octarect/telescope-menu.nvim" },
-        -- { "~/code/src/github.com/octarect/telescope-menu.nvim" },
       },
     },
 
