@@ -11,6 +11,11 @@ packer.register {
         { "williamboman/mason.nvim" },
         { "williamboman/mason-lspconfig.nvim" },
         { "hrsh7th/cmp-nvim-lsp" },
+        -- Used by lualine
+        {
+          "SmiteshP/nvim-navic",
+          config = function() require "packages.lang.nvim-navic" end,
+        },
       },
     },
 

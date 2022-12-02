@@ -16,8 +16,8 @@ end
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    theme = "auto",
-    component_separators = { left = "|", right = "|" },
+    theme = "material",
+    component_separators = { left = "", right = "|" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {},
@@ -34,7 +34,25 @@ require("lualine").setup {
   },
   sections = get_sections(true),
   inactive_sections = get_sections(false),
-  tabline = {},
+  tabline = {
+    lualine_a = {
+      { "filetype", colored = false, icon_only = true },
+      "filename",
+    },
+    lualine_b = {
+      -- The following component will be enabled after loading nvim-navic
+      {
+        function() return require("nvim-navic").get_location() end,
+        cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+      },
+    },
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {
+      { "tabs", mode = 2 },
+    },
+  },
   winbar = {},
   inactive_winbar = {},
   extensions = {},

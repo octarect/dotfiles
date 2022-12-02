@@ -74,6 +74,11 @@ local on_attach = function(client, bufnr)
   elseif client.server_capabilities.document_range_formatting then
     buf_set_keymap("n", lspmap "f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
+
+  -- Configure nvim-navic
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 end
 
 local lsp_settings = {
