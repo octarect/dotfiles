@@ -14,7 +14,7 @@ packer.register {
     -- Visualize git diffs and blame
     {
       "lewis6991/gitsigns.nvim",
-      config = function() require("packages.ui.gitsigns") end,
+      config = function() require "packages.ui.gitsigns" end,
     },
 
     -- Fuzzy finder

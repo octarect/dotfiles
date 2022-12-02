@@ -108,12 +108,9 @@ local function init()
           items = {
             { "⚙️ LSPInfo", "LspInfo" },
             { "⚙️ Manage LSP servers", "Mason" },
-            { "🔃Dein: Recache runtimepath", "call dein#recache_runtimepath()" },
-            { "🔃Packer: Sync plugins", [[ lua require("lib.packer").init { reload = true } ]] },
-            {
-              "🔌Dein: Edit plugin settings",
-              [[ lua require"telescope.builtin".find_files{ cwd = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/dein" } ]],
-            },
+            { "🔃Packer: Sync", "PackerSync" },
+            { "🔃Packer: Clean", "PackerClean" },
+            { "🔃Packer: Status", "PackerStatus" },
             { "🌈Change colorscheme", "Telescope colorscheme theme=dropdown" },
             { "📁Browse files", "Telescope find_files" },
             { "📁Browse files in Git Repository", "Telescope git_files" },
@@ -143,6 +140,8 @@ local function init()
             { "😀Insert emoji", [[ lua require"telescope.builtin".symbols{ sources = {"emoji", "gitmoji"} } ]] },
             { "😀Insert emoji (Nerd Fonts)", [[ lua require"telescope.builtin".symbols{ sources = {"nerd"} } ]] },
             { "😀Insert emoji (kaomoji)", [[ lua require"telescope.builtin".symbols{ sources = {"kaomoji"} } ]] },
+            { " Git: Blame line", function() require("gitsigns").blame_line { full = true } end },
+            { " Git: Preview hunk", function() require("gitsigns").preview_hunk() end },
           },
         },
         filetype = {
