@@ -29,28 +29,8 @@ packer.register {
         { "nvim-tree/nvim-web-devicons" },
         { "nvim-telescope/telescope-symbols.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        { "nvim-telescope/telescope-file-browser.nvim" },
         { "octarect/telescope-menu.nvim" },
-      },
-    },
-
-    -- File explorer
-    {
-      "Shougo/defx.nvim",
-      cmd = "Defx",
-      setup = function()
-        local keymap = require "lib.keymap"
-        keymap.nmap {
-          {
-            "<Leader>f",
-            "<Cmd>Defx -listed -resume -buffer-name=tab`tabpagenr()` -columns=icons:filename:size:time<CR>",
-            { keymap.flags.silent },
-          },
-        }
-      end,
-      config = function() require "packages.ui.defx" end,
-      run = ":UpdateRemotePlugins",
-      requires = {
-        { "kristijanhusak/defx-icons" },
       },
     },
 

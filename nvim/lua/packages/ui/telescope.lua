@@ -1,5 +1,6 @@
 local mapfuncs = {}
 local mapfuncs_cnt = 0
+local last_opened_path = vim.loop.cwd()
 
 -- Create a dedicated function for mapping, and return a command to call it.
 -- @param picker_name Picker name. ex) "builtin/find_files"
@@ -40,21 +41,30 @@ local function get_picker_cmd(picker_name, opts)
 end
 
 local function set_keymaps()
-  local set_keymap = function(...) vim.api.nvim_set_keymap(...) end
-  local opts = { noremap = true, silent = true }
-
-  set_keymap("n", "<Leader>df", get_picker_cmd "builtin/git_files", opts)
-  set_keymap("n", "<Leader>dF", get_picker_cmd "builtin/find_files", opts)
-  set_keymap("n", "<Leader>dg", get_picker_cmd "builtin/live_grep", opts)
-  set_keymap("n", "<Leader>db", get_picker_cmd "builtin/buffers", opts)
-  set_keymap("n", "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts)
-  set_keymap("n", "<Leader>dj", get_picker_cmd "builtin/treesitter", opts)
-  -- telescope-symbols.nvim
-  set_keymap("n", "<Leader>de", get_picker_cmd("builtin/symbols", { sources = { "emoji", "gitmoji" } }), opts)
-  -- telescope-menu.nvim
-  set_keymap("n", "<Leader>dm", get_picker_cmd("menu/menu", { theme = "dropdown" }), opts)
-  set_keymap("n", "<Leader>d,", get_picker_cmd("menu/filetype", { theme = "dropdown" }), opts)
-  set_keymap("n", "<Leader>dd", get_picker_cmd("menu/cursor", { theme = "cursor" }), opts)
+  local keymap = require "lib.keymap"
+  local opts = { keymap.flags.silent, keymap.flags.noremap }
+  keymap.nmap {
+    { "<Leader>df", get_picker_cmd("builtin/git_files"), opts},
+    { "<Leader>dF", get_picker_cmd("builtin/find_files"), opts},
+    { "<Leader>dg", get_picker_cmd("builtin/live_grep"), opts},
+    { "<Leader>db", get_picker_cmd("builtin/buffers"), opts},
+    { "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts},
+    { "<Leader>dj", get_picker_cmd("builtin/treesitter"), opts},
+    -- telescope-symbols.nvim
+    { "<Leader>de", get_picker_cmd("menu/cursor", { theme = "cursor" }), opts },
+    -- telescope-menu.nvim
+    { "<Leader>dm", get_picker_cmd("menu/menu", { theme = "dropdown" }), opts },
+    { "<Leader>d.", get_picker_cmd("menu/filetype", { theme = "dropdown" }), opts },
+    { "<Leader>dd", get_picker_cmd("menu/cursor", { theme = "cursor" }), opts },
+    -- telescope-file-browser.nvim
+    {
+      "<Leader>f",
+      function()
+        require("telescope").extensions.file_browser.file_browser { path = last_opened_path }
+      end,
+      opts,
+    },
+  }
 end
 
 local function init()
@@ -75,6 +85,8 @@ local function init()
         n = {
           ["<esc>"] = actions.close,
           ["<space>"] = actions.toggle_selection,
+          ["<Tab>"] = actions.toggle_selection + actions.move_selection_better,
+          ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         },
       },
       winblend = 20,
@@ -162,10 +174,39 @@ local function init()
           },
         },
       },
+      file_browser = (function()
+        local fb_actions = require("telescope").extensions.file_browser.actions
+        local stateful = function(fb_action)
+          return function(bufnr, bypass)
+            fb_action(bufnr, bypass)
+
+            local action_state = require("telescope.actions.state")
+            local current_picker = action_state.get_current_picker(bufnr)
+            local finder = current_picker.finder
+            last_opened_path = finder.path
+          end
+        end
+        return {
+          initial_mode = "normal",
+          mappings = {
+            n = {
+              l = stateful(actions.select_default),
+              c = fb_actions.copy,
+              m = fb_actions.move,
+              r = fb_actions.rename,
+              N = fb_actions.create,
+              h = stateful(fb_actions.goto_parent_dir),
+              H = stateful(fb_actions.goto_cwd),
+              ["."] = fb_actions.toggle_hidden,
+            },
+          }
+        }
+      end)(),
     },
   }
   require("telescope").load_extension "fzf"
   require("telescope").load_extension "menu"
+  require("telescope").load_extension "file_browser"
 end
 
 return {
