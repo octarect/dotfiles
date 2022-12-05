@@ -1,4 +1,155 @@
+[character]
+success_symbol = "[%](bold green)"
+error_symbol = "[%](bold red)"
+vimcmd_symbol = "[!](bold green)"
+
 [git_status]
 ahead = "^"
 behind = "v"
 deleted = "x"
+
+# Disabled modules
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[crystal]
+disabled = true
+
+[battery]
+disabled = true
+
+[buf]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[package]
+disabled = true
+
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+
+[meson]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[openstack]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[raku]
+disabled = true
+
+[rlang]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[spack]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true
