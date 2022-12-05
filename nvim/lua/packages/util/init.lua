@@ -28,5 +28,14 @@ packer.register {
         }
       end,
     },
+    {
+      "norcalli/nvim-colorizer.lua",
+      ft = { "css", "sass", "html", "javascript", "lua" },
+      config = function()
+        require("colorizer").setup {
+          "css", "sass", "html", "javascript", "lua",
+        }
+      end,
+    },
   },
 }
