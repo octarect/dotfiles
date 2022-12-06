@@ -33,7 +33,11 @@ packer.register {
       ft = { "css", "sass", "html", "javascript", "lua" },
       config = function()
         require("colorizer").setup {
-          "css", "sass", "html", "javascript", "lua",
+          "css",
+          "sass",
+          "html",
+          "javascript",
+          "lua",
         }
       end,
     },

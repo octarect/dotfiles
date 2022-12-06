@@ -44,14 +44,14 @@ local function set_keymaps()
   local keymap = require "lib.keymap"
   local opts = { keymap.flags.silent, keymap.flags.noremap }
   keymap.nmap {
-    { "<Leader>df", get_picker_cmd("builtin/git_files"), opts},
-    { "<Leader>dF", get_picker_cmd("builtin/find_files"), opts},
-    { "<Leader>dg", get_picker_cmd("builtin/live_grep"), opts},
-    { "<Leader>db", get_picker_cmd("builtin/buffers"), opts},
-    { "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts},
-    { "<Leader>dj", get_picker_cmd("builtin/treesitter"), opts},
+    { "<Leader>df", get_picker_cmd "builtin/git_files", opts },
+    { "<Leader>dF", get_picker_cmd "builtin/find_files", opts },
+    { "<Leader>dg", get_picker_cmd "builtin/live_grep", opts },
+    { "<Leader>db", get_picker_cmd "builtin/buffers", opts },
+    { "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts },
+    { "<Leader>dj", get_picker_cmd "builtin/treesitter", opts },
     -- telescope-symbols.nvim
-    { "<Leader>de", get_picker_cmd("menu/cursor", { theme = "cursor" }), opts },
+    { "<Leader>de", get_picker_cmd("builtin/symbols", { theme = "cursor" }), opts },
     -- telescope-menu.nvim
     { "<Leader>dm", get_picker_cmd("menu/menu", { theme = "dropdown" }), opts },
     { "<Leader>d.", get_picker_cmd("menu/filetype", { theme = "dropdown" }), opts },
@@ -59,9 +59,7 @@ local function set_keymaps()
     -- telescope-file-browser.nvim
     {
       "<Leader>f",
-      function()
-        require("telescope").extensions.file_browser.file_browser { path = last_opened_path }
-      end,
+      function() require("telescope").extensions.file_browser.file_browser { path = last_opened_path } end,
       opts,
     },
   }
@@ -142,6 +140,7 @@ local function init()
             { "😀Insert emoji (Nerd Fonts)", [[ lua require"telescope.builtin".symbols{ sources = {"nerd"} } ]] },
             { "😀Insert emoji (kaomoji)", [[ lua require"telescope.builtin".symbols{ sources = {"kaomoji"} } ]] },
             { "🔭Open filetype menu", "Telescope filetype" },
+            { "🔭Notification History", function() require("telescope").extensions.notify.notify() end },
           },
         },
         cursor = {
@@ -180,7 +179,7 @@ local function init()
           return function(bufnr, bypass)
             fb_action(bufnr, bypass)
 
-            local action_state = require("telescope.actions.state")
+            local action_state = require "telescope.actions.state"
             local current_picker = action_state.get_current_picker(bufnr)
             local finder = current_picker.finder
             last_opened_path = finder.path
@@ -199,7 +198,7 @@ local function init()
               H = stateful(fb_actions.goto_cwd),
               ["."] = fb_actions.toggle_hidden,
             },
-          }
+          },
         }
       end)(),
     },
@@ -207,6 +206,7 @@ local function init()
   require("telescope").load_extension "fzf"
   require("telescope").load_extension "menu"
   require("telescope").load_extension "file_browser"
+  require("telescope").load_extension "notify"
 end
 
 return {

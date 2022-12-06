@@ -41,6 +41,25 @@ packer.register {
       config = function() require "packages.ui.toggleterm" end,
     },
 
+    -- Notification
+    {
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.notify = require "notify"
+        vim.notify.setup {
+          fps = 30,
+          icons = {
+            DEBUG = "",
+            ERROR = "😷",
+            INFO = "📢",
+            TRACE = "🚓",
+            WARN = "🔥",
+          },
+          timeout = 3000,
+        }
+      end,
+    },
+
     -- Colorschemes
     { "tomasr/molokai" },
     { "haishanh/night-owl.vim" },
