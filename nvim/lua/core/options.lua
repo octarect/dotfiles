@@ -66,3 +66,8 @@ opt.fcs:append "eob: "
 
 -- Highlight embedded script (lua, python and ruby)
 vim.g.vimsyn_embed = "lPr"
+
+-- Folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false

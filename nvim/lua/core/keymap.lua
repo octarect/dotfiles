@@ -62,3 +62,9 @@ for i = 1, max_tab do
   })
 end
 nmap(tab_keymaps)
+
+-- Folding
+nmap {
+  -- Open/Close fold recursively
+  { "za", "zA", { noremap, silent }},
+}
