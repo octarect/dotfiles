@@ -54,10 +54,6 @@ zinit ice wait lucid from"gh-r" as"program" mv"agg-* -> agg"
 zinit load "asciinema/agg"
 
 # Data interchange
-[ "$(uname)" = "Darwin" ] && jq_branch="*osx*" || jq_branch="*linux64*"
-zinit ice wait lucid from"gh-r" ver"latest" as"program" mv"jq-* -> jq" bpick"$jq_branch"
-zinit load "stedolan/jq"
-
 zinit ice from"gh-r" as"program" mv"yq_* -> yq"
 zinit load "mikefarah/yq"
 
@@ -89,7 +85,7 @@ zinit wait lucid has"kubectl" for \
         cloudflare/cfssl \
     from"gh-r" as"program" bpick"cfssljson_*" mv"cfssljson_* -> cfssljson" id-as"cloudflare/cfssl@cfssljson" \
         cloudflare/cfssl \
-        from"gh-r" as"program" bpick"operator-sdk_*" mv"operator-sdk_* -> operator-sdk" \
+    from"gh-r" as"program" bpick"operator-sdk_*" mv"operator-sdk_* -> operator-sdk" \
         operator-framework/operator-sdk \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma-continuum/null
