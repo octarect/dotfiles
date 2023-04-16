@@ -1,7 +1,7 @@
 -- -- Use <Leader> for mappings of global plugin
 vim.g.mapleader = " "
 -- -- Use <LocalLeader> for mappings of filetype-local plugin
-vim.g.maplocalleader = "z"
+vim.g.maplocalleader = ","
 -- -- Release default mappings of the keys used for <Leader> and <LocalLeader>
 vim.api.nvim_set_keymap("n", vim.g.mapleader, "<Nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", vim.g.maplocalleader, "<Nop>", { noremap = true, silent = true })
