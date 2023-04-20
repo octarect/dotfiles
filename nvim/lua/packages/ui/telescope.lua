@@ -49,7 +49,7 @@ local function set_keymaps()
     { "<Leader>dg", get_picker_cmd "builtin/live_grep", opts },
     { "<Leader>db", get_picker_cmd "builtin/buffers", opts },
     { "<Leader>dc", get_picker_cmd("builtin/colorscheme", { theme = "dropdown" }), opts },
-    { "<Leader>dj", get_picker_cmd "builtin/treesitter", opts },
+    { "<Leader>ds", get_picker_cmd "builtin/treesitter", opts },
     -- telescope-symbols.nvim
     { "<Leader>de", get_picker_cmd("builtin/symbols", { theme = "cursor" }), opts },
     -- telescope-menu.nvim
