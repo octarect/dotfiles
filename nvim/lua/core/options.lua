@@ -71,3 +71,26 @@ vim.g.vimsyn_embed = "lPr"
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
+opt.foldnestmax = 1
+(function()
+  -- Temporarily turn off foldmethod on insert mode
+  local aug = vim.api.nvim_create_augroup("MyAutoCmdFold", {})
+  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    group = aug,
+    pattern = "*",
+    callback = function()
+      if vim.opt_local.foldmethod:get() == "expr" then
+        vim.opt_local.foldmethod = "manual"
+      end
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    group = aug,
+    pattern = "*",
+    callback = function()
+      if vim.opt_local.foldmethod:get() == "manual" then
+        vim.opt_local.foldmethod = "expr"
+      end
+    end,
+  })
+end)()
