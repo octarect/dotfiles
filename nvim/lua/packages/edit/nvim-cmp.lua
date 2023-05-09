@@ -26,6 +26,7 @@ local source_menus = {
   nvim_lsp = "[LSP]",
   luasnip = "[Snippet]",
   cmp_tabnine = "[TabNine]",
+  copilot = "[Copilot]",
   buffer = "[Buffer]",
   path = "[Path]",
   emoji = "[Emoji]",
@@ -40,6 +41,7 @@ cmp.setup {
     },
   },
   sources = cmp.config.sources {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "treesitter" },
