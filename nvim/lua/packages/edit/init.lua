@@ -10,12 +10,6 @@ packer.register {
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "tzachar/cmp-tabnine", run = "./install.sh" },
-        {
-          "zbirenbaum/copilot-cmp",
-          config = function()
-            require("copilot_cmp").setup()
-          end,
-        },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
@@ -29,16 +23,6 @@ packer.register {
         },
         { "onsails/lspkind-nvim" },
       },
-    },
-    {
-      "zbirenbaum/copilot.lua",
-      event = { "InsertEnter" },
-      config = function()
-        require("copilot").setup({
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        })
-      end,
     },
 
     -- Edit
