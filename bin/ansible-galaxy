@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+source ${HOME}/.dotenv
+PKG_NAME=ansible CMD=ansible-galaxy ${DOT_DIR}/lib/pip-bundle.sh $@

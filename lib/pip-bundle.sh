@@ -5,7 +5,7 @@ set -e
 source $HOME/.dotenv
 
 # Manage a package and its dependencies in the version-specific directory
-[ -z "$PKG_NAME" ] && echo "Please set PKG_NAME" && exit 1
+[[ -z "$PKG_NAME" ]] && echo "Please set PKG_NAME" && exit 1
 pkg_name="$PKG_NAME"
 pkg_version="${PKG_VERSION:-latest}"
 
@@ -13,7 +13,7 @@ pkg_path="${DOT_CACHE_DIR}/pip/$pkg_name/${pkg_version}"
 
 cmd="${CMD:-$pkg_name}"
 
-if [ ! -e "$pkg_path" -o "$PKG_UPDATE" = true ]; then
+if [[ ! -d "$pkg_path" || "$PKG_UPDATE" = "true" ]]; then
     if [ "$pkg_version" == "latest" ]; then
         pkg_spec=$pkg_name
     else
