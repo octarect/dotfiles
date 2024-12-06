@@ -90,11 +90,6 @@ zinit wait lucid has"kubectl" for \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma-continuum/null
 
-# Parser generator tool (used by nvim-treesitter on Neovim)
-zinit wait lucid for \
-    from"gh-r" as"program" mv"tree-sitter-* -> tree-sitter" \
-        tree-sitter/tree-sitter
-
 # GitHub CLI
 zinit ice lucid wait"0" as"program" from:"gh-r" \
     mv"gh_*/bin/gh -> gh" bpick"*.tar.gz" \
