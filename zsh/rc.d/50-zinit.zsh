@@ -90,6 +90,10 @@ zinit light "nektos/act"
 zinit ice lucid wait"0" as"program" from"gh-r" bpick"opencode-(linux|darwin)-*.(tar.gz|zip)"
 zinit light "anomalyco/opencode"
 
+# GitHub Copilot
+zinit ice lucid wait"0" as"program" from"gh-r" bpick"copilot-(linux|darwin)-*.tar.gz"
+zinit light "github/copilot-cli"
+
 # Tree-sitter CLI for Neovim
 if [ "$(uname)" = "Darwin" ]; then
     zinit ice lucid wait"0" as"program" from"gh-r" bpick"tree-sitter-cli-macos-*"
