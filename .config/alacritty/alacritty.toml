@@ -76,7 +76,7 @@ render_timer = false
 size = 11.0
 
 [font.bold]
-family = "Cica"
+family = "Monaspace Xenon"
 style = "Bold"
 
 [font.glyph_offset]
@@ -84,11 +84,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Cica"
+family = "Monaspace Xenon"
 style = "Italic"
 
 [font.normal]
-family = "Cica"
+family = "Monaspace Xenon"
 style = "Regular"
 
 [font.offset]
