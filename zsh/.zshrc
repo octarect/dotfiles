@@ -41,3 +41,8 @@ for file in $(find ${ZDOTDIR}/rc.d/*.zsh -maxdepth 1 -type f | sort)
 do
     source ${file}
 done
+
+ZSHRC_LOCAL=${HOME}/.zshrc_local
+if [[ -f "${ZSHRC_LOCAL}" ]]; then
+    source "${ZSHRC_LOCAL}"
+fi
