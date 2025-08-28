@@ -87,6 +87,8 @@ zinit wait lucid has"kubectl" for \
         cloudflare/cfssl \
     from"gh-r" as"program" bpick"operator-sdk_*" mv"operator-sdk_* -> operator-sdk" \
         operator-framework/operator-sdk \
+    from"gh-r" as"program" mv"kubebuilder_* -> kubebuilder" \
+        kubernetes-sigs/kubebuilder \
     light-mode atload"source <(kubectl completion zsh)" \
         zdharma-continuum/null
 
@@ -95,6 +97,10 @@ zinit ice lucid wait"0" as"program" from:"gh-r" \
     mv"gh_*/bin/gh -> gh" bpick"*.tar.gz" \
     atload"source <(gh completion -s zsh)"
 zinit light "cli/cli"
+
+# Experimental
+zinit ice lucid wait"0" as"program" from"gh-r"
+zinit light "rossmacarthur/sheldon"
 
 # Local runner of GitHub Actions
 zinit ice lucid wait"0" as"program" from"gh-r"

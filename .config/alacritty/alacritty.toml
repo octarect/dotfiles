@@ -76,7 +76,7 @@ render_timer = false
 size = 11.0
 
 [font.bold]
-family = "Monaspace Xenon"
+family = "Monaspace Xenon NF"
 style = "Bold"
 
 [font.glyph_offset]
@@ -84,11 +84,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Monaspace Xenon"
+family = "Monaspace Xenon NF"
 style = "Italic"
 
 [font.normal]
-family = "Monaspace Xenon"
+family = "Monaspace Xenon NF"
 style = "Regular"
 
 [font.offset]

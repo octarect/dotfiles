@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Variables
+FONT_NAME="monaspace"
+RELEASE_URL="https://api.github.com/repos/githubnext/monaspace/releases/latest"
+USER_FONTS_DIR="$HOME/.local/share/fonts/$FONT_NAME"
+TEMP_DIR="$(mktemp -d)"
+ASSET_PATTERN="monaspace-nerdfonts-"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+info() {
+    echo -e "${GREEN}[INFO]${NC} $1"
+}
+
+error() {
+    echo -e "${RED}[ERROR]${NC} $1" >&2
+}
+
+cleanup() {
+    info "Cleaning up temporary files..."
+    rm -rf "$TEMP_DIR"
+}
+
+trap cleanup EXIT
+
+get_asset_url() {
+    curl -s "$RELEASE_URL" | jq -r '.assets[] | select(.name | test(".*\\.zip$")) | .browser_download_url' | awk -v pat="$ASSET_PATTERN" '$1 ~ pat { print $1 }' | head -n1
+}
+
+download_url() {
+    local asset_url=$1
+    local zip_file="$TEMP_DIR/$FONT_NAME.zip"
+
+    info "Downloading asset from: $asset_url"
+    curl -L -o "$zip_file" "$asset_url"
+
+    info "Extracting font files..."
+    unzip -q "$zip_file" -d "$TEMP_DIR"
+}
+
+install_font() {
+    info "Creating font directory if not exists: $USER_FONTS_DIR"
+    mkdir -p $USER_FONTS_DIR
+
+    info "Installing font files..."
+    find "$TEMP_DIR" -name "*.otf" -o -name "*.ttf" | while read font_file; do
+        cp "$font_file" "$USER_FONTS_DIR/"
+        info "Installed: $(basename "$font_file")"
+    done
+
+    info "Updating font cache..."
+    fc-cache -f "$USER_FONTS_DIR"
+}
+
+asset_url="$(get_asset_url)"
+if [[ -z "$asset_url" ]]; then
+    error "Could not find a suitable asset to download. pattern=$ASSET_PATTERN"
+    error "Check the list of assets on: $RELEASE_URL"
+    exit 1
+fi
+download_url $asset_url
+install_font
+
+info "Complete!!"
+info "Fonts installed to: $USER_FONTS_DIR"
