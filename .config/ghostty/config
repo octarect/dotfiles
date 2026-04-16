@@ -48,7 +48,7 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-font-family = ""
+# Primary font
 font-family = "Monaspace Xenon NF"
 # # For Monaspace-specific settings
 # # ss01: != and ===
@@ -61,6 +61,9 @@ font-family = "Monaspace Xenon NF"
 # font-feature = "ss04"
 # # liga: //, ..., ||
 # font-feature = "liga"
+
+# Fallback font
+font-family = "Cica"
 
 theme = "Monokai Remastered"
 
