@@ -100,6 +100,10 @@ zinit light "cli/cli"
 zinit ice lucid wait"0" as"program" from"gh-r"
 zinit light "nektos/act"
 
+# Tree-sitter CLI for Neovim
+zinit ice lucid wait"0" as"program" from"gh-r"
+zinit light "tree-sitter/tree-sitter"
+
 zinit ice blockf
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*:default' menu select=2
