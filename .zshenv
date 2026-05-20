@@ -43,6 +43,10 @@ export path=(
     ${path}
 )
 
+if [[ "${OSTYPE}" =~ darwin.* ]]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # Go
 export GOPATH="${DEVPATH}"
 export GOROOT=`go env GOROOT`
