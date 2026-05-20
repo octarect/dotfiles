@@ -100,6 +100,10 @@ zinit light "cli/cli"
 zinit ice lucid wait"0" as"program" from"gh-r"
 zinit light "nektos/act"
 
+# OpenCode
+zinit ice lucid wait"0" as"program" from"gh-r"
+zinit light "anomalyco/opencode"
+
 # Tree-sitter CLI for Neovim
 if [ "$(uname)" = "Darwin" ]; then
     zinit ice lucid wait"0" as"program" from"gh-r" bpick"tree-sitter-cli-macos-*"
