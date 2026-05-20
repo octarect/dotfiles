@@ -101,7 +101,11 @@ zinit ice lucid wait"0" as"program" from"gh-r"
 zinit light "nektos/act"
 
 # Tree-sitter CLI for Neovim
-zinit ice lucid wait"0" as"program" from"gh-r"
+if [ "$(uname)" = "Darwin" ]; then
+    zinit ice lucid wait"0" as"program" from"gh-r" bpick"tree-sitter-cli-macos-*"
+else
+    zinit ice lucid wait"0" as"program" from"gh-r" bpick"tree-sitter-cli-linux-*"
+fi
 zinit light "tree-sitter/tree-sitter"
 
 zinit ice blockf
