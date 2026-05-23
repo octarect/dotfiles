@@ -92,6 +92,7 @@ zinit wait lucid has"kubectl" for \
 
 # GitHub CLI
 zinit ice lucid wait"0" as"program" from:"gh-r" \
+    bpick"*(linux|macos)*.(tar.gz|zip)" \
     mv"gh_*/bin/gh -> gh" bpick"*.tar.gz" \
     atload"source <(gh completion -s zsh)"
 zinit light "cli/cli"
@@ -101,7 +102,8 @@ zinit ice lucid wait"0" as"program" from"gh-r"
 zinit light "nektos/act"
 
 # OpenCode
-zinit ice lucid wait"0" as"program" from"gh-r"
+# `bpick` will ignore musl and baseline binaries.
+zinit ice lucid wait"0" as"program" from"gh-r" bpick"opencode-(linux|darwin)-*.(tar.gz|zip)"
 zinit light "anomalyco/opencode"
 
 # Tree-sitter CLI for Neovim
