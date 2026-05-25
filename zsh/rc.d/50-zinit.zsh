@@ -25,9 +25,6 @@ zinit ice wait lucid from"gh-r" as"program" pick"ghq_*/ghq" \
 zinit load "x-motemen/ghq"
 
 # Filter UI
-zinit ice wait lucid from"gh-r" as"program" mv"peco_*/peco -> peco"
-zinit load "peco/peco"
-
 zinit ice wait lucid from"gh-r" as"program"
 zinit load junegunn/fzf
 
@@ -48,15 +45,6 @@ zinit load "sharkdp/bat"
 zinit ice wait lucid from"gh-r" as"program" pick"btm" atload"alias top=btm"
 zinit load "ClementTsang/bottom"
 
-# Terminal recording
-# asciinema is managed by bin/asciinema because it is implemented by python.
-zinit ice wait lucid from"gh-r" as"program" mv"agg-* -> agg"
-zinit load "asciinema/agg"
-
-# Data interchange
-zinit ice from"gh-r" as"program" mv"yq_* -> yq"
-zinit load "mikefarah/yq"
-
 # Directory specific environment variable
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
     atclone'./direnv hook zsh > zhook.zsh' \
@@ -67,11 +55,7 @@ zinit load "direnv/direnv"
 zinit ice from"gh-r" as"program" pick"ripgrep*/rg"
 zinit load "BurntSushi/ripgrep"
 
-# VPS
-zinit wait lucid for \
-    from"gh-r" as"program" atload"source <(doctl completion zsh)" \
-        digitalocean/doctl
-
+# S3 client
 zinit ice wait lucid as"program" pick"mc" \
     atclone"make build" atpull"%atclone"
 zinit load "minio/mc"
