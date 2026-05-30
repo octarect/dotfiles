@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+usage() {
+    cat <<EOS >&2
+NAME:
+    $(basename $0) - assume an IAM role and output export statements
+
+USAGE:
+    eval \$($(basename $0) <role-arn> [options])
+
+OPTIONS:
+    -s, --session-name <name>      Session name (default: ${USER}-assumed)
+    -d, --duration-seconds <secs>  Duration in seconds (default: 3600)
+    -h, --help                     Show this help
+EOS
+}
+
+SESSION_NAME="${USER}-assumed"
+DURATION=3600
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -s|--session-name)
+            SESSION_NAME="$2"
+            shift 2
+            ;;
+        -d|--duration-seconds)
+            DURATION="$2"
+            shift 2
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        -*)
+            echo "Unknown option: $1" >&2
+            usage
+            exit 1
+            ;;
+        *)
+            ROLE_ARN="$1"
+            shift
+            ;;
+    esac
+done
+
+if [[ -z "${ROLE_ARN}" ]]; then
+    usage
+    exit 1
+fi
+
+result=$(aws sts assume-role \
+    --role-arn "${ROLE_ARN}" \
+    --role-session-name "${SESSION_NAME}" \
+    --duration-seconds "${DURATION}")
+
+echo "export AWS_ACCESS_KEY_ID=$(echo "${result}" | jq -r '.Credentials.AccessKeyId')"
+echo "export AWS_SECRET_ACCESS_KEY=$(echo "${result}" | jq -r '.Credentials.SecretAccessKey')"
+echo "export AWS_SESSION_TOKEN=$(echo "${result}" | jq -r '.Credentials.SessionToken')"
