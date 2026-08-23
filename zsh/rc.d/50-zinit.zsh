@@ -11,6 +11,7 @@ ZPFX=${ZINIT[HOME_DIR]}/polaris
 
 if [[ ! -e ${ZINIT[BIN_DIR]} ]]; then
     git clone https://github.com/zdharma-continuum/zinit.git ${ZINIT[BIN_DIR]}
+    git -C ${ZINIT[BIN_DIR]} checkout 04034e6
 fi
 
 source ${ZINIT[BIN_DIR]}/zinit.zsh
