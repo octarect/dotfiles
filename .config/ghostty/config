@@ -50,6 +50,7 @@
 
 # Primary font
 font-family = "Monaspace Xenon NF"
+font-feature = -calt, -liga, -dlig
 # # For Monaspace-specific settings
 # # ss01: != and ===
 # font-feature = "ss01"
@@ -63,7 +64,7 @@ font-family = "Monaspace Xenon NF"
 # font-feature = "liga"
 
 # Fallback font
-font-family = "Cica"
+font-family = "Noto Sans CJK JP"
 
 theme = "Monokai Remastered"
 
